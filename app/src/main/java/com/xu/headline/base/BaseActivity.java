@@ -1,12 +1,8 @@
 package com.xu.headline.base;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.Window;
-import android.view.WindowManager;
 
-import com.orhanobut.logger.Logger;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
@@ -28,7 +24,7 @@ public abstract class BaseActivity<T extends BaseContract.IBasePresenter> extend
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutId());
-        initScreen();
+        //initScreen();
 
         mPresenter = setPresenter();
         if (mPresenter == null) {
@@ -55,23 +51,6 @@ public abstract class BaseActivity<T extends BaseContract.IBasePresenter> extend
 
     }
 
-
-    /**
-     * 沉浸式
-     */
-    private void initScreen() {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window win = getWindow();
-            WindowManager.LayoutParams winParams = win.getAttributes();
-            winParams.flags = winParams.flags & ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
-            int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-            winParams.flags |= bits;
-            win.setAttributes(winParams);
-        } else {
-            Logger.d("版本过低，不支持沉浸式标题栏");
-        }
-    }
 
     @Override
     protected void onDestroy() {

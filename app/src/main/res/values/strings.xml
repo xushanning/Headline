@@ -2,4 +2,5 @@
     <string name="app_name">今日头条</string>
     <!--欢迎页-->
     <string name="welcome_skip">跳过广告</string>
+    <string name="my_headline">我的头条 我做主</string>
 </resources>

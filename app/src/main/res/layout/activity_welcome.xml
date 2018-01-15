@@ -36,8 +36,9 @@
         app:srcCompat="@mipmap/guide_blow" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/tv_skip"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="20dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
@@ -47,5 +48,18 @@
         android:textSize="12.0sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:textSize="10dp"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/my_headline"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3" />
 
 </android.support.constraint.ConstraintLayout>
