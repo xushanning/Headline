@@ -1,19 +1,23 @@
 package com.xu.headline.base;
 
+import com.trello.rxlifecycle2.LifecycleTransformer;
+
 /**
  * Created by xusn10 on 2018/1/15.
  *
  * @author xusn10
  */
 
-public interface BaseContract {
+public interface IBaseContract {
+
     interface IBaseView {
         /**
-         * 设置layout
+         * 绑定生命周期
          *
-         * @return 布局id
+         * @param <T>
+         * @return
          */
-        int setLayoutId();
+        <T> LifecycleTransformer<T> bindToLife();
 
     }
 
@@ -30,10 +34,6 @@ public interface BaseContract {
          */
         void detachView();
 
-        /**
-         * 当activity或者fragement销毁的时候调用
-         */
-        void onUiDestroy();
 
     }
 

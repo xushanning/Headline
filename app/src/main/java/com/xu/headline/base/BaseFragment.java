@@ -10,6 +10,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.orhanobut.logger.Logger;
+import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import butterknife.ButterKnife;
@@ -19,7 +20,7 @@ import butterknife.Unbinder;
  * Created by xusn10 on 2018/1/15.
  */
 
-public abstract class BaseFragment<T extends BaseContract.IBasePresenter> extends RxFragment implements BaseContract.IBaseView {
+public abstract class BaseFragment<T extends IBaseContract.IBasePresenter> extends RxFragment implements IBaseContract.IBaseView, IBase {
     private View mView;
     protected T mPresenter;
     private Unbinder bind;
@@ -28,7 +29,7 @@ public abstract class BaseFragment<T extends BaseContract.IBasePresenter> extend
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(setLayoutId(), container, false);
-        initScreen();
+        //  initScreen();
         bind = ButterKnife.bind(this, mView);
         mPresenter = createPresenter();
         if (mPresenter == null) {
@@ -77,7 +78,11 @@ public abstract class BaseFragment<T extends BaseContract.IBasePresenter> extend
             mPresenter.detachView();
         }
         bind.unbind();
-        //中断所有的rx请求和其他
-        mPresenter.onUiDestroy();
+
+    }
+
+    @Override
+    public <T> LifecycleTransformer<T> bindToLife() {
+        return this.bindToLifecycle();
     }
 }

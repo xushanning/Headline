@@ -1,10 +1,10 @@
-package com.xu.headline.ui.activity;
+package com.xu.headline.ui.activity.welcome;
 
 import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.xu.headline.MainActivity;
+import com.xu.headline.ui.activity.main.MainActivity;
 import com.xu.headline.R;
 import com.xu.headline.base.BaseActivity;
 import com.xu.headline.utils.ImageLoaderUtil;
@@ -21,7 +21,7 @@ import io.reactivex.observers.DisposableObserver;
 /**
  * @author xusn10
  */
-public class WelcomeActivity extends BaseActivity<WelcomeContract.IWelcomePresenter> implements WelcomeContract.IWelcomeView {
+public class WelcomeActivity extends BaseActivity<IWelcomeContract.IWelcomePresenter> implements IWelcomeContract.IWelcomeView {
 
 
     @BindView(R.id.img_ad)
@@ -42,7 +42,7 @@ public class WelcomeActivity extends BaseActivity<WelcomeContract.IWelcomePresen
     public void initOthers() {
         super.initOthers();
         //必应每日壁纸 来源于 https://www.dujin.org/fenxiang/jiaocheng/3618.html.
-        ImageLoaderUtil.LoadImage(this, "http://api.dujin.org/bing/1920.php", imgAd);
+        ImageLoaderUtil.LoadImage(this, "https://api.dujin.org/bing/1920.php", imgAd);
         mCompositeDisposable.add(Observable.interval(0, 1, TimeUnit.SECONDS)
                 .compose(TransformUtils.<Long>defaultSchedulers())
                 .map(new Function<Long, Integer>() {
@@ -73,7 +73,7 @@ public class WelcomeActivity extends BaseActivity<WelcomeContract.IWelcomePresen
     }
 
     @Override
-    public WelcomeContract.IWelcomePresenter setPresenter() {
+    public IWelcomeContract.IWelcomePresenter setPresenter() {
         return new WelcomePresenter();
     }
 
