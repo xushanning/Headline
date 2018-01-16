@@ -80,6 +80,7 @@ public class WelcomeActivity extends BaseActivity<IWelcomeContract.IWelcomePrese
     private void jumpToMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
 
