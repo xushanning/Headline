@@ -22,7 +22,7 @@ public class ImageLoaderUtil {
      * @param url       图片链接
      * @param imageView 目标view
      */
-    public static void LoadImage(Context context, Object url, ImageView imageView) {
+    public static void loadImage(Context context, Object url, ImageView imageView) {
         Glide.with(context).load(url)
                 .apply(new RequestOptions()
                         .centerCrop()

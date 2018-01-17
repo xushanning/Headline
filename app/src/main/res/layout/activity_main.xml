@@ -12,10 +12,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.94" />
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/guide_tabLayout"
+    <!--<android.support.design.widget.BottomNavigationView-->
+    <!--android:id="@+id/guide_navigation_view"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--app:itemIconTint="@drawable/bottom_navigation_selector"-->
+    <!--app:itemTextColor="@drawable/bottom_navigation_selector"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="1.0"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/guideline2"-->
+    <!--app:menu="@menu/menu_main_navigation">-->
+
+    <!--</android.support.design.widget.BottomNavigationView>-->
+    <com.ashokvarma.bottomnavigation.BottomNavigationBar
+        android:id="@+id/guide_bottom_navigation"
+        style="@style/GuideTabLayoutTextSize"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,8 +39,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline2">
 
+    </com.ashokvarma.bottomnavigation.BottomNavigationBar>
 
-    </android.support.design.widget.TabLayout>
 
     <FrameLayout
         android:id="@+id/content_frame_layout"
