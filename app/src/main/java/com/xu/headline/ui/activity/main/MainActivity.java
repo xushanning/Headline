@@ -1,6 +1,5 @@
 package com.xu.headline.ui.activity.main;
 
-import android.os.StatFs;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +8,8 @@ import android.widget.FrameLayout;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.ashokvarma.bottomnavigation.TextBadgeItem;
+import com.jaeger.library.StatusBarUtil;
 import com.xu.headline.R;
 import com.xu.headline.base.BaseActivity;
 import com.xu.headline.ui.fragment.home.HomeFragment;
@@ -18,6 +19,7 @@ import com.xu.headline.ui.fragment.video.VideoFragment;
 import com.xu.headline.utils.ToastUtil;
 
 import butterknife.BindView;
+
 
 /**
  * @author xusn10
@@ -61,8 +63,9 @@ public class MainActivity extends BaseActivity<IMainContract.IMainPresenter> imp
 
     @Override
     public void initOthers() {
+        //设置沉浸式
+        StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, 0, null);
         initView();
-
     }
 
     /**
@@ -72,9 +75,15 @@ public class MainActivity extends BaseActivity<IMainContract.IMainPresenter> imp
         fragmentManager = getSupportFragmentManager();
         fragments = new Fragment[4];
         showFragment(SHOW_HOME);
+        TextBadgeItem textBadgeItem = new TextBadgeItem();
+        textBadgeItem.setBorderWidth(4)
+                .setBackgroundColorResource(R.color.colorGuideSelected)
+                .setText("6")
+                .setHideOnSelect(true);
+
         guideBottomNavigation
                 .setMode(BottomNavigationBar.MODE_FIXED)
-                .addItem(new BottomNavigationItem(R.mipmap.home, getString(R.string.main_home)))
+                .addItem(new BottomNavigationItem(R.mipmap.home, getString(R.string.main_home)).setBadgeItem(textBadgeItem))
                 .addItem(new BottomNavigationItem(R.mipmap.video, getString(R.string.main_video)))
                 .addItem(new BottomNavigationItem(R.mipmap.small_headline, getString(R.string.main_small_headline)))
                 .addItem(new BottomNavigationItem(R.mipmap.personal_center, getString(R.string.main_personal_center)))

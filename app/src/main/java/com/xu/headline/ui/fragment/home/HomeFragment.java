@@ -1,9 +1,12 @@
 package com.xu.headline.ui.fragment.home;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 
 import com.xu.headline.R;
 import com.xu.headline.base.BaseFragment;
+
+import butterknife.BindView;
 
 /**
  * Created by Administrator on 2018/1/16.
@@ -13,6 +16,11 @@ import com.xu.headline.base.BaseFragment;
 
 public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> implements IHomeContract.IHomeView {
 
+
+    @BindView(R.id.tab_layout_home)
+    TabLayout tabLayoutHome;
+
+    private String[] channels = new String[]{"关注", "推荐", "新时代", "北京", "视频", "热点", "娱乐", "问答", "科技", "军事", "段子"};
 
     /**
      * 实例化
@@ -34,6 +42,9 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
 
     @Override
     public void initOthers() {
+        for (int i = 0; i < channels.length; i++) {
+            tabLayoutHome.addTab(tabLayoutHome.newTab().setText(channels[i]));
+        }
 
     }
 
@@ -41,4 +52,5 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     public IHomeContract.IHomePresenter createPresenter() {
         return new HomePresenter();
     }
+
 }
