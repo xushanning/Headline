@@ -3,8 +3,13 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
     <!--导航页面的标签选中与否的字体颜色-->
     <color name="colorGuideSelected">#F85959</color>
     <color name="colorGuideUnSelected">#505050</color>
     <color name="colorGuideBackground">#F4F4F4</color>
+
+    <!--HomeFragment界面导航选中与否颜色-->
+    <color name="colorHomeUnSelected">#222222</color>
+    <color name="colorHomeSelected">#F85959</color>
 </resources>

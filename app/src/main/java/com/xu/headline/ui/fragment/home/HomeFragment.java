@@ -2,11 +2,22 @@ package com.xu.headline.ui.fragment.home;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
+import com.xu.headline.adapter.HomeFragmentPagerAdapter;
 import com.xu.headline.base.BaseFragment;
+import com.xu.headline.bean.ChannelBean;
+
+import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Administrator on 2018/1/16.
@@ -19,8 +30,12 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
 
     @BindView(R.id.tab_layout_home)
     TabLayout tabLayoutHome;
+    @BindView(R.id.vp_home)
+    ViewPager vpHome;
 
     private String[] channels = new String[]{"关注", "推荐", "新时代", "北京", "视频", "热点", "娱乐", "问答", "科技", "军事", "段子"};
+
+    private HomeFragmentPagerAdapter homeFragmentPagerAdapter;
 
     /**
      * 实例化
@@ -42,9 +57,10 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
 
     @Override
     public void initOthers() {
-        for (int i = 0; i < channels.length; i++) {
-            tabLayoutHome.addTab(tabLayoutHome.newTab().setText(channels[i]));
-        }
+        mPresenter.getChannelInfo();
+//        for (int i = 0; i < channels.length; i++) {
+//            tabLayoutHome.addTab(tabLayoutHome.newTab().setText(channels[i]));
+//        }
 
     }
 
@@ -52,5 +68,19 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     public IHomeContract.IHomePresenter createPresenter() {
         return new HomePresenter();
     }
+
+    @Override
+    public void loadData(List<ChannelBean> list) {
+        if (list != null) {
+            //这里用getChildFragmentManager()，获取的是子容器的manager，而getFragmentManager是获取的父容器的manager
+            homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), list);
+            vpHome.setAdapter(homeFragmentPagerAdapter);
+            vpHome.setCurrentItem(1, false);
+            tabLayoutHome.setupWithViewPager(vpHome);
+        } else {
+            Logger.d("获取频道失败");
+        }
+    }
+
 
 }

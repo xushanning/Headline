@@ -18,9 +18,9 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <!--主界面的tabLayout的字体大小-->
-    <style name="GuideTabLayoutTextSize" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
-        <item name="android:textSize">5sp</item>
+    <!--HomeFragment界面的tabLayout的字体大小-->
+    <style name="HomeTabLayoutTextSize" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">18sp</item>
     </style>
 
 </resources>
