@@ -2,10 +2,9 @@ package com.xu.headline.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.xu.headline.bean.ChannelBean;
+import com.xu.headline.bean.ChannelsBean;
 import com.xu.headline.ui.fragment.homedetail.HomeDetailFragment;
 
 import java.util.List;
@@ -15,21 +14,24 @@ import java.util.List;
  */
 
 public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    private List<ChannelBean> channels;
+    private List<ChannelsBean.ChannelListBean> channels;
 
-    public HomeFragmentPagerAdapter(FragmentManager fm, List<ChannelBean> channels) {
+    public HomeFragmentPagerAdapter(FragmentManager fm, List<ChannelsBean.ChannelListBean> channels) {
         super(fm);
         this.channels = channels;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return HomeDetailFragment.newInstance(channels.get(position).getChannelID());
+        String originString = channels.get(position).getChannelId();
+        //去掉焦点或者最新
+        String resultString = originString.replace("焦点", "").replace("最新", "");
+        return HomeDetailFragment.newInstance(resultString);
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return channels.get(position).getChannelName();
+        return channels.get(position).getName();
     }
 
     @Override

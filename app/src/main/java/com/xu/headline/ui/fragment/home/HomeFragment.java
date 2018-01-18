@@ -3,21 +3,16 @@ package com.xu.headline.ui.fragment.home;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeFragmentPagerAdapter;
 import com.xu.headline.base.BaseFragment;
-import com.xu.headline.bean.ChannelBean;
+import com.xu.headline.bean.ChannelsBean;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by Administrator on 2018/1/16.
@@ -70,7 +65,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     }
 
     @Override
-    public void loadData(List<ChannelBean> list) {
+    public void loadData(List<ChannelsBean.ChannelListBean> list) {
         if (list != null) {
             //这里用getChildFragmentManager()，获取的是子容器的manager，而getFragmentManager是获取的父容器的manager
             homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), list);

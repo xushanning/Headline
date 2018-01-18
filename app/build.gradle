@@ -37,6 +37,7 @@ dependencies {
     implementation rootProject.ext.dependencies["banner"]
     implementation rootProject.ext.dependencies["navigation"]
     implementation rootProject.ext.dependencies["statusBarUtil"]
+    implementation rootProject.ext.dependencies["baseRecyclerViewAdapterHelper"]
 
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["greendao"]
@@ -51,6 +52,7 @@ dependencies {
 
     implementation rootProject.ext.dependencies["converter-gson"]
     implementation rootProject.ext.dependencies["adapter-rxjava"]
+    implementation rootProject.ext.dependencies["okhttp-logging"]
 
     implementation rootProject.ext.dependencies["logger"]
 
