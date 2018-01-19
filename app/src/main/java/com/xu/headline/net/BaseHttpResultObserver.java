@@ -12,6 +12,11 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class BaseHttpResultObserver<T> implements Observer<BaseResBean<T>> {
+    /**
+     * 请求成功
+     */
+    private static final String REQUEST_OK = "ok";
+
     @Override
     public void onSubscribe(Disposable d) {
 
@@ -19,8 +24,10 @@ public abstract class BaseHttpResultObserver<T> implements Observer<BaseResBean<
 
     @Override
     public void onNext(BaseResBean<T> tBaseResBean) {
-        if (tBaseResBean.getShowapi_res_code() == 0) {
-            onSuccess(tBaseResBean.getShowapi_res_body());
+        if (tBaseResBean.getMsg().equals(REQUEST_OK)) {
+            onSuccess(tBaseResBean.getResult());
+        } else {
+            onCodeError(tBaseResBean.getMsg());
         }
     }
 
@@ -40,4 +47,8 @@ public abstract class BaseHttpResultObserver<T> implements Observer<BaseResBean<
      * @param t t
      */
     protected abstract void onSuccess(T t);
+
+    private void onCodeError(String codeMessage) {
+
+    }
 }
