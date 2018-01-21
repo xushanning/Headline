@@ -2,6 +2,7 @@ package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.NewsListBean;
+import com.xu.headline.bean.SearchBean;
 
 import java.util.List;
 
@@ -37,5 +38,15 @@ public interface TouTiaoApi {
     @GET("get")
     Observable<BaseResBean<NewsListBean>> getNewsList(@Query("channel") String channelName, @Query("start") int start, @Query("num") int num, @Query("appkey") String appKey);
 
+    /**
+     * 获取搜索结果
+     *
+     * @param keyWord 关键词
+     * @param appKey  appKey
+     * @return 搜索结果
+     */
+
+    @GET("search")
+    Observable<BaseResBean<SearchBean>> getSearchList(@Query("keyword") String keyWord, @Query("appkey") String appKey);
 
 }

@@ -17,4 +17,15 @@
     <color name="colorHomeDetailLine">#E8E8E8</color>
     <color name="colorHomeDetailTitle">#222222</color>
     <color name="colorHomeDetailSourceAndTime">#999999</color>
+
+    <!--搜索activity界面颜色-->
+    <color name="colorSearchCancel">#2A90D7</color>
+    <color name="colorSearchBack">#F4F5F6</color>
+    <color name="colorSearchViewText">#707070</color>
+    <color name="colorSearchViewLine">#E8E8E8</color>
+    <color name="colorSearchViewInterval">#F4F5F6</color>
+    <color name="colorSearchViewRecommend">#222222</color>
+    <color name="colorSearchViewHistory">#999999</color>
+
+
 </resources>

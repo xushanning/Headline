@@ -5,6 +5,7 @@ import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.bean.NewsListBean;
 import com.xu.headline.utils.ImageLoaderUtil;
@@ -25,6 +26,7 @@ public class HomeDetailQuickAdapter extends BaseQuickAdapter<NewsListBean.ListBe
 
     @Override
     protected void convert(BaseViewHolder helper, NewsListBean.ListBean item) {
+        Logger.d(item.getTitle());
         helper.setText(R.id.tv_title, item.getTitle())
                 .setText(R.id.tv_source, item.getSrc())
                 .setText(R.id.tv_time, item.getTime())

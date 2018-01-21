@@ -49,6 +49,7 @@ ext {
             "banner"                       : "com.youth.banner:banner:1.4.10",
             "navigation"                   : "com.ashokvarma.android:bottom-navigation-bar:2.0.4",
             "statusBarUtil"                : "com.jaeger.statusbarutil:library:1.4.0",
-            "baseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34"
+            "baseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
+            "searchView"                   : "com.carson_ho:SearchLayout:1.0.1"
     ]
 }

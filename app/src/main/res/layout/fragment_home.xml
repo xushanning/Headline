@@ -15,6 +15,7 @@
         app:layout_constraintGuide_percent="0.12" />
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#FA745A"
@@ -31,7 +32,7 @@
             app:layout_constraintGuide_percent="0.07" />
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/vSearch"
             android:layout_width="0dp"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
@@ -45,9 +46,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintBottom_toBottomOf="@+id/vSearch"
+            app:layout_constraintStart_toStartOf="@+id/vSearch"
+            app:layout_constraintTop_toTopOf="@+id/vSearch"
             app:srcCompat="@mipmap/search" />
 
         <TextView
@@ -56,11 +57,11 @@
             android:layout_height="wrap_content"
             android:text="百万英雄|发动机的原理|招聘"
             android:textColor="#999999"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintBottom_toBottomOf="@+id/vSearch"
+            app:layout_constraintEnd_toEndOf="@+id/vSearch"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/view" />
+            app:layout_constraintTop_toTopOf="@+id/vSearch" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -68,10 +69,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintBottom_toBottomOf="@+id/vSearch"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/vSearch"
+            app:layout_constraintTop_toTopOf="@+id/vSearch"
             app:srcCompat="@mipmap/camera" />
 
         <android.support.constraint.Guideline
@@ -94,8 +95,9 @@
         android:id="@+id/tab_layout_home"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_add"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline3"
         app:tabGravity="fill"
@@ -106,8 +108,7 @@
         app:tabPaddingStart="10dp"
         app:tabSelectedTextColor="@color/colorHomeSelected"
         app:tabTextAppearance="@style/HomeTabLayoutTextSize"
-        app:tabTextColor="@color/colorHomeUnSelected"
-        tools:layout_editor_absoluteY="111dp">
+        app:tabTextColor="@color/colorHomeUnSelected">
 
 
     </android.support.design.widget.TabLayout>
@@ -120,5 +121,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/guideline4" />
+
+    <ImageView
+        android:id="@+id/img_add"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/vp_home"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:srcCompat="@mipmap/ic_channel_add" />
 
 </android.support.constraint.ConstraintLayout>

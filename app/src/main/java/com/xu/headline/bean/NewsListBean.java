@@ -64,6 +64,16 @@ public class NewsListBean {
         private String content;
         private String url;
         private String weburl;
+        private String gallery;
+
+        public String getGallery() {
+            return gallery;
+        }
+
+        public void setGallery(String gallery) {
+            this.gallery = gallery;
+        }
+
 
         public String getTitle() {
             return title;

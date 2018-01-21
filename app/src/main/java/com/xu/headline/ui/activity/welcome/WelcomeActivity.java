@@ -43,34 +43,34 @@ public class WelcomeActivity extends BaseActivity<IWelcomeContract.IWelcomePrese
         super.initOthers();
         //必应每日壁纸 来源于 https://www.dujin.org/fenxiang/jiaocheng/3618.html.
         ImageLoaderUtil.loadImage(this, "https://api.dujin.org/bing/1920.php", imgAd);
-        jumpToMain();
-//        mCompositeDisposable.add(Observable.interval(0, 1, TimeUnit.SECONDS)
-//                .compose(TransformUtils.<Long>defaultSchedulers())
-//                .map(new Function<Long, Integer>() {
-//                    @Override
-//                    public Integer apply(Long aLong) throws Exception {
-//                        return COUNT_DOWN - aLong.intValue();
-//                    }
-//                })
-//                .take(COUNT_DOWN + 1)
-//                .subscribeWith(new DisposableObserver<Integer>() {
-//
-//                    @Override
-//                    public void onNext(Integer integer) {
-//                        tvSkip.setText("跳过 " + (integer + 1));
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//                        jumpToMain();
-//                    }
-//                })
-//        );
+        //jumpToMain();
+        mCompositeDisposable.add(Observable.interval(0, 1, TimeUnit.SECONDS)
+                .compose(TransformUtils.<Long>defaultSchedulers())
+                .map(new Function<Long, Integer>() {
+                    @Override
+                    public Integer apply(Long aLong) throws Exception {
+                        return COUNT_DOWN - aLong.intValue();
+                    }
+                })
+                .take(COUNT_DOWN + 1)
+                .subscribeWith(new DisposableObserver<Integer>() {
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        tvSkip.setText("跳过 " + (integer + 1));
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        jumpToMain();
+                    }
+                })
+        );
     }
 
     @Override

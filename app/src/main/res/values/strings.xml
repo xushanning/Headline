@@ -10,47 +10,17 @@
     <string name="main_small_headline">微头条</string>
     <string name="main_personal_center">我的</string>
 
-    <!--频道列表-->
-    <string-array name="home_channel">
-        <item>头条</item>
-        <item>娱乐</item>
-        <item>军事</item>
-        <item>体育</item>
-        <item>财经</item>
-        <item>科技</item>
-        <item>历史</item>
-        <item>台湾</item>
-        <item>汽车</item>
-        <item>社会</item>
-        <item>时尚</item>
-        <item>国学</item>
-        <item>文化</item>
-        <item>星座</item>
-        <item>读书</item>
-        <item>游戏</item>
-        <item>电影</item>
-        <item>国际</item>
-    </string-array>
+    <!--搜索Activity界面文字-->
+    <string name="textSearchCancel">取消</string>
+    <string name="textSearchHint">请输入查询关键字</string>
+    <string name="textSearchRecommend1">倒霉孩子</string>
+    <string name="textSearchRecommend2">百万英雄</string>
+    <string name="textSearchRecommend3">老师明星</string>
+    <string name="textSearchHistory">历史记录</string>
+    <string name="textSearchHistory1">鬼故事</string>
+    <string name="textSearchHistory2">萨利机长</string>
+    <string name="textSearchHistory3">张家口新闻</string>
+    <string name="textSearchHistory4">人民日报评论员</string>
 
-    <!--频道对应的id-->
-    <string-array name="home_channel_id">
-        <item>SYLB10,SYDT10</item>
-        <item>YL53,FOCUSYL53</item>
-        <item>JS83,FOCUSJS83</item>
-        <item>TY43,FOCUSTY43,TYLIVE,TYTOPIC</item>
-        <item>CJ33,FOCUSCJ33,HNCJ33</item>
-        <item>KJ123,FOCUSKJ123</item>
-        <item>LS153,FOCUSLS153</item>
-        <item>TW73</item>
-        <item>QC45,FOCUSQC45</item>
-        <item>SH133,FOCUSSH133</item>
-        <item>SS78,FOCUSSS78</item>
-        <item>GXPD,FOCUSGXPD</item>
-        <item>WH25,FOCUSWH25</item>
-        <item>XZ09,FOCUSXZ09</item>
-        <item>DS57,FOCUSDS57</item>
-        <item>YX11,FOCUSYX11</item>
-        <item>DYPD</item>
-        <item>GJPD</item>
-    </string-array>
+
 </resources>

@@ -1,17 +1,22 @@
 package com.xu.headline.ui.fragment.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeFragmentPagerAdapter;
 import com.xu.headline.base.BaseFragment;
+import com.xu.headline.ui.activity.search.SearchActivity;
+import com.xu.headline.utils.ToastUtil;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2018/1/16.
@@ -71,4 +76,18 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     }
 
 
+    @OnClick({R.id.vSearch, R.id.img_add})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.vSearch:
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.img_add:
+                ToastUtil.toastShort(getActivity(), "增加频道!");
+                break;
+            default:
+                break;
+        }
+    }
 }
