@@ -1,4 +1,4 @@
-package com.xu.headline.ui.fragment.homedetail;
+package com.xu.headline.ui.fragment.homelist;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,11 +20,12 @@ import butterknife.BindView;
 
 /**
  * Created by xusn10 on 2018/1/18.
+ * 首页的列表fragment
  *
  * @author xu
  */
 
-public class HomeDetailFragment extends BaseFragment<IHomeDetailContract.IHomeDetailPresenter> implements IHomeDetailContract.IHomeDetailView {
+public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPresenter> implements IHomeListContract.IHomeListView {
     @BindView(R.id.rv_home_detail)
     RecyclerView rvHomeDetail;
 
@@ -34,12 +35,12 @@ public class HomeDetailFragment extends BaseFragment<IHomeDetailContract.IHomeDe
      */
     private String channelName;
 
-    public static HomeDetailFragment newInstance(String channelName) {
+    public static HomeListFragment newInstance(String channelName) {
         Bundle args = new Bundle();
         args.putString("channelName", channelName);
-        HomeDetailFragment homeDetailFragment = new HomeDetailFragment();
-        homeDetailFragment.setArguments(args);
-        return homeDetailFragment;
+        HomeListFragment homeListFragment = new HomeListFragment();
+        homeListFragment.setArguments(args);
+        return homeListFragment;
     }
 
     @Override
@@ -97,8 +98,8 @@ public class HomeDetailFragment extends BaseFragment<IHomeDetailContract.IHomeDe
     }
 
     @Override
-    public IHomeDetailContract.IHomeDetailPresenter createPresenter() {
-        return new HomeDetailPresenter();
+    public IHomeListContract.IHomeListPresenter createPresenter() {
+        return new HomeListPresenter();
     }
 
     @Override

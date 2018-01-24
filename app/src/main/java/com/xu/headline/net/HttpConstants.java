@@ -22,4 +22,8 @@ public class HttpConstants {
      * 极速数据appkey
      */
     public static final String APP_KEY = "1eb95445a04f1ad6";
+    /**
+     * 凤凰新闻api
+     */
+    public static final String BASE_FENG_HUANG_URL = "http://api.iclient.ifeng.com/";
 }

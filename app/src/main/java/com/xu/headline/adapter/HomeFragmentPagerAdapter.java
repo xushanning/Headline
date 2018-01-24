@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.xu.headline.ui.fragment.homedetail.HomeDetailFragment;
+import com.xu.headline.ui.fragment.homelist.HomeListFragment;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return HomeDetailFragment.newInstance(channels.get(position));
+        return HomeListFragment.newInstance(channels.get(position));
     }
 
     @Override

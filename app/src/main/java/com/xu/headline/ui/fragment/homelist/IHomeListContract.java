@@ -1,4 +1,4 @@
-package com.xu.headline.ui.fragment.homedetail;
+package com.xu.headline.ui.fragment.homelist;
 
 import com.xu.headline.base.IBaseContract;
 import com.xu.headline.bean.NewsListBean;
@@ -9,8 +9,8 @@ import com.xu.headline.bean.NewsListBean;
  * @author xu
  */
 
-public interface IHomeDetailContract {
-    interface IHomeDetailView extends IBaseContract.IBaseView {
+public interface IHomeListContract {
+    interface IHomeListView extends IBaseContract.IBaseView {
         /**
          * 加载新闻列表
          *
@@ -19,7 +19,7 @@ public interface IHomeDetailContract {
         void loadNewsList(NewsListBean newsListBean);
     }
 
-    interface IHomeDetailPresenter extends IBaseContract.IBasePresenter<IHomeDetailView> {
+    interface IHomeListPresenter extends IBaseContract.IBasePresenter<IHomeListView> {
         /**
          * 获取新闻列表
          *

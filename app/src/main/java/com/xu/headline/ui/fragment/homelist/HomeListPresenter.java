@@ -1,4 +1,4 @@
-package com.xu.headline.ui.fragment.homedetail;
+package com.xu.headline.ui.fragment.homelist;
 
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
@@ -14,7 +14,7 @@ import com.xu.headline.utils.TransformUtils;
  * @author xu
  */
 
-public class HomeDetailPresenter extends BasePresenter<IHomeDetailContract.IHomeDetailView> implements IHomeDetailContract.IHomeDetailPresenter {
+public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeListView> implements IHomeListContract.IHomeListPresenter {
 
     @Override
     public void getNewsList(String channel) {

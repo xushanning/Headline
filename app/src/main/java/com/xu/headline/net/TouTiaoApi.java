@@ -3,6 +3,8 @@ package com.xu.headline.net;
 import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.NewsListBean;
 import com.xu.headline.bean.SearchBean;
+import com.xu.headline.bean.VideoChannelBean;
+import com.xu.headline.bean.VideoDetailBean;
 
 import java.util.List;
 
@@ -48,5 +50,26 @@ public interface TouTiaoApi {
 
     @GET("search")
     Observable<BaseResBean<SearchBean>> getSearchList(@Query("keyword") String keyWord, @Query("appkey") String appKey);
+
+    /**
+     * 获取凤凰新闻频道列表
+     *
+     * @return observable
+     */
+    @GET("ifengvideoList")
+    Observable<VideoChannelBean> getVideoChannel();
+
+    /**
+     * 获取相应频道的视频列表
+     *
+     * @param page     页数
+     * @param listType 列表类型
+     * @param typeId   类型id
+     * @return observable
+     */
+    @GET("ifengvideoList")
+    Observable<VideoDetailBean> getVideoDetail(@Query("page") int page,
+                                               @Query("listtype") String listType,
+                                               @Query("typeid") String typeId);
 
 }

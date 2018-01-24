@@ -4,7 +4,9 @@ import android.os.Bundle;
 
 import com.xu.headline.R;
 import com.xu.headline.base.BaseFragment;
-import com.xu.headline.ui.fragment.smallheadline.SmallHeadlineFragment;
+import com.xu.headline.bean.VideoChannelBean;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/1/16.
@@ -40,5 +42,10 @@ public class VideoFragment extends BaseFragment<IVideoContract.IVideoPresenter> 
     @Override
     public IVideoContract.IVideoPresenter createPresenter() {
         return new VideoPresenter();
+    }
+
+    @Override
+    public void loadVideoChannel(List<VideoChannelBean.TypesBean> channelList) {
+
     }
 }
