@@ -21,7 +21,9 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 /**
  * Created by Administrator on 2018/1/16.
@@ -41,13 +43,37 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
         @SuppressLint("MissingPermission") final String iMei = telephonyManager.getDeviceId();
         Logger.d("imei" + iMei);
 
-        Observable<List<ShowApiChannelListBean.ChannelListBean>> databaseObservable = Observable.create(new ObservableOnSubscribe<List<ShowApiChannelListBean.ChannelListBean>>() {
+
+        Observable.create(new ObservableOnSubscribe<List<ShowApiChannelListBean.ChannelListBean>>() {
             @Override
             public void subscribe(ObservableEmitter<List<ShowApiChannelListBean.ChannelListBean>> e) throws Exception {
 
             }
+        }).flatMap(new Function<List<ShowApiChannelListBean.ChannelListBean>, ObservableSource<?>>() {
+            @Override
+            public ObservableSource<?> apply(List<ShowApiChannelListBean.ChannelListBean> channelListBeans) throws Exception {
+                if (channelListBeans == null) {
+
+                }
+                return null;
+            }
         });
-       // Observable<List<ShowApiChannelListBean.ChannelListBean>> netWorkObservable = RetrofitFactory.getNewsApi().getChannelList(HttpConstants.SHOW_API_APP_ID, HttpConstants.SHOW_API_SECRET);
+//        Observable<List<ShowApiChannelListBean.ChannelListBean>> netWorkObservable =
+//                RetrofitFactory.getNewsApi().getChannelList(HttpConstants.SHOW_API_APP_ID, HttpConstants.SHOW_API_SECRET).flatMap(new Function<BaseShowApiResBean<ShowApiChannelListBean>, ObservableSource<ShowApiChannelListBean>>() {
+//                    @Override
+//                    public ObservableSource<ShowApiChannelListBean> apply(BaseShowApiResBean<ShowApiChannelListBean> resBean) throws Exception {
+//                        if (resBean.getResCode() == 0) {
+//                            return Observable.create(new ObservableOnSubscribe<ShowApiChannelListBean>() {
+//
+//                                @Override
+//                                public void subscribe(ObservableEmitter<ShowApiChannelListBean> e) throws Exception {
+//
+//                                }
+//                            });
+//                        }
+//                        return null;
+//                    }
+//                });
 
         Observable.create(new ObservableOnSubscribe<List<ChannelBean>>() {
             @Override
@@ -57,7 +83,7 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                 List<ChannelBean> channels;
                 //说明数据库里有数据
                 if (channelDbBean != null) {
-                  //  channels = channelDbBean.getChannels();
+                    //  channels = channelDbBean.getChannels();
                 } else {
                     //没数据，数据库里加入默认的数据
                     channels = new ArrayList<>();
@@ -73,12 +99,12 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                     }
                     SubscribeChannelDbBean channelDbBeanInsert = new SubscribeChannelDbBean();
                     channelDbBeanInsert.setIMei(iMei);
-                  //  channelDbBeanInsert.setChannels(channels);
+                    //  channelDbBeanInsert.setChannels(channels);
                     //入库
                     channelDbBeanDao.insert(channelDbBeanInsert);
                 }
 
-               // e.onNext(channels);
+                // e.onNext(channels);
                 e.onComplete();
             }
         }).compose(mView.<List<ChannelBean>>bindToLife())
