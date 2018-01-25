@@ -7,7 +7,14 @@ package com.xu.headline.bean;
  */
 
 public class ChannelBean {
+    /**
+     * 频道id
+     */
     private String channelID;
+    /**
+     * 频道名称
+     */
+    private String channelName;
 
     public String getChannelID() {
         return channelID;
@@ -24,6 +31,4 @@ public class ChannelBean {
     public void setChannelName(String channelName) {
         this.channelName = channelName;
     }
-
-    private String channelName;
 }

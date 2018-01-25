@@ -1,15 +1,18 @@
 package com.xu.headline.ui.fragment.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.telephony.TelephonyManager;
 import android.view.View;
 
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeFragmentPagerAdapter;
 import com.xu.headline.base.BaseFragment;
+import com.xu.headline.bean.ChannelBean;
 import com.xu.headline.ui.activity.search.SearchActivity;
 import com.xu.headline.utils.ToastUtil;
 
@@ -51,10 +54,10 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
         return R.layout.fragment_home;
     }
 
-
+    //加入权限
     @Override
     public void initOthers() {
-        mPresenter.getChannelInfo();
+        mPresenter.initChannel();
     }
 
     @Override
@@ -63,7 +66,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     }
 
     @Override
-    public void loadData(List<String> list) {
+    public void loadData(List<ChannelBean> list) {
         if (list != null) {
             //这里用getChildFragmentManager()，获取的是子容器的manager，而getFragmentManager是获取的父容器的manager
             homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), list);

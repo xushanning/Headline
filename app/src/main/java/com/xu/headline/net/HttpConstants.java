@@ -23,7 +23,11 @@ public class HttpConstants {
      */
     public static final String APP_KEY = "1eb95445a04f1ad6";
     /**
-     * 凤凰新闻api
+     * IData头条api
      */
-    public static final String BASE_FENG_HUANG_URL = "http://api.iclient.ifeng.com/";
+    public static final String BASE_IDATA_URL = "http://120.76.205.241:8000/";
+    /**
+     * IData数据key
+     */
+    public static final String APP_KEY_IDATA = "rBIfXcASmqsXk9AfoZ0iJX1nMwnKvjybjCsHYFoKHgN4RXDQP9tWAOSNev2mjBuY";
 }

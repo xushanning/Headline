@@ -22,5 +22,79 @@
     <string name="textSearchHistory3">张家口新闻</string>
     <string name="textSearchHistory4">人民日报评论员</string>
 
+    <string-array name="newsChannel">
+        <item>社会</item>
+        <item>娱乐</item>
+        <item>科技</item>
+        <item>汽车</item>
+        <item>体育</item>
+        <item>财经</item>
+        <item>军事</item>
+        <item>国际</item>
+        <item>健康</item>
+        <item>正能量</item>
+        <item>房产</item>
+        <item>时尚</item>
+        <item>育儿</item>
+        <item>历史</item>
+        <item>搞笑</item>
+        <item>数码</item>
+        <item>美食</item>
+        <item>养生</item>
+        <item>电影</item>
+        <item>手机</item>
+        <item>旅游</item>
+        <item>情感</item>
+        <item>家居</item>
+        <item>教育</item>
+        <item>三农</item>
+        <item>孕产</item>
+        <item>文化</item>
+        <item>游戏</item>
+        <item>股票</item>
+        <item>科学</item>
+        <item>动漫</item>
+        <item>故事</item>
+        <item>收藏</item>
+        <item>星座</item>
 
+    </string-array>
+
+    <string-array name="newsChannelId">
+        <item>news_society</item>
+        <item>news_entertainment</item>
+        <item>news_tech</item>
+        <item>news_car</item>
+        <item>news_sports</item>
+        <item>news_finance</item>
+        <item>news_military</item>
+        <item>news_world</item>
+        <item>news_health</item>
+        <item>positive</item>
+        <item>news_house</item>
+        <item>news_fashion</item>
+        <item>news_baby</item>
+        <item>news_history</item>
+        <item>funny</item>
+        <item>digital</item>
+        <item>news_food</item>
+        <item>news_regimen</item>
+        <item>movie</item>
+        <item>cellphone</item>
+        <item>news_travel</item>
+        <item>emotion</item>
+        <item>news_home</item>
+        <item>news_edu</item>
+        <item>news_agriculture</item>
+        <item>pregnancy</item>
+        <item>news_culture</item>
+        <item>news_game</item>
+        <item>stock</item>
+        <item>science_all</item>
+        <item>news_comic</item>
+        <item>news_story</item>
+        <item>news_collect</item>
+        <item>news_astrology</item>
+
+    </string-array>
 </resources>

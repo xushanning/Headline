@@ -50,7 +50,7 @@ public class RetrofitFactory {
                 String begin = s.substring(0, 1);
                 if ("{".equals(begin)) {
                     //只打印json
-                    Logger.d("响应的Json"+s);
+                    Logger.d("响应的Json" + s);
                 }
             }
 
@@ -60,34 +60,34 @@ public class RetrofitFactory {
     /**
      * 请求信息拦截器
      */
-    private static   Interceptor requestInterceptor = new Interceptor() {
+    private static Interceptor requestInterceptor = new Interceptor() {
 
         @Override
         public Response intercept(Chain chain) throws IOException {
             final Request request = chain.request();
             //请求地址
-            Logger.d("请求地址:"+request.url());
+            Logger.d("请求地址:" + request.url());
             return chain.proceed(request);
         }
     };
     /**
      * 统一的请求header
      */
-    private static   Interceptor headerInterceptor = new Interceptor() {
+    private static Interceptor headerInterceptor = new Interceptor() {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request.Builder builder = chain.request().newBuilder();
 
-             return chain.proceed(builder.build());
+            return chain.proceed(builder.build());
         }
     };
 
     /**
      * 获取TouTiaoApi
      *
-     * @return TouTiaoApi
+     * @return TouTiaoApiService
      */
-    public static TouTiaoApi getTouTiaoApi() {
+    public static TouTiaoApiService getTouTiaoApi() {
         return new Retrofit
                 .Builder()
                 .baseUrl(HttpConstants.BASE_URL)
@@ -95,6 +95,17 @@ public class RetrofitFactory {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(getOkHttpClient())
                 .build()
-                .create(TouTiaoApi.class);
+                .create(TouTiaoApiService.class);
+    }
+
+    public static IDataApiService getIDataApi() {
+        return new Retrofit
+                .Builder()
+                .baseUrl(HttpConstants.BASE_IDATA_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(getOkHttpClient())
+                .build()
+                .create(IDataApiService.class);
     }
 }

@@ -18,7 +18,7 @@ import retrofit2.http.Query;
  * @author xu
  */
 
-public interface TouTiaoApi {
+public interface TouTiaoApiService {
 
     /**
      * 获取频道列表

@@ -1,6 +1,7 @@
 package com.xu.headline.ui.fragment.home;
 
 import com.xu.headline.base.IBaseContract;
+import com.xu.headline.bean.ChannelBean;
 
 import java.util.List;
 
@@ -17,13 +18,13 @@ public interface IHomeContract {
          *
          * @param channelList 频道列表
          */
-        void loadData(List<String> channelList);
+        void loadData(List<ChannelBean> channelList);
     }
 
     interface IHomePresenter extends IBaseContract.IBasePresenter<IHomeView> {
         /**
-         * 从服务端获取频道列表
+         * 初始化频道列表
          */
-        void getChannelInfo();
+        void initChannel();
     }
 }
