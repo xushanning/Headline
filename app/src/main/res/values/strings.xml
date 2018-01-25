@@ -22,6 +22,11 @@
     <string name="textSearchHistory3">张家口新闻</string>
     <string name="textSearchHistory4">人民日报评论员</string>
 
+    <string name="permissionReadPhoneState">没有该权限，此应用程序可能无法正常工作。打开应用设置屏幕以修改应用权限</string>
+    <string name="permissionReadPhoneStateDenied">没有该权限，此应用程序可能无法正常工作。打开应用设置屏幕以修改应用权限</string>
+    <string name="buttonAllow">好的</string>
+    <string name="buttonCancel">取消</string>
+
     <string-array name="newsChannel">
         <item>社会</item>
         <item>娱乐</item>

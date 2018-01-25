@@ -3,6 +3,7 @@ package com.xu.headline.bean.helper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xu.headline.bean.ChannelBean;
+import com.xu.headline.bean.ShowApiChannelListBean;
 
 import org.greenrobot.greendao.converter.PropertyConverter;
 
@@ -15,21 +16,21 @@ import java.util.List;
  * @author xu
  */
 
-public class ChannelListConvert implements PropertyConverter<List<ChannelBean>, String> {
+public class ChannelListConvert implements PropertyConverter<List<ShowApiChannelListBean.ChannelListBean>, String> {
     private Gson gson = new Gson();
 
     @Override
-    public List<ChannelBean> convertToEntityProperty(String databaseValue) {
+    public List<ShowApiChannelListBean.ChannelListBean> convertToEntityProperty(String databaseValue) {
         if (databaseValue == null) {
             return null;
         } else {
-            return gson.fromJson(databaseValue, new TypeToken<List<ChannelBean>>() {
+            return gson.fromJson(databaseValue, new TypeToken<List<ShowApiChannelListBean.ChannelListBean>>() {
             }.getType());
         }
     }
 
     @Override
-    public String convertToDatabaseValue(List<ChannelBean> entityProperty) {
+    public String convertToDatabaseValue(List<ShowApiChannelListBean.ChannelListBean> entityProperty) {
         if (entityProperty == null) {
             return null;
         } else {
@@ -37,4 +38,6 @@ public class ChannelListConvert implements PropertyConverter<List<ChannelBean>, 
             return gson.toJson(entityProperty);
         }
     }
+
+
 }

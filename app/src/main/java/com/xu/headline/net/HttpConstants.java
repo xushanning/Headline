@@ -12,7 +12,7 @@ public class HttpConstants {
     /**
      * showApi
      */
-    //public static final String BASE_URL = "http://route.showapi.com/";
+    public static final String SHOW_API_BASE_URL = "http://route.showapi.com/";
     /**
      * 极速数据api
      */
@@ -30,4 +30,13 @@ public class HttpConstants {
      * IData数据key
      */
     public static final String APP_KEY_IDATA = "rBIfXcASmqsXk9AfoZ0iJX1nMwnKvjybjCsHYFoKHgN4RXDQP9tWAOSNev2mjBuY";
+
+    /**
+     * showApi appId
+     */
+    public static final String SHOW_API_APP_ID = "54582";
+    /**
+     * showApi secret
+     */
+    public static final String SHOW_API_SECRET = "5f387b649a5a49c7bd389f39e8f08212";
 }

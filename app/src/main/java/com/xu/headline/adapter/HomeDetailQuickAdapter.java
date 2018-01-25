@@ -7,7 +7,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
-import com.xu.headline.bean.NewsListBean;
+import com.xu.headline.bean.IDataNewsBean;
 import com.xu.headline.utils.ImageLoaderUtil;
 
 import java.util.List;
@@ -18,20 +18,20 @@ import java.util.List;
  * @author xu
  */
 
-public class HomeDetailQuickAdapter extends BaseQuickAdapter<NewsListBean.ListBean, BaseViewHolder> {
+public class HomeDetailQuickAdapter extends BaseQuickAdapter<IDataNewsBean, BaseViewHolder> {
 
-    public HomeDetailQuickAdapter(int layoutResId, @Nullable List<NewsListBean.ListBean> data) {
+    public HomeDetailQuickAdapter(int layoutResId, @Nullable List<IDataNewsBean> data) {
         super(layoutResId, data);
     }
 
+
     @Override
-    protected void convert(BaseViewHolder helper, NewsListBean.ListBean item) {
+    protected void convert(BaseViewHolder helper, IDataNewsBean item) {
         Logger.d(item.getTitle());
         helper.setText(R.id.tv_title, item.getTitle())
-                .setText(R.id.tv_source, item.getSrc())
-                .setText(R.id.tv_time, item.getTime())
+                .setText(R.id.tv_source, item.getPosterScreenName())
+                .setText(R.id.tv_time, item.getPublishDate())
                 .addOnClickListener(R.id.img_close);
-        ImageLoaderUtil.loadImage(mContext, item.getPic(), (ImageView) helper.getView(R.id.img_thumbnail));
-
+        ImageLoaderUtil.loadImage(mContext, item.getImageUrls().get(0), (ImageView) helper.getView(R.id.img_thumbnail));
     }
 }

@@ -23,7 +23,7 @@ public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return HomeListFragment.newInstance(channels.get(position).getChannelName());
+        return HomeListFragment.newInstance(channels.get(position).getChannelID());
     }
 
     @Override

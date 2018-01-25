@@ -71,4 +71,10 @@ dependencies {
 
     debugCompile rootProject.ext.dependencies["leakcanary-debug"]
     releaseCompile rootProject.ext.dependencies["leakcanary-release"]
+
+    implementation rootProject.ext.dependencies["permission"]
+    annotationProcessor rootProject.ext.dependencies["permissionAnnotationProcessor"]
+
+
+
 }

@@ -108,4 +108,15 @@ public class RetrofitFactory {
                 .build()
                 .create(IDataApiService.class);
     }
+
+    public static NewsApiService getNewsApi() {
+        return new Retrofit
+                .Builder()
+                .baseUrl(HttpConstants.SHOW_API_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(getOkHttpClient())
+                .build()
+                .create(NewsApiService.class);
+    }
 }

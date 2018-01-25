@@ -1,12 +1,12 @@
 package com.xu.headline.db.dbbean;
 
-import com.xu.headline.bean.ChannelBean;
+import com.xu.headline.bean.ShowApiChannelListBean;
 import com.xu.headline.bean.helper.ChannelListConvert;
 
 import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
 
 import java.util.List;
 
@@ -22,10 +22,10 @@ public class SubscribeChannelDbBean {
     private Long id;
     private String iMei;
     @Convert(columnType = String.class, converter = ChannelListConvert.class)
-    private List<ChannelBean> channels;
-    @Generated(hash = 417320697)
+    private List<ShowApiChannelListBean.ChannelListBean> channels;
+    @Generated(hash = 1730410447)
     public SubscribeChannelDbBean(Long id, String iMei,
-            List<ChannelBean> channels) {
+            List<ShowApiChannelListBean.ChannelListBean> channels) {
         this.id = id;
         this.iMei = iMei;
         this.channels = channels;
@@ -45,12 +45,13 @@ public class SubscribeChannelDbBean {
     public void setIMei(String iMei) {
         this.iMei = iMei;
     }
-    public List<ChannelBean> getChannels() {
+    public List<ShowApiChannelListBean.ChannelListBean> getChannels() {
         return this.channels;
     }
-    public void setChannels(List<ChannelBean> channels) {
+    public void setChannels(List<ShowApiChannelListBean.ChannelListBean> channels) {
         this.channels = channels;
     }
+
    
 
 }

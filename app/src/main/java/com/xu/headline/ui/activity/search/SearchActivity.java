@@ -11,6 +11,7 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeDetailQuickAdapter;
 import com.xu.headline.base.BaseActivity;
+import com.xu.headline.bean.IDataNewsBean;
 import com.xu.headline.bean.NewsListBean;
 import com.xu.headline.ui.activity.articledetail.ArticleDetailActivity;
 
@@ -54,7 +55,7 @@ public class SearchActivity extends BaseActivity<ISearchContract.ISearchPresente
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvSearch.setLayoutManager(layoutManager);
-        homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<NewsListBean.ListBean>());
+        homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<IDataNewsBean>());
         homeDetailQuickAdapter.setUpFetchEnable(true);
         rvSearch.setAdapter(homeDetailQuickAdapter);
         //下拉刷新
@@ -101,7 +102,7 @@ public class SearchActivity extends BaseActivity<ISearchContract.ISearchPresente
 
 
     @Override
-    public void loadSearchResult(List<NewsListBean.ListBean> searchListBeans) {
+    public void loadSearchResult(List<IDataNewsBean> searchListBeans) {
         Logger.d("+============" + searchListBeans.size());
         clSearch.setVisibility(View.GONE);
         homeDetailQuickAdapter.setNewData(searchListBeans);

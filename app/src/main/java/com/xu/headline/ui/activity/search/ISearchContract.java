@@ -1,7 +1,7 @@
 package com.xu.headline.ui.activity.search;
 
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.NewsListBean;
+import com.xu.headline.bean.IDataNewsBean;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public interface ISearchContract {
          *
          * @param searchListBeans 数据
          */
-        void loadSearchResult(List<NewsListBean.ListBean> searchListBeans);
+        void loadSearchResult(List<IDataNewsBean> searchListBeans);
     }
 
     interface ISearchPresenter extends IBaseContract.IBasePresenter<ISearchView> {

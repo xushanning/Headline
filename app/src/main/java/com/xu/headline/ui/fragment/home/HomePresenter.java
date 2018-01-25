@@ -1,5 +1,6 @@
 package com.xu.headline.ui.fragment.home;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.telephony.TelephonyManager;
 
@@ -8,6 +9,7 @@ import com.xu.headline.MyApplication;
 import com.xu.headline.R;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.bean.ChannelBean;
+import com.xu.headline.bean.ShowApiChannelListBean;
 import com.xu.headline.db.SubscribeChannelDbBeanDao;
 import com.xu.headline.db.dbbean.SubscribeChannelDbBean;
 import com.xu.headline.utils.TransformUtils;
@@ -36,7 +38,17 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
     @Override
     public void initChannel() {
         TelephonyManager telephonyManager = (TelephonyManager) MyApplication.getContext().getSystemService(Context.TELEPHONY_SERVICE);
-        final String iMei = telephonyManager.getDeviceId();
+        @SuppressLint("MissingPermission") final String iMei = telephonyManager.getDeviceId();
+        Logger.d("imei" + iMei);
+
+        Observable<List<ShowApiChannelListBean.ChannelListBean>> databaseObservable = Observable.create(new ObservableOnSubscribe<List<ShowApiChannelListBean.ChannelListBean>>() {
+            @Override
+            public void subscribe(ObservableEmitter<List<ShowApiChannelListBean.ChannelListBean>> e) throws Exception {
+
+            }
+        });
+       // Observable<List<ShowApiChannelListBean.ChannelListBean>> netWorkObservable = RetrofitFactory.getNewsApi().getChannelList(HttpConstants.SHOW_API_APP_ID, HttpConstants.SHOW_API_SECRET);
+
         Observable.create(new ObservableOnSubscribe<List<ChannelBean>>() {
             @Override
             public void subscribe(ObservableEmitter<List<ChannelBean>> e) throws Exception {
@@ -45,7 +57,7 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                 List<ChannelBean> channels;
                 //说明数据库里有数据
                 if (channelDbBean != null) {
-                    channels = channelDbBean.getChannels();
+                  //  channels = channelDbBean.getChannels();
                 } else {
                     //没数据，数据库里加入默认的数据
                     channels = new ArrayList<>();
@@ -59,13 +71,14 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                         channelBean.setChannelID(channelId.get(i));
                         channels.add(channelBean);
                     }
-                    channelDbBean.setIMei(iMei);
-                    channelDbBean.setChannels(channels);
+                    SubscribeChannelDbBean channelDbBeanInsert = new SubscribeChannelDbBean();
+                    channelDbBeanInsert.setIMei(iMei);
+                  //  channelDbBeanInsert.setChannels(channels);
                     //入库
-                    channelDbBeanDao.insert(channelDbBean);
+                    channelDbBeanDao.insert(channelDbBeanInsert);
                 }
 
-                e.onNext(channels);
+               // e.onNext(channels);
                 e.onComplete();
             }
         }).compose(mView.<List<ChannelBean>>bindToLife())

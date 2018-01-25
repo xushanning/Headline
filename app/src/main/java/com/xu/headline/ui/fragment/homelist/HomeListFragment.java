@@ -11,10 +11,12 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeDetailQuickAdapter;
 import com.xu.headline.base.BaseFragment;
+import com.xu.headline.bean.IDataNewsBean;
 import com.xu.headline.bean.NewsListBean;
 import com.xu.headline.ui.activity.articledetail.ArticleDetailActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -33,11 +35,11 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     /**
      * 频道名称
      */
-    private String channelName;
+    private String channelID;
 
-    public static HomeListFragment newInstance(String channelName) {
+    public static HomeListFragment newInstance(String channelID) {
         Bundle args = new Bundle();
-        args.putString("channelName", channelName);
+        args.putString("channelID", channelID);
         HomeListFragment homeListFragment = new HomeListFragment();
         homeListFragment.setArguments(args);
         return homeListFragment;
@@ -51,14 +53,14 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     @Override
     public void initOthers() {
         if (getArguments() != null) {
-            channelName = getArguments().getString("channelName");
-            mPresenter.getNewsList(channelName);
+            channelID = getArguments().getString("channelID");
+            mPresenter.getNewsList(channelID);
         }
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvHomeDetail.setLayoutManager(layoutManager);
 
-        homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<NewsListBean.ListBean>());
+        homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<IDataNewsBean>());
         homeDetailQuickAdapter.setUpFetchEnable(true);
         rvHomeDetail.setAdapter(homeDetailQuickAdapter);
         //下拉刷新
@@ -103,9 +105,9 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     }
 
     @Override
-    public void loadNewsList(NewsListBean newsListBean) {
-        Logger.d(channelName + "频道有" + newsListBean.getList().size() + "条数据");
-        homeDetailQuickAdapter.setNewData(newsListBean.getList());
+    public void loadNewsList(List<IDataNewsBean> iDataNewsBeans) {
+        Logger.d(channelID + "频道有" + iDataNewsBeans.size() + "条数据");
+        homeDetailQuickAdapter.setNewData(iDataNewsBeans);
     }
 
 
