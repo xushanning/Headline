@@ -60,7 +60,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvHomeDetail.setLayoutManager(layoutManager);
 
-        homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<IDataNewsBean>());
+        homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<NewsListBean.PagebeanBean.ContentlistBean>());
         homeDetailQuickAdapter.setUpFetchEnable(true);
         rvHomeDetail.setAdapter(homeDetailQuickAdapter);
         //下拉刷新
@@ -81,13 +81,14 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
         homeDetailQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                NewsListBean.ListBean listBean = (NewsListBean.ListBean) adapter.getItem(position);
+                NewsListBean.PagebeanBean.ContentlistBean bean = (NewsListBean.PagebeanBean.ContentlistBean) adapter.getItem(position);
                 Intent intent = new Intent(getActivity(), ArticleDetailActivity.class);
-                intent.putExtra("time", listBean.getTime());
-                intent.putExtra("title", listBean.getTitle());
-                intent.putExtra("source", listBean.getSrc());
-                intent.putExtra("detailURL", listBean.getWeburl());
+                intent.putExtra("time", bean.getPubDate());
+                intent.putExtra("title", bean.getTitle());
+                intent.putExtra("source", bean.getSource());
+                intent.putExtra("detailURL", bean.getLink());
                 startActivity(intent);
+
             }
         });
         homeDetailQuickAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -105,9 +106,8 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     }
 
     @Override
-    public void loadNewsList(List<IDataNewsBean> iDataNewsBeans) {
-        Logger.d(channelID + "频道有" + iDataNewsBeans.size() + "条数据");
-        homeDetailQuickAdapter.setNewData(iDataNewsBeans);
+    public void loadNewsList(NewsListBean newsListBean) {
+        homeDetailQuickAdapter.setNewData(newsListBean.getPagebean().getContentlist());
     }
 
 

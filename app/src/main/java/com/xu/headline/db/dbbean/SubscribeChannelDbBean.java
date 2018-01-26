@@ -1,7 +1,7 @@
 package com.xu.headline.db.dbbean;
 
 import com.xu.headline.bean.ShowApiChannelListBean;
-import com.xu.headline.bean.helper.ChannelListConvert;
+import com.xu.headline.db.helper.ChannelListConvert;
 
 import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;

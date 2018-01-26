@@ -2,6 +2,7 @@ package com.xu.headline.ui.fragment.homelist;
 
 import com.xu.headline.base.IBaseContract;
 import com.xu.headline.bean.IDataNewsBean;
+import com.xu.headline.bean.NewsListBean;
 
 import java.util.List;
 
@@ -16,9 +17,9 @@ public interface IHomeListContract {
         /**
          * 加载新闻列表
          *
-         * @param iDataNewsBeans 新闻列表实体类
+         * @param newsListBean 新闻列表实体类
          */
-        void loadNewsList(List<IDataNewsBean> iDataNewsBeans);
+        void loadNewsList(NewsListBean newsListBean);
     }
 
     interface IHomeListPresenter extends IBaseContract.IBasePresenter<IHomeListView> {

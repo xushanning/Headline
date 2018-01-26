@@ -4,7 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.xu.headline.bean.ChannelBean;
+import com.orhanobut.logger.Logger;
+import com.xu.headline.bean.ShowApiChannelListBean;
 import com.xu.headline.ui.fragment.homelist.HomeListFragment;
 
 import java.util.List;
@@ -14,16 +15,16 @@ import java.util.List;
  */
 
 public class HomeFragmentPagerAdapter extends FragmentStatePagerAdapter {
-    private List<ChannelBean> channels;
+    private List<ShowApiChannelListBean.ChannelListBean> channels;
 
-    public HomeFragmentPagerAdapter(FragmentManager fm, List<ChannelBean> channels) {
+    public HomeFragmentPagerAdapter(FragmentManager fm, List<ShowApiChannelListBean.ChannelListBean> channels) {
         super(fm);
         this.channels = channels;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return HomeListFragment.newInstance(channels.get(position).getChannelID());
+        return HomeListFragment.newInstance(channels.get(position).getChannelId());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
+import com.xu.headline.base.BaseShowApiResBean;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -11,11 +12,11 @@ import io.reactivex.disposables.Disposable;
  * @author xu
  */
 
-public abstract class BaseHttpResultObserver<T> implements Observer<BaseResBean<T>> {
+public abstract class BaseHttpResultObserver<T> implements Observer<BaseShowApiResBean<T>> {
     /**
      * 请求成功
      */
-    private static final String REQUEST_OK = "ok";
+    private static final int REQUEST_OK = 0;
 
     @Override
     public void onSubscribe(Disposable d) {
@@ -23,11 +24,11 @@ public abstract class BaseHttpResultObserver<T> implements Observer<BaseResBean<
     }
 
     @Override
-    public void onNext(BaseResBean<T> tBaseResBean) {
-        if (tBaseResBean.getMsg().equals(REQUEST_OK)) {
-            onSuccess(tBaseResBean.getResult());
+    public void onNext(BaseShowApiResBean<T> tBaseResBean) {
+        if (tBaseResBean.getResCode() == REQUEST_OK) {
+            onSuccess(tBaseResBean.getResBody());
         } else {
-            onCodeError(tBaseResBean.getMsg());
+            onCodeError(tBaseResBean.getResError());
         }
     }
 

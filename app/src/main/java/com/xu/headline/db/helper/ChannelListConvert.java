@@ -1,8 +1,7 @@
-package com.xu.headline.bean.helper;
+package com.xu.headline.db.helper;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.xu.headline.bean.ChannelBean;
 import com.xu.headline.bean.ShowApiChannelListBean;
 
 import org.greenrobot.greendao.converter.PropertyConverter;

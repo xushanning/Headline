@@ -55,7 +55,7 @@ public class SearchActivity extends BaseActivity<ISearchContract.ISearchPresente
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvSearch.setLayoutManager(layoutManager);
-        homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<IDataNewsBean>());
+      //  homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<IDataNewsBean>());
         homeDetailQuickAdapter.setUpFetchEnable(true);
         rvSearch.setAdapter(homeDetailQuickAdapter);
         //下拉刷新
@@ -76,13 +76,13 @@ public class SearchActivity extends BaseActivity<ISearchContract.ISearchPresente
         homeDetailQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                NewsListBean.ListBean listBean = (NewsListBean.ListBean) adapter.getItem(position);
-                Intent intent = new Intent(SearchActivity.this, ArticleDetailActivity.class);
-                intent.putExtra("time", listBean.getTime());
-                intent.putExtra("title", listBean.getTitle());
-                intent.putExtra("source", listBean.getSrc());
-                intent.putExtra("detailURL", listBean.getWeburl());
-                startActivity(intent);
+//                NewsListBean.ListBean listBean = (NewsListBean.ListBean) adapter.getItem(position);
+//                Intent intent = new Intent(SearchActivity.this, ArticleDetailActivity.class);
+//                intent.putExtra("time", listBean.getTime());
+//                intent.putExtra("title", listBean.getTitle());
+//                intent.putExtra("source", listBean.getSrc());
+//                intent.putExtra("detailURL", listBean.getWeburl());
+//                startActivity(intent);
             }
         });
         homeDetailQuickAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
@@ -105,6 +105,6 @@ public class SearchActivity extends BaseActivity<ISearchContract.ISearchPresente
     public void loadSearchResult(List<IDataNewsBean> searchListBeans) {
         Logger.d("+============" + searchListBeans.size());
         clSearch.setVisibility(View.GONE);
-        homeDetailQuickAdapter.setNewData(searchListBeans);
+      //  homeDetailQuickAdapter.setNewData(searchListBeans);
     }
 }

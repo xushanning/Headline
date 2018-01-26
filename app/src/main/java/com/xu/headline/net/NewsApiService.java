@@ -1,6 +1,7 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseShowApiResBean;
+import com.xu.headline.bean.NewsListBean;
 import com.xu.headline.bean.ShowApiChannelListBean;
 
 import io.reactivex.Observable;
@@ -21,10 +22,24 @@ public interface NewsApiService {
      *
      * @param appID     appID
      * @param appSecret 安全码
-     * @return
+     * @return 频道的observable
      */
     @GET("109-34")
-    Observable<BaseShowApiResBean<ShowApiChannelListBean>> getChannelList(@Query("appID") String appID,
-                                                                          @Query("appSecret") String appSecret);
+    Observable<BaseShowApiResBean<ShowApiChannelListBean>> getChannelList(@Query("showapi_appid") String appID,
+                                                                          @Query("showapi_sign") String appSecret);
+
+    /**
+     * @param appID     appID
+     * @param appSecret 安全码
+     * @param channelId 频道id
+     * @param page      第几页
+     * @return 新闻列表的observable
+     */
+    @GET("109-35")
+    Observable<BaseShowApiResBean<NewsListBean>> getNewsList(@Query("showapi_appid") String appID,
+                                                             @Query("showapi_sign") String appSecret,
+                                                             @Query("channelId") String channelId,
+                                                             @Query("page") int page);
+
 
 }

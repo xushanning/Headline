@@ -9,7 +9,7 @@ import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
 
-import com.xu.headline.bean.helper.ChannelListConvert;
+import com.xu.headline.db.helper.ChannelListConvert;
 import java.util.List;
 
 import com.xu.headline.db.dbbean.SubscribeChannelDbBean;
