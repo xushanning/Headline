@@ -75,6 +75,10 @@ dependencies {
     implementation rootProject.ext.dependencies["permission"]
     annotationProcessor rootProject.ext.dependencies["permissionAnnotationProcessor"]
 
+    //Animation
+    implementation rootProject.ext.dependencies["supportCompat"]
+    implementation rootProject.ext.dependencies["daimajiaEasing"]
+    implementation rootProject.ext.dependencies["daimajiAnimation"]
 
 
 }

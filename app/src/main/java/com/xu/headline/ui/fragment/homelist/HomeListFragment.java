@@ -11,12 +11,10 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeDetailQuickAdapter;
 import com.xu.headline.base.BaseFragment;
-import com.xu.headline.bean.IDataNewsBean;
 import com.xu.headline.bean.NewsListBean;
 import com.xu.headline.ui.activity.articledetail.ArticleDetailActivity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -36,6 +34,18 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
      * 频道名称
      */
     private String channelID;
+    /**
+     * 准备加载第loadDataCount次的数据，每加载更多一次，加一
+     */
+    private int loadDataCount = 1;
+    /**
+     * 总共的新闻条数
+     */
+    private int totalNewsCount;
+    /**
+     * 已经加载的新闻条数
+     */
+    private int alreadyLoadedNewsCount;
 
     public static HomeListFragment newInstance(String channelID) {
         Bundle args = new Bundle();
@@ -54,7 +64,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     public void initOthers() {
         if (getArguments() != null) {
             channelID = getArguments().getString("channelID");
-            mPresenter.getNewsList(channelID);
+            mPresenter.getNewsList(channelID, loadDataCount);
         }
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -75,6 +85,13 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
             @Override
             public void onLoadMoreRequested() {
                 Logger.d("加载更多");
+                if (alreadyLoadedNewsCount >= totalNewsCount) {
+                    //加载完毕了
+                    homeDetailQuickAdapter.loadMoreEnd();
+                } else {
+                    mPresenter.getNewsList(channelID, loadDataCount);
+                }
+
             }
         }, rvHomeDetail);
         //条目点击
@@ -107,7 +124,21 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
 
     @Override
     public void loadNewsList(NewsListBean newsListBean) {
+        totalNewsCount = newsListBean.getPagebean().getAllNum();
         homeDetailQuickAdapter.setNewData(newsListBean.getPagebean().getContentlist());
+        loadDataCount++;
+    }
+
+    @Override
+    public void loadMoreData(NewsListBean newsListBean) {
+        if (newsListBean != null) {
+            totalNewsCount = newsListBean.getPagebean().getAllNum();
+            homeDetailQuickAdapter.addData(newsListBean.getPagebean().getContentlist());
+            homeDetailQuickAdapter.loadMoreComplete();
+            //已经加载的数量
+            alreadyLoadedNewsCount = homeDetailQuickAdapter.getData().size();
+            loadDataCount++;
+        }
     }
 
 

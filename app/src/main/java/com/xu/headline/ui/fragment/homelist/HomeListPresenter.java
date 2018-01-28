@@ -17,15 +17,19 @@ import com.xu.headline.utils.TransformUtils;
 public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeListView> implements IHomeListContract.IHomeListPresenter {
 
     @Override
-    public void getNewsList(String channelID) {
+    public void getNewsList(String channelID, final int page) {
         RetrofitFactory.getNewsApi()
-                .getNewsList(HttpConstants.SHOW_API_APP_ID, HttpConstants.SHOW_API_SECRET, channelID, 1)
+                .getNewsList(HttpConstants.SHOW_API_APP_ID, HttpConstants.SHOW_API_SECRET, channelID, page)
                 .compose(mView.<BaseShowApiResBean<NewsListBean>>bindToLife())
                 .compose(TransformUtils.<BaseShowApiResBean<NewsListBean>>defaultSchedulers())
                 .subscribe(new BaseHttpResultObserver<NewsListBean>() {
                     @Override
                     protected void onSuccess(NewsListBean newsListBean) {
-                        mView.loadNewsList(newsListBean);
+                        if (page == 1) {
+                            mView.loadNewsList(newsListBean);
+                        } else {
+                            mView.loadMoreData(newsListBean);
+                        }
                     }
                 });
     }

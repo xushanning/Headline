@@ -1,7 +1,6 @@
 package com.xu.headline.ui.fragment.home;
 
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.ChannelBean;
 import com.xu.headline.bean.ShowApiChannelListBean;
 
 import java.util.List;

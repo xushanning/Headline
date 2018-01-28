@@ -54,6 +54,11 @@ ext {
             "navigation"                   : "com.ashokvarma.android:bottom-navigation-bar:2.0.4",
             "statusBarUtil"                : "com.jaeger.statusbarutil:library:1.4.0",
             "baseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
-            "searchView"                   : "com.carson_ho:SearchLayout:1.0.1"
+            "searchView"                   : "com.carson_ho:SearchLayout:1.0.1",
+
+            //animation
+            "supportCompat"               : "com.android.support:support-compat:25.1.1",
+            "daimajiaEasing"               : "com.daimajia.easing:library:2.0@aar",
+            "daimajiAnimation"             : "com.daimajia.androidanimations:library:2.3@aar"
     ]
 }

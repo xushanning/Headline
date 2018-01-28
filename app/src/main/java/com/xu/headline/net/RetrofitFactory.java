@@ -83,32 +83,10 @@ public class RetrofitFactory {
     };
 
     /**
-     * 获取TouTiaoApi
+     * 获取NewsApiService
      *
-     * @return TouTiaoApiService
+     * @return NewsApiService
      */
-    public static TouTiaoApiService getTouTiaoApi() {
-        return new Retrofit
-                .Builder()
-                .baseUrl(HttpConstants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(getOkHttpClient())
-                .build()
-                .create(TouTiaoApiService.class);
-    }
-
-    public static IDataApiService getIDataApi() {
-        return new Retrofit
-                .Builder()
-                .baseUrl(HttpConstants.BASE_IDATA_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(getOkHttpClient())
-                .build()
-                .create(IDataApiService.class);
-    }
-
     public static NewsApiService getNewsApi() {
         return new Retrofit
                 .Builder()
