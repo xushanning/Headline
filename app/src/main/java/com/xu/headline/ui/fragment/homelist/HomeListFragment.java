@@ -1,22 +1,37 @@
 package com.xu.headline.ui.fragment.homelist;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeDetailQuickAdapter;
 import com.xu.headline.base.BaseFragment;
 import com.xu.headline.bean.NewsListBean;
 import com.xu.headline.ui.activity.articledetail.ArticleDetailActivity;
+import com.xu.headline.utils.TransformUtils;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by xusn10 on 2018/1/18.
@@ -28,6 +43,10 @@ import butterknife.BindView;
 public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPresenter> implements IHomeListContract.IHomeListView {
     @BindView(R.id.rv_home_detail)
     RecyclerView rvHomeDetail;
+    @BindView(R.id.tv_notice)
+    TextView tvNotice;
+    @BindView(R.id.ll_custom_notice)
+    LinearLayout llCustomNotice;
 
     private HomeDetailQuickAdapter homeDetailQuickAdapter;
     /**
@@ -71,15 +90,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
         rvHomeDetail.setLayoutManager(layoutManager);
 
         homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<NewsListBean.PagebeanBean.ContentlistBean>());
-        homeDetailQuickAdapter.setUpFetchEnable(true);
         rvHomeDetail.setAdapter(homeDetailQuickAdapter);
-        //下拉刷新
-        homeDetailQuickAdapter.setUpFetchListener(new BaseQuickAdapter.UpFetchListener() {
-            @Override
-            public void onUpFetch() {
-                Logger.d("下拉刷新");
-            }
-        });
         //加载更多
         homeDetailQuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
@@ -115,6 +126,12 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
 
             }
         });
+        //牵扯到动画，必须测量
+        int w = View.MeasureSpec.makeMeasureSpec(0,
+                View.MeasureSpec.UNSPECIFIED);
+        int h = View.MeasureSpec.makeMeasureSpec(0,
+                View.MeasureSpec.UNSPECIFIED);
+        llCustomNotice.measure(w, h);
     }
 
     @Override
@@ -124,14 +141,24 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
 
     @Override
     public void loadNewsList(NewsListBean newsListBean) {
-        totalNewsCount = newsListBean.getPagebean().getAllNum();
-        homeDetailQuickAdapter.setNewData(newsListBean.getPagebean().getContentlist());
-        loadDataCount++;
+        if (newsListBean == null) {
+            //展示加载失败的view
+            // homeDetailQuickAdapter.setEmptyView();
+        } else {
+            showNotice("今日头条推荐引擎有" + newsListBean.getPagebean().getContentlist().size() + "条更新");
+            totalNewsCount = newsListBean.getPagebean().getAllNum();
+            homeDetailQuickAdapter.setNewData(newsListBean.getPagebean().getContentlist());
+            loadDataCount++;
+        }
+
     }
 
     @Override
     public void loadMoreData(NewsListBean newsListBean) {
-        if (newsListBean != null) {
+        if (newsListBean == null) {
+            //加载更多失败
+            homeDetailQuickAdapter.loadMoreFail();
+        } else {
             totalNewsCount = newsListBean.getPagebean().getAllNum();
             homeDetailQuickAdapter.addData(newsListBean.getPagebean().getContentlist());
             homeDetailQuickAdapter.loadMoreComplete();
@@ -139,6 +166,43 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
             alreadyLoadedNewsCount = homeDetailQuickAdapter.getData().size();
             loadDataCount++;
         }
+    }
+
+    /**
+     * 展示通知
+     *
+     * @param text 需要展示的文字
+     */
+    private void showNotice(String text) {
+        llCustomNotice.setVisibility(View.VISIBLE);
+        tvNotice.setText(text);
+        //延时一段时间后，进行动画
+        Observable.timer(2000, TimeUnit.MILLISECONDS)
+                .compose(TransformUtils.<Long>defaultSchedulers())
+                .subscribe(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception {
+                        ValueAnimator animator = ValueAnimator.ofInt(llCustomNotice.getMeasuredHeight(), 0);
+                        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                            @Override
+                            public void onAnimationUpdate(ValueAnimator animation) {
+                                int value = (int) animation.getAnimatedValue();
+                                ViewGroup.LayoutParams layoutParams = llCustomNotice.getLayoutParams();
+                                layoutParams.height = value;
+                                llCustomNotice.setLayoutParams(layoutParams);
+                            }
+                        });
+                        animator.addListener(new AnimatorListenerAdapter() {
+                            @Override
+                            public void onAnimationEnd(Animator animation) {
+                                llCustomNotice.setVisibility(View.GONE);
+                            }
+                        });
+                        animator.setDuration(500);
+                        animator.start();
+                    }
+                });
+
     }
 
 

@@ -31,6 +31,15 @@ public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeList
                             mView.loadMoreData(newsListBean);
                         }
                     }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        if (page == 1) {
+                            mView.loadNewsList(null);
+                        } else {
+                            mView.loadMoreData(null);
+                        }
+                    }
                 });
     }
 }

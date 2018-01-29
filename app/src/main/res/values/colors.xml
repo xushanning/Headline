@@ -27,5 +27,7 @@
     <color name="colorSearchViewRecommend">#222222</color>
     <color name="colorSearchViewHistory">#999999</color>
 
-
+    <!--自定义通知条颜色-->
+    <color name="colorCustomNoticeBg">#D6E9F7</color>
+    <color name="colorCustomNoticeText">#2A90D7</color>
 </resources>
