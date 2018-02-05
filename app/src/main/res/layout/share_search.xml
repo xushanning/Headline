@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_share_search"
+    android:layout_width="match_parent"
+    android:layout_height="65dp"
+    android:background="#FA745A">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <View
+        android:id="@+id/vSearch"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sp_currency"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/guideline7"
+        app:layout_constraintRight_toLeftOf="@+id/guideline8"></View>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vSearch"
+        app:layout_constraintStart_toStartOf="@+id/vSearch"
+        app:layout_constraintTop_toTopOf="@+id/vSearch"
+        app:srcCompat="@mipmap/search" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="百万英雄|发动机的原理|招聘"
+        android:textColor="#999999"
+        app:layout_constraintBottom_toBottomOf="@+id/vSearch"
+        app:layout_constraintEnd_toEndOf="@+id/vSearch"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/vSearch" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vSearch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/vSearch"
+        app:layout_constraintTop_toTopOf="@+id/vSearch"
+        app:srcCompat="@mipmap/camera" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+</android.support.constraint.ConstraintLayout>

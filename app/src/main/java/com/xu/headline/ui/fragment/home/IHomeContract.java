@@ -1,7 +1,7 @@
 package com.xu.headline.ui.fragment.home;
 
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.ShowApiChannelListBean;
+import com.xu.headline.bean.NewsChannelListBean;
 
 import java.util.List;
 
@@ -18,7 +18,14 @@ public interface IHomeContract {
          *
          * @param channelList 频道列表
          */
-        void loadData(List<ShowApiChannelListBean.ChannelListBean> channelList);
+        void loadData(List<NewsChannelListBean.ChannelListBean> channelList);
+
+        /**
+         * 加载推荐搜索的内容
+         *
+         * @param suggestString 推荐搜索的内容
+         */
+        void loadSuggestSearch(String suggestString);
     }
 
     interface IHomePresenter extends IBaseContract.IBasePresenter<IHomeView> {
@@ -26,5 +33,10 @@ public interface IHomeContract {
          * 初始化频道列表
          */
         void initChannel();
+
+        /**
+         * 获取推荐搜索
+         */
+        void getSuggestSearch();
     }
 }

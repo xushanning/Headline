@@ -9,6 +9,7 @@ import com.xu.headline.base.BasePresenter;
  */
 
 public class VideoPresenter extends BasePresenter<IVideoContract.IVideoView> implements IVideoContract.IVideoPresenter {
+
     @Override
     public void getVideoChannel() {
 

@@ -97,4 +97,21 @@ public class RetrofitFactory {
                 .build()
                 .create(NewsApiService.class);
     }
+
+    /**
+     * 获取NewsApiService
+     *
+     * @return NewsApiService
+     */
+    public static TouTiaoApi getTouTiaoApi() {
+        return TouTiaoApi.getInstance(
+                new Retrofit
+                        .Builder()
+                        .baseUrl(HttpConstants.TOU_TIAO_BASE_URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                        .client(getOkHttpClient())
+                        .build()
+                        .create(TouTiaoApiService.class));
+    }
 }

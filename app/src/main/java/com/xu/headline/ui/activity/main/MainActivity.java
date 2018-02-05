@@ -3,6 +3,7 @@ package com.xu.headline.ui.activity.main;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
@@ -83,10 +84,10 @@ public class MainActivity extends BaseActivity<IMainContract.IMainPresenter> imp
 
         guideBottomNavigation
                 .setMode(BottomNavigationBar.MODE_FIXED)
-                .addItem(new BottomNavigationItem(R.mipmap.home, getString(R.string.main_home)).setBadgeItem(textBadgeItem))
-                .addItem(new BottomNavigationItem(R.mipmap.video, getString(R.string.main_video)))
-                .addItem(new BottomNavigationItem(R.mipmap.small_headline, getString(R.string.main_small_headline)))
-                .addItem(new BottomNavigationItem(R.mipmap.personal_center, getString(R.string.main_personal_center)))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_home_selected, getString(R.string.main_home)).setInactiveIcon(ContextCompat.getDrawable(this, R.mipmap.tab_home_normal)).setBadgeItem(textBadgeItem))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_video_selected, getString(R.string.main_video)).setInactiveIcon(ContextCompat.getDrawable(this, R.mipmap.tab_video_normal)))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_micro_selected, getString(R.string.main_small_headline)).setInactiveIcon(ContextCompat.getDrawable(this, R.mipmap.tab_micro_normal)))
+                .addItem(new BottomNavigationItem(R.mipmap.tab_me_selected, getString(R.string.main_personal_center)).setInactiveIcon(ContextCompat.getDrawable(this, R.mipmap.tab_me_normal)))
                 .setActiveColor(R.color.colorGuideSelected)
                 .setInActiveColor(R.color.colorGuideUnSelected)
                 .setBarBackgroundColor(R.color.colorGuideBackground)

@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.07" />
+            app:layout_constraintGuide_percent="0.04" />
 
         <View
             android:id="@+id/vSearch"
@@ -52,7 +52,7 @@
             app:srcCompat="@mipmap/search" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_suggest_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="百万英雄|发动机的原理|招聘"
@@ -80,7 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.8" />
+            app:layout_constraintGuide_percent="0.85" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -8,21 +8,25 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeFragmentPagerAdapter;
 import com.xu.headline.base.BaseFragment;
-import com.xu.headline.bean.ChannelBean;
-import com.xu.headline.bean.ShowApiChannelListBean;
+import com.xu.headline.bean.NewsChannelListBean;
 import com.xu.headline.ui.activity.search.SearchActivity;
 import com.xu.headline.utils.ToastUtil;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -43,6 +47,8 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     TabLayout tabLayoutHome;
     @BindView(R.id.vp_home)
     ViewPager vpHome;
+    @BindView(R.id.tv_suggest_search)
+    TextView tvSuggestSearch;
 
     private HomeFragmentPagerAdapter homeFragmentPagerAdapter;
 
@@ -67,6 +73,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     @Override
     public void initOthers() {
         HomeFragmentPermissionsDispatcher.initChannelWithPermissionCheck(this);
+        mPresenter.getSuggestSearch();
     }
 
     @NeedsPermission(Manifest.permission.READ_PHONE_STATE)
@@ -114,7 +121,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     }
 
     @Override
-    public void loadData(List<ShowApiChannelListBean.ChannelListBean> list) {
+    public void loadData(List<NewsChannelListBean.ChannelListBean> list) {
         if (list != null) {
             //这里用getChildFragmentManager()，获取的是子容器的manager，而getFragmentManager是获取的父容器的manager
             homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), list);
@@ -123,6 +130,13 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
             tabLayoutHome.setupWithViewPager(vpHome);
         } else {
             Logger.d("获取频道失败");
+        }
+    }
+
+    @Override
+    public void loadSuggestSearch(String suggestString) {
+        if (suggestString != null) {
+            tvSuggestSearch.setText(suggestString);
         }
     }
 
@@ -141,4 +155,6 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
                 break;
         }
     }
+
+
 }

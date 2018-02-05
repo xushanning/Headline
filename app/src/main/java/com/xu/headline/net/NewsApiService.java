@@ -2,7 +2,7 @@ package com.xu.headline.net;
 
 import com.xu.headline.base.BaseShowApiResBean;
 import com.xu.headline.bean.NewsListBean;
-import com.xu.headline.bean.ShowApiChannelListBean;
+import com.xu.headline.bean.NewsChannelListBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -25,8 +25,8 @@ public interface NewsApiService {
      * @return 频道的observable
      */
     @GET("109-34")
-    Observable<BaseShowApiResBean<ShowApiChannelListBean>> getChannelList(@Query("showapi_appid") String appID,
-                                                                          @Query("showapi_sign") String appSecret);
+    Observable<BaseShowApiResBean<NewsChannelListBean>> getChannelList(@Query("showapi_appid") String appID,
+                                                                       @Query("showapi_sign") String appSecret);
 
     /**
      * @param appID     appID

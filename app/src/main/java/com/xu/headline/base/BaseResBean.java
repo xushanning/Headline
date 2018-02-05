@@ -10,31 +10,22 @@ import java.io.Serializable;
 
 public class BaseResBean<T> implements Serializable {
 
-    private String status;
-    private String msg;
-    private T result;
+    private String message;
+    private T data;
 
-    public String getStatus() {
-        return status;
+    public String getMessage() {
+        return message;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getMsg() {
-        return msg;
+    public T getData() {
+        return data;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public T getResult() {
-        return result;
-    }
-
-    public void setResult(T result) {
-        this.result = result;
+    public void setData(T data) {
+        this.data = data;
     }
 }

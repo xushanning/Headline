@@ -1,5 +1,6 @@
 package com.xu.headline.net;
 
+import com.xu.headline.base.BaseResBean;
 import com.xu.headline.base.BaseShowApiResBean;
 
 import io.reactivex.Observer;
@@ -11,11 +12,11 @@ import io.reactivex.disposables.Disposable;
  * @author xu
  */
 
-public abstract class BaseHttpResultObserver<T> implements Observer<BaseShowApiResBean<T>> {
+public abstract class BaseTouTiaoResObserver<T> implements Observer<BaseResBean<T>> {
     /**
      * 请求成功
      */
-    private static final int REQUEST_OK = 0;
+    private static final String REQUEST_SUCCESS = "success";
 
     @Override
     public void onSubscribe(Disposable d) {
@@ -23,11 +24,9 @@ public abstract class BaseHttpResultObserver<T> implements Observer<BaseShowApiR
     }
 
     @Override
-    public void onNext(BaseShowApiResBean<T> tBaseResBean) {
-        if (tBaseResBean.getResCode() == REQUEST_OK) {
-            onSuccess(tBaseResBean.getResBody());
-        } else {
-            onCodeError(tBaseResBean.getResError());
+    public void onNext(BaseResBean<T> tBaseResBean) {
+        if (tBaseResBean.getMessage().equals(REQUEST_SUCCESS)) {
+            onSuccess(tBaseResBean.getData());
         }
     }
 

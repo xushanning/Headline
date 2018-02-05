@@ -6,9 +6,10 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2018/1/25.
+ * @author xu
  */
 
-public class ShowApiChannelListBean {
+public class NewsChannelListBean {
 
     /**
      * totalNum : 44
