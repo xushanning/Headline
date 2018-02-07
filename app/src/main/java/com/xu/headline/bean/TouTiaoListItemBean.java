@@ -8,60 +8,71 @@ public class TouTiaoListItemBean {
 
 
     /**
-     * abstract : 去年，我市坚持“优先发展教育事业”理念，在义务教育发展上凝心聚力，综合施策，交出了一份满意的“答卷”。
-     * action_extra : {"channel_id ":72115010420}
-     * action_list : [{"action":1,"desc":"","extra":{}},{"action":3,"desc":"","extra":{}},{"action":7,"desc":"","extra":{}},{"action":9,"desc":"","extra":{}}]
+     * abstract : 本计价周期以来，在美元指数下跌
+     * action_extra : {"channel_id ":3189398996}
+     * action_list : [{"action":1,"desc":"","extra":{}}]
      * aggr_type : 1
      * allow_download : false
      * article_sub_type : 0
      * article_type : 0
-     * article_url : http://news.sq1996.com/sqyw/2018/0203/239415.shtml
+     * article_url : http://www.cs.com.cn/ssgs/hyzx/201802/t20180207_5703006.html
+     * article_alt_url : http://m.toutiao.com/group/article/6519346771167019271/
      * ban_comment : 0
-     * behot_time : 1517920230
+     * behot_time : 1517983616
      * bury_count : 0
      * cell_flag : 11
      * cell_layout_style : 1
      * cell_type : 0
-     * comment_count : 2
+     * comment_count : 420
      * content_decoration :
-     * cursor : 1517920230999
+     * cursor : 1517983616999
      * digg_count : 0
-     * display_url : http://toutiao.com/group/6518116831570428430/
-     * filter_words : [{"id":"8:0","is_selected":false,"name":"看过了"},{"id":"9:1","is_selected":false,"name":"内容太水"},{"id":"5:193684438","is_selected":false,"name":"拉黑作者:宿迁网"},{"id":"6:70633","is_selected":false,"name":"不想看:义务教育"},{"id":"6:23903","is_selected":false,"name":"不想看:宿迁"}]
-     * forward_info : {"forward_count":1}
-     * group_id : 6518116831570428430
+     * display_url : http://toutiao.com/group/6519593967720333827/
+     * filter_words : [{"id":"8:0","is_selected":false,"name":"看过了"}]
+     * forward_info : {"forward_count":345}
+     * group_id : 6519593967720333827
+     * gallary_image_count : 4
      * has_m3u8_video : false
      * has_mp4_video : 0
      * has_video : false
+     * has_image : true
      * hot : 0
      * ignore_web_transform : 1
      * is_subject : false
-     * item_id : 6518116831570428430
+     * item_id : 6519593967720333827
+     * image_list : [{"height":270,"uri":"list/61400026ddc563df6ffd","url":"http://p9.pstatp.com/list/190x124/61400026ddc563df6ffd.webp","url_list":[{"url":"http://p9.pstatp.com/list/190x124/61400026ddc563df6ffd.webp"},{"url":"http://pb1.pstatp.com/list/190x124/61400026ddc563df6ffd.webp"},{"url":"http://pb3.pstatp.com/list/190x124/61400026ddc563df6ffd.webp"}],"width":480}]
      * item_version : 0
-     * keywords : 优先发展教育事业,全市义务教育学校,汤成军,义务教育学校,义务教育发展
+     * keywords : 油价,变化率,原油,下调,成品油
+     * label : 广告
      * level : 0
-     * log_pb : {"impr_id":"2018020620303001000807115619618E"}
-     * media_info : {"avatar_url":"http://p2.pstatp.com/large/5435/497740308","follow":false,"is_star_user":false,"media_id":4056581147,"name":"宿迁网","recommend_reason":"","recommend_type":0,"user_id":4055607415,"user_verified":false,"verified_content":""}
-     * media_name : 宿迁网
+     * label_style : 3
+     * large_image_list : [{"height":720,"uri":"large/5dd2000a2061ea813ce4","url":"http://p1.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp","url_list":[{"url":"http://p1.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp"},{"url":"http://pb3.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp"},{"url":"http://pb9.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp"}],"width":1280}]
+     * log_pb : {"impr_id":"201802071407310100030490170554FD"}
+     * media_info : {"avatar_url":"http://p2.pstatp.com/thumb/1629/1083334908","follow":false,"is_star_user":false,"media_id":3701662541,"name":"中国证券报","recommend_reason":"","recommend_type":0,"user_id":3701139224,"user_verified":false,"verified_content":""}
+     * media_name : 中国证券报
      * preload_web : 1
-     * publish_time : 1517617200
-     * read_count : 775
-     * repin_count : 6
-     * rid : 2018020620303001000807115619618E
-     * share_count : 0
-     * share_url : xxx
+     * middle_image : {"height":337,"uri":"list/61460003b6406c81e6e9","url":"http://p3.pstatp.com/list/190x124/61460003b6406c81e6e9.webp","url_list":[{"url":"http://p3.pstatp.com/list/190x124/61460003b6406c81e6e9.webp"},{"url":"http://pb9.pstatp.com/list/190x124/61460003b6406c81e6e9.webp"},{"url":"http://pb1.pstatp.com/list/190x124/61460003b6406c81e6e9.webp"}],"width":600}
+     * natant_level : 2
+     * publish_time : 1517960880
+     * raw_ad_data : {"disable_download_dialog":1,"display_type":2,"expire_seconds":315708828,"id":90464467209,"log_extra":{"ad_price ":"WnqXo__nDQZaepej_ - cNBjNQpf1bbCwM9gFeRA ","convert_component_suspend ":0,"convert_id ":0,"external_action ":19,"req_id ":"201802071407310100030490170554 FD ","rit ":1},"type":"web","web_title":"桔子树"}
+     * read_count : 212118
+     * repin_count : 660
+     * rid : 201802071407310100030490170554FD
+     * share_count : 634
+     * share_url : http://m.toutiao.com/group/6519593967720333827/?iid=25206805877&app=news_article
      * show_dislike : true
      * show_portrait : false
      * show_portrait_article : false
-     * source : 宿迁网
-     * source_icon_style : 1
-     * source_open_url : sslocal://profile?uid=4055607415
-     * tag_id : 6518116831570428430
+     * source : 中国证券报
+     * source_icon_style : 6
+     * source_open_url : sslocal://profile?uid=3701139224
+     * tag : news_finance
+     * tag_id : 6519593967720333827
      * tip : 0
-     * title : 宿迁补强义务教育发展“短板”——让孩子在家门口就能上好学校
+     * title : 成品油或迎今年首降 降幅将逾百元
      * ugc_recommend : {"activity":"","reason":""}
-     * url : http://news.sq1996.com/sqyw/2018/0203/239415.shtml
-     * user_info : {"avatar_url":"http://p3.pstatp.com/thumb/5435/497740308","description":"宿迁地区第一门户网站；第一新闻门户网站；","follow":false,"follower_count":0,"name":"宿迁网","user_id":4055607415,"user_verified":false}
+     * url : http://www.cs.com.cn/ssgs/hyzx/201802/t20180207_5703006.html
+     * user_info : {"avatar_url":"http://p3.pstatp.com/thumb/1629/1083334908","description":"\u201c中证公告快递\u201d是由中国证券报\u2022中证网倾力打造的专业化、综合性移动应用程序，方便投资者第一时间获知最新资讯及公告信息。","follow":false,"follower_count":0,"name":"中国证券报","user_id":3701139224,"user_verified":false}
      * user_repin : 0
      * user_verified : 0
      * verified_content :
@@ -76,6 +87,7 @@ public class TouTiaoListItemBean {
     private int article_sub_type;
     private int article_type;
     private String article_url;
+    private String article_alt_url;
     private int ban_comment;
     private int behot_time;
     private int bury_count;
@@ -89,21 +101,28 @@ public class TouTiaoListItemBean {
     private String display_url;
     private ForwardInfoBean forward_info;
     private long group_id;
+    private int gallary_image_count;
     private boolean has_m3u8_video;
     private int has_mp4_video;
     private boolean has_video;
+    private boolean has_image;
     private int hot;
     private int ignore_web_transform;
     private boolean is_subject;
     private long item_id;
     private int item_version;
     private String keywords;
+    private String label;
     private int level;
+    private int label_style;
     private LogPbBean log_pb;
     private MediaInfoBean media_info;
     private String media_name;
     private int preload_web;
+    private MiddleImageBean middle_image;
+    private int natant_level;
     private int publish_time;
+    private RawAdDataBean raw_ad_data;
     private int read_count;
     private int repin_count;
     private String rid;
@@ -115,6 +134,7 @@ public class TouTiaoListItemBean {
     private String source;
     private int source_icon_style;
     private String source_open_url;
+    private String tag;
     private long tag_id;
     private int tip;
     private String title;
@@ -127,6 +147,8 @@ public class TouTiaoListItemBean {
     private int video_style;
     private List<ActionListBean> action_list;
     private List<FilterWordsBean> filter_words;
+    private List<ImageListBean> image_list;
+    private List<LargeImageListBean> large_image_list;
 
     public String getAbstractX() {
         return abstractX;
@@ -182,6 +204,14 @@ public class TouTiaoListItemBean {
 
     public void setArticle_url(String article_url) {
         this.article_url = article_url;
+    }
+
+    public String getArticle_alt_url() {
+        return article_alt_url;
+    }
+
+    public void setArticle_alt_url(String article_alt_url) {
+        this.article_alt_url = article_alt_url;
     }
 
     public int getBan_comment() {
@@ -288,6 +318,14 @@ public class TouTiaoListItemBean {
         this.group_id = group_id;
     }
 
+    public int getGallary_image_count() {
+        return gallary_image_count;
+    }
+
+    public void setGallary_image_count(int gallary_image_count) {
+        this.gallary_image_count = gallary_image_count;
+    }
+
     public boolean isHas_m3u8_video() {
         return has_m3u8_video;
     }
@@ -310,6 +348,14 @@ public class TouTiaoListItemBean {
 
     public void setHas_video(boolean has_video) {
         this.has_video = has_video;
+    }
+
+    public boolean isHas_image() {
+        return has_image;
+    }
+
+    public void setHas_image(boolean has_image) {
+        this.has_image = has_image;
     }
 
     public int getHot() {
@@ -360,12 +406,28 @@ public class TouTiaoListItemBean {
         this.keywords = keywords;
     }
 
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
     public int getLevel() {
         return level;
     }
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public int getLabel_style() {
+        return label_style;
+    }
+
+    public void setLabel_style(int label_style) {
+        this.label_style = label_style;
     }
 
     public LogPbBean getLog_pb() {
@@ -400,12 +462,36 @@ public class TouTiaoListItemBean {
         this.preload_web = preload_web;
     }
 
+    public MiddleImageBean getMiddle_image() {
+        return middle_image;
+    }
+
+    public void setMiddle_image(MiddleImageBean middle_image) {
+        this.middle_image = middle_image;
+    }
+
+    public int getNatant_level() {
+        return natant_level;
+    }
+
+    public void setNatant_level(int natant_level) {
+        this.natant_level = natant_level;
+    }
+
     public int getPublish_time() {
         return publish_time;
     }
 
     public void setPublish_time(int publish_time) {
         this.publish_time = publish_time;
+    }
+
+    public RawAdDataBean getRaw_ad_data() {
+        return raw_ad_data;
+    }
+
+    public void setRaw_ad_data(RawAdDataBean raw_ad_data) {
+        this.raw_ad_data = raw_ad_data;
     }
 
     public int getRead_count() {
@@ -494,6 +580,14 @@ public class TouTiaoListItemBean {
 
     public void setSource_open_url(String source_open_url) {
         this.source_open_url = source_open_url;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public long getTag_id() {
@@ -592,9 +686,25 @@ public class TouTiaoListItemBean {
         this.filter_words = filter_words;
     }
 
+    public List<ImageListBean> getImage_list() {
+        return image_list;
+    }
+
+    public void setImage_list(List<ImageListBean> image_list) {
+        this.image_list = image_list;
+    }
+
+    public List<LargeImageListBean> getLarge_image_list() {
+        return large_image_list;
+    }
+
+    public void setLarge_image_list(List<LargeImageListBean> large_image_list) {
+        this.large_image_list = large_image_list;
+    }
+
     public static class ActionExtraBean {
         /**
-         * channel_id  : 72115010420
+         * channel_id  : 3189398996
          */
 
         private long channel_id;
@@ -610,7 +720,7 @@ public class TouTiaoListItemBean {
 
     public static class ForwardInfoBean {
         /**
-         * forward_count : 1
+         * forward_count : 345
          */
 
         private int forward_count;
@@ -626,7 +736,7 @@ public class TouTiaoListItemBean {
 
     public static class LogPbBean {
         /**
-         * impr_id : 2018020620303001000807115619618E
+         * impr_id : 201802071407310100030490170554FD
          */
 
         private String impr_id;
@@ -642,14 +752,14 @@ public class TouTiaoListItemBean {
 
     public static class MediaInfoBean {
         /**
-         * avatar_url : http://p2.pstatp.com/large/5435/497740308
+         * avatar_url : http://p2.pstatp.com/thumb/1629/1083334908
          * follow : false
          * is_star_user : false
-         * media_id : 4056581147
-         * name : 宿迁网
+         * media_id : 3701662541
+         * name : 中国证券报
          * recommend_reason :
          * recommend_type : 0
-         * user_id : 4055607415
+         * user_id : 3701139224
          * user_verified : false
          * verified_content :
          */
@@ -746,6 +856,220 @@ public class TouTiaoListItemBean {
         }
     }
 
+    public static class MiddleImageBean {
+        /**
+         * height : 337
+         * uri : list/61460003b6406c81e6e9
+         * url : http://p3.pstatp.com/list/190x124/61460003b6406c81e6e9.webp
+         * url_list : [{"url":"http://p3.pstatp.com/list/190x124/61460003b6406c81e6e9.webp"},{"url":"http://pb9.pstatp.com/list/190x124/61460003b6406c81e6e9.webp"},{"url":"http://pb1.pstatp.com/list/190x124/61460003b6406c81e6e9.webp"}]
+         * width : 600
+         */
+
+        private int height;
+        private String uri;
+        private String url;
+        private int width;
+        private List<UrlListBean> url_list;
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public List<UrlListBean> getUrl_list() {
+            return url_list;
+        }
+
+        public void setUrl_list(List<UrlListBean> url_list) {
+            this.url_list = url_list;
+        }
+
+        public static class UrlListBean {
+            /**
+             * url : http://p3.pstatp.com/list/190x124/61460003b6406c81e6e9.webp
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+        }
+    }
+
+    public static class RawAdDataBean {
+        /**
+         * disable_download_dialog : 1
+         * display_type : 2
+         * expire_seconds : 315708828
+         * id : 90464467209
+         * log_extra : {"ad_price ":"WnqXo__nDQZaepej_ - cNBjNQpf1bbCwM9gFeRA ","convert_component_suspend ":0,"convert_id ":0,"external_action ":19,"req_id ":"201802071407310100030490170554 FD ","rit ":1}
+         * type : web
+         * web_title : 桔子树
+         */
+
+        private int disable_download_dialog;
+        private int display_type;
+        private int expire_seconds;
+        private long id;
+        private LogExtraBean log_extra;
+        private String type;
+        private String web_title;
+
+        public int getDisable_download_dialog() {
+            return disable_download_dialog;
+        }
+
+        public void setDisable_download_dialog(int disable_download_dialog) {
+            this.disable_download_dialog = disable_download_dialog;
+        }
+
+        public int getDisplay_type() {
+            return display_type;
+        }
+
+        public void setDisplay_type(int display_type) {
+            this.display_type = display_type;
+        }
+
+        public int getExpire_seconds() {
+            return expire_seconds;
+        }
+
+        public void setExpire_seconds(int expire_seconds) {
+            this.expire_seconds = expire_seconds;
+        }
+
+        public long getId() {
+            return id;
+        }
+
+        public void setId(long id) {
+            this.id = id;
+        }
+
+        public LogExtraBean getLog_extra() {
+            return log_extra;
+        }
+
+        public void setLog_extra(LogExtraBean log_extra) {
+            this.log_extra = log_extra;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getWeb_title() {
+            return web_title;
+        }
+
+        public void setWeb_title(String web_title) {
+            this.web_title = web_title;
+        }
+
+        public static class LogExtraBean {
+            /**
+             * ad_price  : WnqXo__nDQZaepej_ - cNBjNQpf1bbCwM9gFeRA
+             * convert_component_suspend  : 0
+             * convert_id  : 0
+             * external_action  : 19
+             * req_id  : 201802071407310100030490170554 FD
+             * rit  : 1
+             */
+
+            private String ad_price;
+            private int convert_component_suspend;
+            private int convert_id;
+            private int external_action;
+            private String req_id;
+            private int rit;
+
+            public String getAd_price() {
+                return ad_price;
+            }
+
+            public void setAd_price(String ad_price) {
+                this.ad_price = ad_price;
+            }
+
+            public int getConvert_component_suspend() {
+                return convert_component_suspend;
+            }
+
+            public void setConvert_component_suspend(int convert_component_suspend) {
+                this.convert_component_suspend = convert_component_suspend;
+            }
+
+            public int getConvert_id() {
+                return convert_id;
+            }
+
+            public void setConvert_id(int convert_id) {
+                this.convert_id = convert_id;
+            }
+
+            public int getExternal_action() {
+                return external_action;
+            }
+
+            public void setExternal_action(int external_action) {
+                this.external_action = external_action;
+            }
+
+            public String getReq_id() {
+                return req_id;
+            }
+
+            public void setReq_id(String req_id) {
+                this.req_id = req_id;
+            }
+
+            public int getRit() {
+                return rit;
+            }
+
+            public void setRit(int rit) {
+                this.rit = rit;
+            }
+        }
+    }
+
     public static class UgcRecommendBean {
         /**
          * activity :
@@ -774,12 +1098,12 @@ public class TouTiaoListItemBean {
 
     public static class UserInfoBean {
         /**
-         * avatar_url : http://p3.pstatp.com/thumb/5435/497740308
-         * description : 宿迁地区第一门户网站；第一新闻门户网站；
+         * avatar_url : http://p3.pstatp.com/thumb/1629/1083334908
+         * description : “中证公告快递”是由中国证券报•中证网倾力打造的专业化、综合性移动应用程序，方便投资者第一时间获知最新资讯及公告信息。
          * follow : false
          * follower_count : 0
-         * name : 宿迁网
-         * user_id : 4055607415
+         * name : 中国证券报
+         * user_id : 3701139224
          * user_verified : false
          */
 
@@ -920,6 +1244,150 @@ public class TouTiaoListItemBean {
 
         public void setName(String name) {
             this.name = name;
+        }
+    }
+
+    public static class ImageListBean {
+        /**
+         * height : 270
+         * uri : list/61400026ddc563df6ffd
+         * url : http://p9.pstatp.com/list/190x124/61400026ddc563df6ffd.webp
+         * url_list : [{"url":"http://p9.pstatp.com/list/190x124/61400026ddc563df6ffd.webp"},{"url":"http://pb1.pstatp.com/list/190x124/61400026ddc563df6ffd.webp"},{"url":"http://pb3.pstatp.com/list/190x124/61400026ddc563df6ffd.webp"}]
+         * width : 480
+         */
+
+        private int height;
+        private String uri;
+        private String url;
+        private int width;
+        private List<UrlListBeanX> url_list;
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public List<UrlListBeanX> getUrl_list() {
+            return url_list;
+        }
+
+        public void setUrl_list(List<UrlListBeanX> url_list) {
+            this.url_list = url_list;
+        }
+
+        public static class UrlListBeanX {
+            /**
+             * url : http://p9.pstatp.com/list/190x124/61400026ddc563df6ffd.webp
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+        }
+    }
+
+    public static class LargeImageListBean {
+        /**
+         * height : 720
+         * uri : large/5dd2000a2061ea813ce4
+         * url : http://p1.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp
+         * url_list : [{"url":"http://p1.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp"},{"url":"http://pb3.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp"},{"url":"http://pb9.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp"}]
+         * width : 1280
+         */
+
+        private int height;
+        private String uri;
+        private String url;
+        private int width;
+        private List<UrlListBeanXX> url_list;
+
+        public int getHeight() {
+            return height;
+        }
+
+        public void setHeight(int height) {
+            this.height = height;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
+
+        public int getWidth() {
+            return width;
+        }
+
+        public void setWidth(int width) {
+            this.width = width;
+        }
+
+        public List<UrlListBeanXX> getUrl_list() {
+            return url_list;
+        }
+
+        public void setUrl_list(List<UrlListBeanXX> url_list) {
+            this.url_list = url_list;
+        }
+
+        public static class UrlListBeanXX {
+            /**
+             * url : http://p1.pstatp.com/large/w640/5dd2000a2061ea813ce4.webp
+             */
+
+            private String url;
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
         }
     }
 }

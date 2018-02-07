@@ -13,10 +13,7 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class BaseTouTiaoResObserver<T> implements Observer<BaseResBean<T>> {
-    /**
-     * 请求成功
-     */
-    private static final String REQUEST_SUCCESS = "success";
+
 
     @Override
     public void onSubscribe(Disposable d) {
@@ -25,7 +22,7 @@ public abstract class BaseTouTiaoResObserver<T> implements Observer<BaseResBean<
 
     @Override
     public void onNext(BaseResBean<T> tBaseResBean) {
-        if (tBaseResBean.getMessage().equals(REQUEST_SUCCESS)) {
+        if (tBaseResBean.getMessage().equals(HttpConstants.REQUEST_SUCCESS)) {
             onSuccess(tBaseResBean.getData());
         }
     }

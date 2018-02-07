@@ -8,7 +8,7 @@ import java.util.List;
  * @author xu
  */
 
-public class NewsSuggestChaanelBean {
+public class NewsSuggestChannelBean {
 
     /**
      * version : 47840702832|14|1517800347

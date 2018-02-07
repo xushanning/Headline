@@ -24,4 +24,8 @@ public class HttpConstants {
     public static final String SHOW_API_SECRET = "5f387b649a5a49c7bd389f39e8f08212";
 
     public static final String TOU_TIAO_BASE_URL = "https://lf.snssdk.com/";
+    /**
+     * 请求成功
+     */
+    public static final String REQUEST_SUCCESS = "success";
 }

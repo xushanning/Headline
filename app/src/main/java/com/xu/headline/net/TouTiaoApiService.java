@@ -2,7 +2,8 @@ package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
 import com.xu.headline.base.SuggestSearchBean;
-import com.xu.headline.bean.NewsSuggestChaanelBean;
+import com.xu.headline.bean.NewsSuggestChannelBean;
+import com.xu.headline.bean.TouTiaoNewsListBean;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -31,10 +32,10 @@ public interface TouTiaoApiService {
      * @param versionCode    1
      * @param versionName    2
      * @param devicePlatform d
-     * @return
+     * @return observable
      */
 
-    @GET("search/suggest/homepage_suggest")
+    @GET("search/suggest/homepage_suggest/")
     Observable<BaseResBean<SuggestSearchBean>> getSuggestSearch(@Query("flag") int flag,
                                                                 @Query("suggest_params") String suggestParams,
                                                                 @Query("recom_cnt") int recomCnt,
@@ -60,9 +61,10 @@ public interface TouTiaoApiService {
      * @param versionCode    1
      * @param versionName    2
      * @param devicePlatform d
+     * @return observable
      */
-    @GET("article/category/get_subscribed/v2")
-    Observable<BaseResBean<NewsSuggestChaanelBean>> getSuggestChannel(@Query("iid") String iid,
+    @GET("article/category/get_subscribed/v2/")
+    Observable<BaseResBean<NewsSuggestChannelBean>> getSuggestChannel(@Query("iid") String iid,
                                                                       @Query("device_id") String deviceID,
                                                                       @Query("ac") String ac,
                                                                       @Query("channel") String channel,
@@ -72,5 +74,28 @@ public interface TouTiaoApiService {
                                                                       @Query("version_name") String versionName,
                                                                       @Query("device_platform") String devicePlatform);
 
-
+    /**
+     * 获取新闻列表
+     *
+     * @param listCount         20
+     * @param category          新闻类型
+     * @param refer             1
+     * @param refreshReason     1
+     * @param sessionRefreshIdx 5
+     * @param count             20
+     * @param currentTime       当前时间
+     * @param lastRefreshTime   上一次刷新时间
+     * @param iid
+     * @return observable
+     */
+    @GET("api/news/feed/v74/")
+    Observable<TouTiaoNewsListBean> getNewsList(@Query("list_count") int listCount,
+                                                @Query("category") String category,
+                                                @Query("refer") int refer,
+                                                @Query("refresh_reason") int refreshReason,
+                                                @Query("session_refresh_idx") int sessionRefreshIdx,
+                                                @Query("count") int count,
+                                                @Query("min_behot_time") long lastRefreshTime,
+                                                @Query("last_refresh_sub_entrance_interval") long currentTime,
+                                                @Query("iid") String iid);
 }

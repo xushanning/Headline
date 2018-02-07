@@ -21,10 +21,12 @@ import com.xu.headline.R;
 import com.xu.headline.adapter.HomeDetailQuickAdapter;
 import com.xu.headline.base.BaseFragment;
 import com.xu.headline.bean.NewsListBean;
+import com.xu.headline.bean.TouTiaoListItemBean;
 import com.xu.headline.ui.activity.articledetail.ArticleDetailActivity;
 import com.xu.headline.utils.TransformUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -89,7 +91,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvHomeDetail.setLayoutManager(layoutManager);
 
-        homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<NewsListBean.PagebeanBean.ContentlistBean>());
+       // homeDetailQuickAdapter = new HomeDetailQuickAdapter(R.layout.item_home_detail, new ArrayList<NewsListBean.PagebeanBean.ContentlistBean>());
         rvHomeDetail.setAdapter(homeDetailQuickAdapter);
         //加载更多
         homeDetailQuickAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
@@ -140,15 +142,15 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     }
 
     @Override
-    public void loadNewsList(NewsListBean newsListBean) {
-        if (newsListBean == null) {
+    public void loadNewsList(List<TouTiaoListItemBean> itemBeans) {
+        if (itemBeans == null) {
             //展示加载失败的view
             // homeDetailQuickAdapter.setEmptyView();
         } else {
-            showNotice("今日头条推荐引擎有" + newsListBean.getPagebean().getContentlist().size() + "条更新");
-            totalNewsCount = newsListBean.getPagebean().getAllNum();
-            homeDetailQuickAdapter.setNewData(newsListBean.getPagebean().getContentlist());
-            loadDataCount++;
+            showNotice("今日头条推荐引擎有" + itemBeans.size() + "条更新");
+            //totalNewsCount = newsListBean.getPagebean().getAllNum();
+          //  homeDetailQuickAdapter.setNewData(newsListBean.getPagebean().getContentlist());
+            //loadDataCount++;
         }
 
     }
@@ -160,7 +162,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
             homeDetailQuickAdapter.loadMoreFail();
         } else {
             totalNewsCount = newsListBean.getPagebean().getAllNum();
-            homeDetailQuickAdapter.addData(newsListBean.getPagebean().getContentlist());
+          //  homeDetailQuickAdapter.addData(newsListBean.getPagebean().getContentlist());
             homeDetailQuickAdapter.loadMoreComplete();
             //已经加载的数量
             alreadyLoadedNewsCount = homeDetailQuickAdapter.getData().size();
