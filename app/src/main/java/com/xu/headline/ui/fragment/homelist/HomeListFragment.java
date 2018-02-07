@@ -7,31 +7,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeDetailQuickAdapter;
+import com.xu.headline.adapter.MultiNewsItem;
 import com.xu.headline.base.BaseFragment;
 import com.xu.headline.bean.NewsListBean;
-import com.xu.headline.bean.TouTiaoListItemBean;
 import com.xu.headline.ui.activity.articledetail.ArticleDetailActivity;
 import com.xu.headline.utils.TransformUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 
@@ -142,7 +136,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     }
 
     @Override
-    public void loadNewsList(List<TouTiaoListItemBean> itemBeans) {
+    public void loadNewsList(List<MultiNewsItem> itemBeans) {
         if (itemBeans == null) {
             //展示加载失败的view
             // homeDetailQuickAdapter.setEmptyView();

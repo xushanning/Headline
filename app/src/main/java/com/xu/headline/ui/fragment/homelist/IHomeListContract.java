@@ -1,8 +1,8 @@
 package com.xu.headline.ui.fragment.homelist;
 
+import com.xu.headline.adapter.MultiNewsItem;
 import com.xu.headline.base.IBaseContract;
 import com.xu.headline.bean.NewsListBean;
-import com.xu.headline.bean.TouTiaoListItemBean;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public interface IHomeListContract {
          *
          * @param itemBeans 新闻列表
          */
-        void loadNewsList(List<TouTiaoListItemBean> itemBeans);
+        void loadNewsList(List<MultiNewsItem> itemBeans);
 
         /**
          * 加载更多

@@ -1,18 +1,8 @@
 package com.xu.headline.adapter;
 
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
-import com.xu.headline.bean.IDataNewsBean;
-import com.xu.headline.bean.NewsListBean;
-import com.xu.headline.bean.TouTiaoListItemBean;
-import com.xu.headline.utils.ImageLoaderUtil;
 
 import java.util.List;
 
@@ -38,7 +28,7 @@ public class HomeDetailQuickAdapter extends BaseMultiItemQuickAdapter<MultiNewsI
     protected void convert(BaseViewHolder helper, MultiNewsItem item) {
         switch (item.getItemType()) {
             case MultiNewsItem.TEXT_NEWS:
-
+                item.getItemBean();
                 break;
             case MultiNewsItem.SINGLE_SMALL_IMG_NEWS:
 

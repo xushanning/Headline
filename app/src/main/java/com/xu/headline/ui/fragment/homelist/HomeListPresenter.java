@@ -1,24 +1,19 @@
 package com.xu.headline.ui.fragment.homelist;
 
 import com.google.gson.Gson;
-import com.orhanobut.logger.Logger;
+import com.xu.headline.adapter.MultiNewsItem;
 import com.xu.headline.base.BasePresenter;
-import com.xu.headline.base.BaseShowApiResBean;
-import com.xu.headline.bean.NewsListBean;
 import com.xu.headline.bean.TouTiaoListItemBean;
 import com.xu.headline.bean.TouTiaoNewsListBean;
-import com.xu.headline.net.BaseHttpResultObserver;
 import com.xu.headline.net.HttpConstants;
 import com.xu.headline.net.RetrofitFactory;
 import com.xu.headline.utils.TransformUtils;
-
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 /**
  * Created by xusn10 on 2018/1/18.
@@ -55,29 +50,45 @@ public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeList
 //                });
         RetrofitFactory.getTouTiaoApi()
                 .getNewsList("news_hot", 1517903824)
-                .compose(mView.<TouTiaoNewsListBean>bindToLife())
-                .compose(TransformUtils.<TouTiaoNewsListBean>defaultSchedulers())
-                .subscribe(new Consumer<TouTiaoNewsListBean>() {
+                .map(new Function<TouTiaoNewsListBean, List<MultiNewsItem>>() {
                     @Override
-                    public void accept(TouTiaoNewsListBean touTiaoNewsListBean) throws Exception {
+                    public List<MultiNewsItem> apply(TouTiaoNewsListBean touTiaoNewsListBean) throws Exception {
                         if (HttpConstants.REQUEST_SUCCESS.equals(touTiaoNewsListBean.getMessage())) {
-                            List<TouTiaoListItemBean> itemBeans = new ArrayList<>(touTiaoNewsListBean.getData().size());
+                            List<MultiNewsItem> items = new ArrayList<>(touTiaoNewsListBean.getData().size());
                             for (TouTiaoNewsListBean.DataBean dataBean : touTiaoNewsListBean.getData()) {
                                 String itemString = dataBean.getContent();
                                 //返回的字符串不符合标准json，处理一下
                                 String handleString = itemString.replace("\\", "").replace("\"{", "{").replace("}\"", "}");
                                 TouTiaoListItemBean itemBean = new Gson().fromJson(handleString, TouTiaoListItemBean.class);
-                                Logger.d(itemBean.getAbstractX());
-                                itemBeans.add(itemBean);
-                            }
-                            mView.loadNewsList(itemBeans);
+                                int itemType = 1;
+                                //是否有图片，没有，纯text的item
+                                if (itemBean.isHas_image()) {
 
+                                } else {
+                                    //无图片
+                                    itemType = MultiNewsItem.TEXT_NEWS;
+                                }
+                                MultiNewsItem multiNewsItem = new MultiNewsItem(itemType);
+                                multiNewsItem.setItemBean(itemBean);
+                                items.add(multiNewsItem);
+                            }
+
+                            return items;
                         }
+                        return null;
+                    }
+                })
+                .compose(mView.<List<MultiNewsItem>>bindToLife())
+                .compose(TransformUtils.<List<MultiNewsItem>>defaultSchedulers())
+                .subscribe(new Consumer<List<MultiNewsItem>>() {
+                    @Override
+                    public void accept(List<MultiNewsItem> multiNewsItems) throws Exception {
+                        mView.loadNewsList(multiNewsItems);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        Logger.d(throwable.getMessage());
+
                     }
                 });
     }
