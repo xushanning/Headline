@@ -17,26 +17,22 @@ public interface IHomeListContract {
         /**
          * 加载新闻列表
          *
-         * @param itemBeans 新闻列表
+         * @param itemBeans  新闻列表
+         * @param actionType 动作类型（第一次加载，上拉加载，下拉加载）
          */
-        void loadNewsList(List<MultiNewsItem> itemBeans);
+        void loadNewsList(List<MultiNewsItem> itemBeans, int actionType);
 
-        /**
-         * 加载更多
-         *
-         * @param newsListBean 频道列表
-         */
-        void loadMoreData(NewsListBean newsListBean);
+
     }
 
     interface IHomeListPresenter extends IBaseContract.IBasePresenter<IHomeListView> {
         /**
          * 获取新闻列表
          *
-         * @param channel 频道名称
-         * @param page    加载第几页
+         * @param channel    频道名称
+         * @param actionType 动作类型（第一次加载，上拉加载，下拉加载）
          */
-        void getNewsList(String channel, int page);
+        void getNewsList(String channel, int actionType);
 
     }
 }

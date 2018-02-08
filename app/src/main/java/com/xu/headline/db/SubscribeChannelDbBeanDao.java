@@ -30,6 +30,7 @@ public class SubscribeChannelDbBeanDao extends AbstractDao<SubscribeChannelDbBea
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property IMei = new Property(1, String.class, "iMei", false, "I_MEI");
         public final static Property Channels = new Property(2, String.class, "channels", false, "CHANNELS");
+        public final static Property Time = new Property(3, long.class, "time", false, "TIME");
     }
 
     private final ChannelListConvert channelsConverter = new ChannelListConvert();
@@ -48,7 +49,8 @@ public class SubscribeChannelDbBeanDao extends AbstractDao<SubscribeChannelDbBea
         db.execSQL("CREATE TABLE " + constraint + "\"SUBSCRIBE_CHANNEL_DB_BEAN\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"I_MEI\" TEXT," + // 1: iMei
-                "\"CHANNELS\" TEXT);"); // 2: channels
+                "\"CHANNELS\" TEXT," + // 2: channels
+                "\"TIME\" INTEGER NOT NULL );"); // 3: time
     }
 
     /** Drops the underlying database table. */
@@ -75,6 +77,7 @@ public class SubscribeChannelDbBeanDao extends AbstractDao<SubscribeChannelDbBea
         if (channels != null) {
             stmt.bindString(3, channelsConverter.convertToDatabaseValue(channels));
         }
+        stmt.bindLong(4, entity.getTime());
     }
 
     @Override
@@ -95,6 +98,7 @@ public class SubscribeChannelDbBeanDao extends AbstractDao<SubscribeChannelDbBea
         if (channels != null) {
             stmt.bindString(3, channelsConverter.convertToDatabaseValue(channels));
         }
+        stmt.bindLong(4, entity.getTime());
     }
 
     @Override
@@ -107,7 +111,8 @@ public class SubscribeChannelDbBeanDao extends AbstractDao<SubscribeChannelDbBea
         SubscribeChannelDbBean entity = new SubscribeChannelDbBean( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // iMei
-            cursor.isNull(offset + 2) ? null : channelsConverter.convertToEntityProperty(cursor.getString(offset + 2)) // channels
+            cursor.isNull(offset + 2) ? null : channelsConverter.convertToEntityProperty(cursor.getString(offset + 2)), // channels
+            cursor.getLong(offset + 3) // time
         );
         return entity;
     }
@@ -117,6 +122,7 @@ public class SubscribeChannelDbBeanDao extends AbstractDao<SubscribeChannelDbBea
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setIMei(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setChannels(cursor.isNull(offset + 2) ? null : channelsConverter.convertToEntityProperty(cursor.getString(offset + 2)));
+        entity.setTime(cursor.getLong(offset + 3));
      }
     
     @Override

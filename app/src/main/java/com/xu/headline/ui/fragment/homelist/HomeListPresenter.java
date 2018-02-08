@@ -1,12 +1,14 @@
 package com.xu.headline.ui.fragment.homelist;
 
 import com.google.gson.Gson;
+import com.orhanobut.logger.Logger;
 import com.xu.headline.adapter.MultiNewsItem;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.bean.TouTiaoListItemBean;
 import com.xu.headline.bean.TouTiaoNewsListBean;
 import com.xu.headline.net.HttpConstants;
 import com.xu.headline.net.RetrofitFactory;
+import com.xu.headline.utils.SharedPreUtil;
 import com.xu.headline.utils.TransformUtils;
 
 import java.util.ArrayList;
@@ -22,34 +24,17 @@ import io.reactivex.functions.Function;
  */
 
 public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeListView> implements IHomeListContract.IHomeListPresenter {
+    /**
+     * 最后一次刷新时间
+     */
+    private long lastRefreshTime;
 
     @Override
-    public void getNewsList(String channelID, final int page) {
-//        RetrofitFactory.getNewsApi()
-//                .getNewsList(HttpConstants.SHOW_API_APP_ID, HttpConstants.SHOW_API_SECRET, channelID, page)
-//                .compose(mView.<BaseShowApiResBean<NewsListBean>>bindToLife())
-//                .compose(TransformUtils.<BaseShowApiResBean<NewsListBean>>defaultSchedulers())
-//                .subscribe(new BaseHttpResultObserver<NewsListBean>() {
-//                    @Override
-//                    protected void onSuccess(NewsListBean newsListBean) {
-//                        if (page == 1) {
-//                            mView.loadNewsList(newsListBean);
-//                        } else {
-//                            mView.loadMoreData(newsListBean);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable e) {
-//                        if (page == 1) {
-//                            mView.loadNewsList(null);
-//                        } else {
-//                            mView.loadMoreData(null);
-//                        }
-//                    }
-//                });
+    public void getNewsList(final String channelID, final int actionType) {
+        lastRefreshTime = SharedPreUtil.getLong("channelID", System.currentTimeMillis() / 1000);
+        Logger.d("上一次刷新时间:" + lastRefreshTime);
         RetrofitFactory.getTouTiaoApi()
-                .getNewsList("news_hot", 1517903824)
+                .getNewsList(channelID, lastRefreshTime)
                 .map(new Function<TouTiaoNewsListBean, List<MultiNewsItem>>() {
                     @Override
                     public List<MultiNewsItem> apply(TouTiaoNewsListBean touTiaoNewsListBean) throws Exception {
@@ -61,12 +46,27 @@ public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeList
                                 String handleString = itemString.replace("\\", "").replace("\"{", "{").replace("}\"", "}");
                                 TouTiaoListItemBean itemBean = new Gson().fromJson(handleString, TouTiaoListItemBean.class);
                                 int itemType = 1;
-                                //是否有图片，没有，纯text的item
+                                //是否有图片
                                 if (itemBean.isHas_image()) {
+                                    if (itemBean.getImage_list() != null) {
+                                        //多图
+                                        itemType = MultiNewsItem.MULTI_IMG_NEWS;
+                                    } else {
+                                        if (itemBean.getMiddle_image() != null) {
+                                            //右边小图都是middle
+                                            itemType = MultiNewsItem.SINGLE_SMALL_IMG_NEWS;
+                                        }
+                                    }
 
                                 } else {
-                                    //无图片
-                                    itemType = MultiNewsItem.TEXT_NEWS;
+                                    //无图片，分为两种情况，一种纯text的item，另外一种是广告
+                                    if (itemBean.getLarge_image_list() != null) {
+                                        //广告
+                                        itemType = MultiNewsItem.AD_NEWS;
+                                    } else {
+                                        itemType = MultiNewsItem.TEXT_NEWS;
+                                    }
+
                                 }
                                 MultiNewsItem multiNewsItem = new MultiNewsItem(itemType);
                                 multiNewsItem.setItemBean(itemBean);
@@ -83,7 +83,8 @@ public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeList
                 .subscribe(new Consumer<List<MultiNewsItem>>() {
                     @Override
                     public void accept(List<MultiNewsItem> multiNewsItems) throws Exception {
-                        mView.loadNewsList(multiNewsItems);
+                        mView.loadNewsList(multiNewsItems, actionType);
+                        SharedPreUtil.putLong(channelID, System.currentTimeMillis() / 1000);
                     }
                 }, new Consumer<Throwable>() {
                     @Override

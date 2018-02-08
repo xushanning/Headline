@@ -27,6 +27,13 @@
     <string name="buttonAllow">好的</string>
     <string name="buttonCancel">取消</string>
 
+    <!--homeList-->
+    <string name="time_in_a_minute">刚刚</string>
+    <string name="time_in_a_hour">分钟前</string>
+    <string name="time_in_a_day">小时前</string>
+    <string name="time_out_a_day">一天前</string>
+
+
     <string-array name="newsChannel">
         <item>社会</item>
         <item>娱乐</item>
@@ -98,23 +105,7 @@
         <item>news_health</item>
         <!--房产-->
         <item>news_house</item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
+
 
     </string-array>
 </resources>

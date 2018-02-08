@@ -21,15 +21,23 @@ import java.util.List;
 public class SubscribeChannelDbBean {
     @Id(autoincrement = true)
     private Long id;
+    /**
+     * iMei号作为区分的标志
+     */
     private String iMei;
     @Convert(columnType = String.class, converter = ChannelListConvert.class)
     private List<NewsSuggestChannelBean.DataBean> channels;
-    @Generated(hash = 253204302)
+    /**
+     * 获取频道的时间（如果超过24小时，那么重新获取）
+     */
+    private long time;
+    @Generated(hash = 966944541)
     public SubscribeChannelDbBean(Long id, String iMei,
-            List<NewsSuggestChannelBean.DataBean> channels) {
+            List<NewsSuggestChannelBean.DataBean> channels, long time) {
         this.id = id;
         this.iMei = iMei;
         this.channels = channels;
+        this.time = time;
     }
     @Generated(hash = 764994389)
     public SubscribeChannelDbBean() {
@@ -52,4 +60,11 @@ public class SubscribeChannelDbBean {
     public void setChannels(List<NewsSuggestChannelBean.DataBean> channels) {
         this.channels = channels;
     }
+    public long getTime() {
+        return this.time;
+    }
+    public void setTime(long time) {
+        this.time = time;
+    }
+
 }

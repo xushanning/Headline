@@ -132,4 +132,13 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         app:srcCompat="@mipmap/ic_channel_add" />
 
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/colorHomeDetailLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout_home">
+
+    </View>
 </android.support.constraint.ConstraintLayout>

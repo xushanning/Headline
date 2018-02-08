@@ -2,6 +2,7 @@ package com.xu.headline.ui.fragment.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.StatFs;
 import android.support.v7.app.WindowDecorActionBar;
 import android.telephony.TelephonyManager;
 
@@ -42,6 +43,16 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
      */
     private static final int DEFAULT_CHANNEL_COUNT = 7;
 
+    /**
+     * 数据库中的频道有效时间为24小时，超过24小时，需要重新联网获取
+     */
+    private static final int EFFECTIVE_TIME = 86400;
+
+    /**
+     * 将毫秒转换成秒
+     */
+    private static final int MINUTE = 1000;
+
     @Override
     public void initChannel() {
         TelephonyManager telephonyManager = (TelephonyManager) MyApplication.getContext().getSystemService(Context.TELEPHONY_SERVICE);
@@ -58,7 +69,14 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                     e.onComplete();
                 } else {
                     Logger.d("数据库中有数据");
-                    e.onNext(channelDbBean.getChannels());
+                    if (System.currentTimeMillis() / MINUTE - channelDbBean.getTime() > EFFECTIVE_TIME) {
+                        //结束，请求网络
+                        e.onComplete();
+                    } else {
+                        //在有效期内，发送频道
+                        e.onNext(channelDbBean.getChannels());
+                    }
+
                 }
             }
         }).subscribeOn(Schedulers.io());
@@ -69,7 +87,6 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                             @Override
                             public List<NewsSuggestChannelBean.DataBean> apply(BaseResBean<NewsSuggestChannelBean> baseResBean) throws Exception {
                                 return HttpConstants.REQUEST_SUCCESS.equals(baseResBean.getMessage()) ? baseResBean.getData().getData() : null;
-
                             }
                         })
                         .doOnNext(new Consumer<List<NewsSuggestChannelBean.DataBean>>() {
@@ -80,6 +97,7 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                                     SubscribeChannelDbBeanDao channelDbBeanDao = MyApplication.getInstance().getDaoSession().getSubscribeChannelDbBeanDao();
                                     SubscribeChannelDbBean dbBean = new SubscribeChannelDbBean();
                                     dbBean.setIMei(iMei);
+                                    dbBean.setTime(System.currentTimeMillis() / 1000);
                                     dbBean.setChannels(channelListBeans);
                                     channelDbBeanDao.insert(dbBean);
                                 }

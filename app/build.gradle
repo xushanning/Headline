@@ -48,6 +48,8 @@ dependencies {
     implementation rootProject.ext.dependencies["statusBarUtil"]
     implementation rootProject.ext.dependencies["baseRecyclerViewAdapterHelper"]
     implementation rootProject.ext.dependencies["searchView"]
+    implementation rootProject.ext.dependencies["smartRefreshLayout"]
+
 
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["greendao"]
