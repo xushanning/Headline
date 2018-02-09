@@ -24,14 +24,11 @@ import io.reactivex.functions.Function;
  */
 
 public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeListView> implements IHomeListContract.IHomeListPresenter {
-    /**
-     * 最后一次刷新时间
-     */
-    private long lastRefreshTime;
 
     @Override
     public void getNewsList(final String channelID, final int actionType) {
-        lastRefreshTime = SharedPreUtil.getLong("channelID", System.currentTimeMillis() / 1000);
+        //最后一次刷新时间
+        long lastRefreshTime = SharedPreUtil.getLong("channelID", System.currentTimeMillis() / 1000);
         Logger.d("上一次刷新时间:" + lastRefreshTime);
         RetrofitFactory.getTouTiaoApi()
                 .getNewsList(channelID, lastRefreshTime)

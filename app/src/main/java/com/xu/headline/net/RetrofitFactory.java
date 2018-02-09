@@ -82,26 +82,11 @@ public class RetrofitFactory {
         }
     };
 
-    /**
-     * 获取NewsApiService
-     *
-     * @return NewsApiService
-     */
-    public static NewsApiService getNewsApi() {
-        return new Retrofit
-                .Builder()
-                .baseUrl(HttpConstants.SHOW_API_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(getOkHttpClient())
-                .build()
-                .create(NewsApiService.class);
-    }
 
     /**
-     * 获取NewsApiService
+     * TouTiaoApi
      *
-     * @return NewsApiService
+     * @return TouTiaoApi
      */
     public static TouTiaoApi getTouTiaoApi() {
         return TouTiaoApi.getInstance(
@@ -113,5 +98,23 @@ public class RetrofitFactory {
                         .client(getOkHttpClient())
                         .build()
                         .create(TouTiaoApiService.class));
+    }
+
+    /**
+     * 获取头条文章类接口
+     *
+     * @return TouTiaoArticleApi
+     */
+    public static TouTiaoArticleApi getTouTiaoArticleApi() {
+        return TouTiaoArticleApi.getInstance(
+                new Retrofit
+                        .Builder()
+                        .baseUrl(HttpConstants.TOU_TIAO_ARTICAL_BASE_URL)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                        .client(getOkHttpClient())
+                        .build()
+                        .create(TouTiaoArticleApiService.class));
+
     }
 }

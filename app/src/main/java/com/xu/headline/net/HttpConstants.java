@@ -14,16 +14,13 @@ public class HttpConstants {
      */
     public static final String SHOW_API_BASE_URL = "http://route.showapi.com/";
 
-    /**
-     * showApi appId
-     */
-    public static final String SHOW_API_APP_ID = "54582";
-    /**
-     * showApi secret
-     */
-    public static final String SHOW_API_SECRET = "5f387b649a5a49c7bd389f39e8f08212";
 
     public static final String TOU_TIAO_BASE_URL = "https://lf.snssdk.com/";
+
+    /**
+     * 头条新闻文章详情的base
+     */
+      static final String TOU_TIAO_ARTICAL_BASE_URL = "https://a3.pstatp.com/";
     /**
      * 请求成功
      */

@@ -2,17 +2,13 @@ package com.xu.headline.ui.fragment.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.StatFs;
-import android.support.v7.app.WindowDecorActionBar;
 import android.telephony.TelephonyManager;
 
 import com.orhanobut.logger.Logger;
 import com.xu.headline.MyApplication;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.base.BaseShowApiResBean;
-import com.xu.headline.base.SuggestSearchBean;
-import com.xu.headline.bean.NewsChannelListBean;
+import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
 import com.xu.headline.db.SubscribeChannelDbBeanDao;
 import com.xu.headline.db.dbbean.SubscribeChannelDbBean;
@@ -21,7 +17,6 @@ import com.xu.headline.net.HttpConstants;
 import com.xu.headline.net.RetrofitFactory;
 import com.xu.headline.utils.TransformUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;

@@ -1,7 +1,7 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.base.SuggestSearchBean;
+import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
 import com.xu.headline.bean.TouTiaoNewsListBean;
 
@@ -21,7 +21,16 @@ public class TouTiaoApi {
         this.touTiaoApiService = touTiaoApiService;
     }
 
-    public static TouTiaoApi getInstance(TouTiaoApiService touTiaoApiService) {
+
+
+    /**
+     * 获取TouTiaoApi
+     *
+     * @param touTiaoApiService touTiaoApiService
+     * @return TouTiaoApi
+     */
+
+    static TouTiaoApi getInstance(TouTiaoApiService touTiaoApiService) {
         if (touTiaoApi == null) {
             touTiaoApi = new TouTiaoApi(touTiaoApiService);
         }

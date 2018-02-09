@@ -1,4 +1,4 @@
-package com.xu.headline.base;
+package com.xu.headline.bean;
 
 import com.google.gson.annotations.SerializedName;
 

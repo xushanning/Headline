@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jakewharton.rxbinding2.view.RxView;
 import com.xu.headline.ui.activity.main.MainActivity;
 import com.xu.headline.R;
 import com.xu.headline.base.BaseActivity;
@@ -15,6 +16,8 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.OnClick;
 import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.observers.DisposableObserver;
 
@@ -71,6 +74,15 @@ public class WelcomeActivity extends BaseActivity<IWelcomeContract.IWelcomePrese
                     }
                 })
         );
+        RxView.clicks(tvSkip)
+                .throttleFirst(3, TimeUnit.SECONDS)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Object>() {
+                    @Override
+                    public void accept(Object o) throws Exception {
+                        jumpToMain();
+                    }
+                });
     }
 
     @Override
@@ -82,12 +94,6 @@ public class WelcomeActivity extends BaseActivity<IWelcomeContract.IWelcomePrese
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();
-    }
-
-
-    @OnClick(R.id.tv_skip)
-    public void onViewClicked() {
-        jumpToMain();
     }
 
 

@@ -3,6 +3,7 @@ package com.xu.headline.ui.fragment.homelist;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.xu.headline.adapter.HomeListQuickAdapter;
 import com.xu.headline.adapter.MultiNewsItem;
 import com.xu.headline.base.BaseFragment;
 import com.xu.headline.bean.NewsListBean;
+import com.xu.headline.ui.activity.newsdetail.NewsDetailActivity;
 import com.xu.headline.utils.TransformUtils;
 
 import java.util.ArrayList;
@@ -90,7 +92,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     public void initOthers() {
         if (getArguments() != null) {
             channelID = getArguments().getString("channelID");
-            mPresenter.getNewsList("news_hot", FIRST_LOAD);
+            mPresenter.getNewsList(channelID, FIRST_LOAD);
         }
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -110,13 +112,10 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
         homeListQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                NewsListBean.PagebeanBean.ContentlistBean bean = (NewsListBean.PagebeanBean.ContentlistBean) adapter.getItem(position);
-//                Intent intent = new Intent(getActivity(), ArticleDetailActivity.class);
-//                intent.putExtra("time", bean.getPubDate());
-//                intent.putExtra("title", bean.getTitle());
-//                intent.putExtra("source", bean.getSource());
-//                intent.putExtra("detailURL", bean.getLink());
-//                startActivity(intent);
+                MultiNewsItem newsItem = (MultiNewsItem) adapter.getItem(position);
+                Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
+                intent.putExtra("newsID", newsItem.getItemBean().getItem_id());
+                startActivity(intent);
 
             }
         });
@@ -131,14 +130,14 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                mPresenter.getNewsList("news_hot", PULL_DOWN_LOAD);
+                mPresenter.getNewsList(channelID, PULL_DOWN_LOAD);
             }
         });
         //上拉加载
         smartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                mPresenter.getNewsList("news_hot", PULL_LOAD);
+                mPresenter.getNewsList(channelID, PULL_LOAD);
             }
         });
         //牵扯到动画，必须测量

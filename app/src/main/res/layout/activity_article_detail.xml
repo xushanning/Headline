@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="gone"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_back"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,23 +40,22 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="--"
+            android:text="羊城晚报"
             android:textColor="@android:color/black"
             android:textStyle="bold"
-            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/img_source_bar"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_time_bar"
+            android:id="@+id/tv_fans_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
-            android:text="--"
+            android:text="22万粉丝"
             android:textColor="#989898"
             android:textSize="@dimen/sp_12"
-            android:visibility="gone"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_source_bar" />
 
@@ -156,14 +155,7 @@
                 </RelativeLayout>
             </RelativeLayout>
 
-            <WebView
-                android:id="@+id/web_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="45dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:background="@android:color/white" />
+
 
         </LinearLayout>
     </com.xu.headline.view.CustomScrollView>
