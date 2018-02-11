@@ -1,6 +1,7 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
+import com.xu.headline.bean.AuthorInfoBean;
 import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
@@ -139,4 +140,48 @@ public interface TouTiaoApiService {
                                                @Query("version_name") String versionName,
                                                @Query("device_platform") String devicePlatform
     );
+
+    /**
+     * 获取头条号作者的信息
+     *
+     * @param latitude 纬度
+     * @param longitude 经度
+     * @param groupID g
+     * @param itemID i
+     * @param aggrType a
+     * @param context c
+     * @param category 文章类型：热点、图片、新时代  之类
+     * @param articlePage 第几页
+     * @param iid            id
+     * @param deviceID       d
+     * @param ac             a
+     * @param channel        c
+     * @param aid            a
+     * @param appName        a
+     * @param versionCode    1
+     * @param versionName    2
+     * @param devicePlatform d
+     * @return Observable
+     */
+
+    @GET("2/article/information/v24/")
+    Observable<BaseResBean<AuthorInfoBean>> getAuthorInfo(@Query("latitude") double latitude,
+                                                          @Query("longitude") double longitude,
+                                                          @Query("group_id") long groupID,
+                                                          @Query("item_id") long itemID,
+                                                          @Query("aggr_type") int aggrType,
+                                                          @Query("context") int context,
+                                                          @Query("from_category") String category,
+                                                          @Query("article_page") int articlePage,
+                                                          @Query("iid") String iid,
+                                                          @Query("device_id") String deviceID,
+                                                          @Query("ac") String ac,
+                                                          @Query("channel") String channel,
+                                                          @Query("aid") int aid,
+                                                          @Query("app_name") String appName,
+                                                          @Query("version_code") int versionCode,
+                                                          @Query("version_name") String versionName,
+                                                          @Query("device_platform") String devicePlatform);
+
+
 }

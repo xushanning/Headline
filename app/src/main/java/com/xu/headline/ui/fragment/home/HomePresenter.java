@@ -89,12 +89,23 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                             public void accept(List<NewsSuggestChannelBean.DataBean> channelListBeans) throws Exception {
                                 //请求成功，存数据库
                                 if (channelListBeans != null) {
+                                    //看是否有，如果有，那么更新
                                     SubscribeChannelDbBeanDao channelDbBeanDao = MyApplication.getInstance().getDaoSession().getSubscribeChannelDbBeanDao();
-                                    SubscribeChannelDbBean dbBean = new SubscribeChannelDbBean();
-                                    dbBean.setIMei(iMei);
-                                    dbBean.setTime(System.currentTimeMillis() / 1000);
-                                    dbBean.setChannels(channelListBeans);
-                                    channelDbBeanDao.insert(dbBean);
+                                    SubscribeChannelDbBean dbBeanLocal = channelDbBeanDao.queryBuilder().where(SubscribeChannelDbBeanDao.Properties.IMei.eq(iMei)).build().unique();
+                                    if (dbBeanLocal == null) {
+                                        //无数据，插入
+                                        SubscribeChannelDbBean dbBean = new SubscribeChannelDbBean();
+                                        dbBean.setIMei(iMei);
+                                        dbBean.setTime(System.currentTimeMillis() / 1000);
+                                        dbBean.setChannels(channelListBeans);
+                                        channelDbBeanDao.insert(dbBean);
+                                    } else {
+                                        //有数据,更新
+                                        dbBeanLocal.setTime(System.currentTimeMillis() / 1000);
+                                        dbBeanLocal.setChannels(channelListBeans);
+                                        channelDbBeanDao.update(dbBeanLocal);
+                                    }
+
                                 }
                             }
                         }).subscribeOn(Schedulers.io());

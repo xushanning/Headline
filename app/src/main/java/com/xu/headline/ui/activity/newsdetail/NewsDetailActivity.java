@@ -31,8 +31,8 @@ import butterknife.OnClick;
 public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDetailPresenter> implements INewsDetailContract.INewsDetailView {
     @BindView(R.id.tv_source_bar)
     TextView tvSourceBar;
-    @BindView(R.id.tv_comment_count)
-    TextView tvCommentCount;
+//    @BindView(R.id.tv_comment_count)
+//    TextView tvCommentCount;
     @BindView(R.id.tv_follow_bar)
     TextView tvtFollowBar;
     @BindView(R.id.tv_source_blow)
@@ -64,7 +64,8 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     public void initOthers() {
         super.initOthers();
         long newsID = getIntent().getLongExtra("newsID", 0);
-        mPresenter.getNewsDetailsData(newsID);
+        String channelID = getIntent().getStringExtra("channelID");
+        mPresenter.getNewsDetailsData(newsID, channelID);
 
         //StatusBarUtil.setColorForSwipeBack(this, Color.parseColor("#BDBDBD"), 30);
 
@@ -74,12 +75,12 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
                 if (y > rlBlowBar.getHeight()) {
                     imgSourceBar.setVisibility(View.VISIBLE);
                     tvSourceBar.setVisibility(View.VISIBLE);
-                    tvCommentCount.setVisibility(View.VISIBLE);
+                    //tvCommentCount.setVisibility(View.VISIBLE);
                     tvtFollowBar.setVisibility(View.VISIBLE);
                 } else {
                     imgSourceBar.setVisibility(View.GONE);
                     tvSourceBar.setVisibility(View.GONE);
-                    tvCommentCount.setVisibility(View.GONE);
+                    //tvCommentCount.setVisibility(View.GONE);
                     tvtFollowBar.setVisibility(View.GONE);
                 }
             }
@@ -107,7 +108,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     public void loadNewsDetailsData(NewsDetailsBean newsDetailsBean) {
         tvSourceBar.setText(newsDetailsBean.getH5_extra().getSource());
         tvSourceBlow.setText(newsDetailsBean.getH5_extra().getSource());
-        tvCommentCount.setText("");
+        //tvCommentCount.setText("");
         tvTimeBlow.setText("");
         tvTitle.setText("");
     }

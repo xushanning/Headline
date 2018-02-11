@@ -1,7 +1,7 @@
 package com.xu.headline.net;
 
+import com.orhanobut.logger.Logger;
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.base.BaseShowApiResBean;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -34,7 +34,7 @@ public abstract class BaseTouTiaoResObserver<T> implements Observer<BaseResBean<
 
     @Override
     public void onError(Throwable e) {
-
+        Logger.d(e.getMessage());
     }
 
     /**

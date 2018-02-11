@@ -23,8 +23,9 @@ public interface INewsDetailContract {
         /**
          * 获取新闻详情
          *
-         * @param newsID 新闻详情
+         * @param newsID    新闻id
+         * @param channelID 频道id
          */
-        void getNewsDetailsData(long newsID);
+        void getNewsDetailsData(long newsID, String channelID);
     }
 }

@@ -1,6 +1,7 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
+import com.xu.headline.bean.AuthorInfoBean;
 import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
 import com.xu.headline.bean.TouTiaoNewsListBean;
@@ -20,7 +21,6 @@ public class TouTiaoApi {
     private TouTiaoApi(TouTiaoApiService touTiaoApiService) {
         this.touTiaoApiService = touTiaoApiService;
     }
-
 
 
     /**
@@ -63,8 +63,21 @@ public class TouTiaoApi {
      *
      * @param category        频道类型
      * @param lastRefreshTime 上一次刷新的时间
+     * @return observable
      */
     public Observable<TouTiaoNewsListBean> getNewsList(String category, long lastRefreshTime) {
         return touTiaoApiService.getNewsList(20, category, 1, 1, 5, 20, lastRefreshTime, System.currentTimeMillis() / 1000, "25206805877");
+    }
+
+    /**
+     * 获取头条号作者信息
+     *
+     * @param newsID  id
+     * @param category 文章来源类型
+     * @return observable
+     */
+    public Observable<BaseResBean<AuthorInfoBean>> getAuthorInfo(long newsID, String category) {
+        return touTiaoApiService.getAuthorInfo(39.908766, 116.366742, newsID, newsID, 1, 1, category, 0, "25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
+                654, "6.5.4", "android");
     }
 }

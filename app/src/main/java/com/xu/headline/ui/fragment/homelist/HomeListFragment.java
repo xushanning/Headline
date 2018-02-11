@@ -115,6 +115,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
                 MultiNewsItem newsItem = (MultiNewsItem) adapter.getItem(position);
                 Intent intent = new Intent(getActivity(), NewsDetailActivity.class);
                 intent.putExtra("newsID", newsItem.getItemBean().getItem_id());
+                intent.putExtra("channelID", channelID);
                 startActivity(intent);
 
             }
