@@ -49,7 +49,6 @@ ext {
             "butterknife-compiler"         : "com.jakewharton:butterknife-compiler:8.8.1",
             "leakcanary-debug"             : "com.squareup.leakcanary:leakcanary-android:1.5.4",
             "leakcanary-release"           : "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4",
-            "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
             "banner"                       : "com.youth.banner:banner:1.4.10",
             "navigation"                   : "com.ashokvarma.android:bottom-navigation-bar:2.0.4",
             "statusBarUtil"                : "com.jaeger.statusbarutil:library:1.4.0",

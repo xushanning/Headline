@@ -11,32 +11,33 @@ import java.util.List;
 
 public class AuthorInfoBean {
 
+
     /**
      * ban_bury : 0
      * ban_comment : 0
      * ban_digg : 0
      * bury_count : 0
-     * comment_count : 40
+     * comment_count : 166
      * context : {"tip":""}
      * detail_show_flags : 0
      * digg_count : 0
-     * display_url : http://toutiao.com/group/6521070104002691597/
-     * filter_words : [{"id":"5:49503593","name":"拉黑作者:牛弹琴"},{"id":"1:1645","name":"不想看:国际"}]
+     * display_url : http://toutiao.com/group/6525554080167756302/
+     * filter_words : [{"id":"5:1303849011","name":"拉黑作者:BWC中文网"},{"id":"1:1632","name":"不想看:财经"},{"id":"6:16641","name":"不想看:经济"},{"id":"6:71197","name":"不想看:委内瑞拉"}]
      * group_flags : 2
-     * group_id : 6521070104002691597
-     * h5_extra : {"have_red_pack":0,"is_original":true,"is_subscribed":0,"media":{"avatar_url":"http://p2.pstatp.com/large/1566/2791711243","can_be_praised":true,"description":"牛弹琴，一个资深媒体人，以专业独到的眼光，冷静平和的心态，解析大千世界，评说新闻背后！","id":3668306863,"name":"牛弹琴","pgc_custom_menu":"xx","user_auth_info":"{\"auth_type\": \"0\", \"auth_info\": \"资深媒体人\"}","user_decoration":"","user_verified":true}}
+     * group_id : 6525554080167756302
+     * h5_extra : {"have_red_pack":0,"is_original":true,"is_subscribed":0,"media":{"avatar_url":"http://p3.pstatp.com/large/bc3000723916dbde449","can_be_praised":true,"description":"每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。","id":4056945349,"name":"BWC中文网","pgc_custom_menu":"[{\"children\":[],\"name\":\"APP下载\",\"schema_href\":\"sslocal://webview?url=http://dwz.cn/bwcapp\",\"type\":\"href\",\"value\":\"http://dwz.cn/bwcapp\"},{\"children\":[],\"name\":\"更多文章\",\"schema_href\":\"sslocal://webview?url=http://www.bwchinese.com\",\"type\":\"href\",\"value\":\"http://www.bwchinese.com\"}]","user_auth_info":"{\"auth_type\": \"0\", \"other_auth\": {\"pgc\": \"头条号优质原创作者\"}, \"auth_info\": \"头条号优质原创作者\"}","user_decoration":"","user_verified":true}}
      * ignore_web_transform : 0
      * info_flag : 7
      * is_wenda : 0
-     * like_count : 59
+     * like_count : 343
      * like_desc : 关心这篇文章，会推荐更多此类内容
-     * log_pb : {"impr_id":"20180211095526010006027075485AFE"}
-     * media_info : {"avatar_url":"http://p2.pstatp.com/large/1566/2791711243","description":"牛弹琴，一个资深媒体人，以专业独到的眼光，冷静平和的心态，解析大千世界，评说新闻背后！","media_id":3668306863,"name":"牛弹琴","special_column":[],"subcribed":0,"user_auth_info":"{\"auth_type\": \"0\", \"auth_info\": \"资深媒体人\"}","user_id":3647305700,"user_verified":true}
-     * ordered_info : [{"data":[{"link":"xx","word":"泰国"},{"link":"xx","word":"政治"},{"link":"xx","word":"他信"},{"link":"xx","word":"板栗"}],"name":"labels"},{"data":{"like_num":59,"rewards_list":[],"rewards_list_url":"sslocal://webview?title=èµ\u009eèµ\u008fè¯¦æ\u0083\u0085&url=http://ic.snssdk.com/pgcapi/praise/article_praise_list/?article_id=6521070104002691597","rewards_num":0,"rewards_open_url":"sslocal://webview?title=èµ\u009eèµ\u008f&url=http://ic.snssdk.com/pgcapi/praise/select_amount/?media_id=3668306863&article_id=6521070104002691597","user_like":0},"name":"like_and_rewards"},{"ad_data":"xx","name":"ad"},{"data":[],"name":"related_news"}]
-     * recommend_sponsor : {"icon_url":"http://p3.pstatp.com/origin/13ef000096960314fff4","label":"帮上头条","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6521070104002691597&item_id=6521070104002691597"}
+     * log_pb : {"impr_id":"20180223170007010008071226339674"}
+     * media_info : {"avatar_url":"http://p3.pstatp.com/large/bc3000723916dbde449","description":"每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。","media_id":4056945349,"name":"BWC中文网","special_column":[],"subcribed":0,"user_auth_info":"{\"auth_type\": \"0\", \"other_auth\": {\"pgc\": \"头条号优质原创作者\"}, \"auth_info\": \"头条号优质原创作者\"}","user_id":3628653603,"user_verified":true}
+     * ordered_info : [{"data":[{"link":"xx","word":"美国"}],"name":"labels"},{"data":{"like_num":343,"rewards_list":[],"rewards_list_url":"sslocal://webview?title=èµ\u009eèµ\u008fè¯¦æ\u0083\u0085&url=http://ic.snssdk.com/pgcapi/praise/article_praise_list/?article_id=6525554080167756302","rewards_num":0,"rewards_open_url":"sslocal://webview?title=èµ\u009eèµ\u008f&url=http://ic.snssdk.com/pgcapi/praise/select_amount/?media_id=4056945349&article_id=6525554080167756302","user_like":0},"name":"like_and_rewards"},{"ad_data":"xx","name":"ad"},{"data":[{"aggr_type":1,"group_id":6520895240092516872,"impr_id":"6520895240092516872_6520895240092516872","item_id":6520895240092516872,"log_pb":{"impr_id":"20180223170007010008071226339674"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6520895240092516872&item_id=6520895240092516872&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180223170007010008071226339674\"}&from_gid=6525554080167756302","title":"他的情妇三天供出腐败事实 这一点\u201c秒杀\u201d周永康","type_name":""},{"aggr_type":1,"group_id":6501275500982305294,"impr_id":"6501275500982305294_6501275500982305294","item_id":6501275500982305294,"log_pb":{"impr_id":"20180223170007010008071226339674"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6501275500982305294&item_id=6501275500982305294&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180223170007010008071226339674\"}&from_gid=6525554080167756302","title":"和珅在狱中处死前夕，道出两大贪污缘由，嘉庆听后直接哑口无言！","type_name":""},{"aggr_type":1,"group_id":6501804551874544141,"impr_id":"6501804551874544141_6501804551874544141","item_id":6501804551874544141,"log_pb":{"impr_id":"20180223170007010008071226339674"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6501804551874544141&item_id=6501804551874544141&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180223170007010008071226339674\"}&from_gid=6525554080167756302","title":"破解20年疑团 成都理工大教授称找到西藏高原\u201c消失的油田\u201d","type_name":""},{"aggr_type":1,"group_id":6495678937027314190,"impr_id":"6495678937027314190_6495678937027314190","item_id":6495678937027314190,"log_pb":{"impr_id":"20180223170007010008071226339674"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6495678937027314190&item_id=6495678937027314190&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180223170007010008071226339674\"}&from_gid=6525554080167756302","title":"中风前兆规律！最晚发作前1天！防中风必吃一道菜，吃一个防一个","type_name":""}],"name":"related_news"}]
+     * recommend_sponsor : {"icon_url":"http://p3.pstatp.com/origin/13ef000096960314fff4","label":"帮上头条","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6525554080167756302&item_id=6525554080167756302"}
      * related_gallery : []
      * related_video_section : 0
-     * repin_count : 102
+     * repin_count : 0
      * script :
      if(typeof updateAppreciateCountByServer == 'function'){
      updateAppreciateCountByServer(0);
@@ -46,13 +47,13 @@ public class AuthorInfoBean {
      }
      }
 
-     * share_url : http://m.toutiaocdn.cn/group/6521070104002691597/?iid=25206805877&app=news_article&timestamp=1518314126
-     * source : 牛弹琴
-     * ug_install_aid : 0
-     * url : http://toutiao.com/group/6521070104002691597/
+     * share_url : http://m.toutiao.com/group/6525554080167756302/?iid=26696233435&app=news_article&timestamp=1519376407&article_category=stock
+     * source : BWC中文网
+     * ug_install_aid : 1182
+     * url : http://toutiao.com/group/6525554080167756302/
      * user_bury : 0
      * user_digg : 0
-     * user_info : {"avatar_url":"http://p1.pstatp.com/thumb/1566/2791711243","description":"牛弹琴，一个资深媒体人，以专业独到的眼光，冷静平和的心态，解析大千世界，评说新闻背后！","fans_count":429787,"follow":0,"media_id":3668306863,"name":"牛弹琴","special_column":[],"subcribed":0,"user_auth_info":"{\"auth_type\": \"0\", \"auth_info\": \"资深媒体人\"}","user_decoration":"","user_id":3647305700,"user_verified":true}
+     * user_info : {"avatar_url":"http://p1.pstatp.com/thumb/bc3000723916dbde449","description":"每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。","fans_count":267837,"follow":0,"media_id":4056945349,"name":"BWC中文网","special_column":[],"subcribed":0,"user_auth_info":"{\"auth_type\": \"0\", \"other_auth\": {\"pgc\": \"头条号优质原创作者\"}, \"auth_info\": \"头条号优质原创作者\"}","user_decoration":"","user_id":3628653603,"user_verified":true}
      * user_repin : 0
      */
 
@@ -368,7 +369,7 @@ public class AuthorInfoBean {
          * have_red_pack : 0
          * is_original : true
          * is_subscribed : 0
-         * media : {"avatar_url":"http://p2.pstatp.com/large/1566/2791711243","can_be_praised":true,"description":"牛弹琴，一个资深媒体人，以专业独到的眼光，冷静平和的心态，解析大千世界，评说新闻背后！","id":3668306863,"name":"牛弹琴","pgc_custom_menu":"xx","user_auth_info":"{\"auth_type\": \"0\", \"auth_info\": \"资深媒体人\"}","user_decoration":"","user_verified":true}
+         * media : {"avatar_url":"http://p3.pstatp.com/large/bc3000723916dbde449","can_be_praised":true,"description":"每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。","id":4056945349,"name":"BWC中文网","pgc_custom_menu":"[{\"children\":[],\"name\":\"APP下载\",\"schema_href\":\"sslocal://webview?url=http://dwz.cn/bwcapp\",\"type\":\"href\",\"value\":\"http://dwz.cn/bwcapp\"},{\"children\":[],\"name\":\"更多文章\",\"schema_href\":\"sslocal://webview?url=http://www.bwchinese.com\",\"type\":\"href\",\"value\":\"http://www.bwchinese.com\"}]","user_auth_info":"{\"auth_type\": \"0\", \"other_auth\": {\"pgc\": \"头条号优质原创作者\"}, \"auth_info\": \"头条号优质原创作者\"}","user_decoration":"","user_verified":true}
          */
 
         private int have_red_pack;
@@ -410,13 +411,13 @@ public class AuthorInfoBean {
 
         public static class MediaBean {
             /**
-             * avatar_url : http://p2.pstatp.com/large/1566/2791711243
+             * avatar_url : http://p3.pstatp.com/large/bc3000723916dbde449
              * can_be_praised : true
-             * description : 牛弹琴，一个资深媒体人，以专业独到的眼光，冷静平和的心态，解析大千世界，评说新闻背后！
-             * id : 3668306863
-             * name : 牛弹琴
-             * pgc_custom_menu : xx
-             * user_auth_info : {"auth_type": "0", "auth_info": "资深媒体人"}
+             * description : 每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。
+             * id : 4056945349
+             * name : BWC中文网
+             * pgc_custom_menu : [{"children":[],"name":"APP下载","schema_href":"sslocal://webview?url=http://dwz.cn/bwcapp","type":"href","value":"http://dwz.cn/bwcapp"},{"children":[],"name":"更多文章","schema_href":"sslocal://webview?url=http://www.bwchinese.com","type":"href","value":"http://www.bwchinese.com"}]
+             * user_auth_info : {"auth_type": "0", "other_auth": {"pgc": "头条号优质原创作者"}, "auth_info": "头条号优质原创作者"}
              * user_decoration :
              * user_verified : true
              */
@@ -507,7 +508,7 @@ public class AuthorInfoBean {
 
     public static class LogPbBean {
         /**
-         * impr_id : 20180211095526010006027075485AFE
+         * impr_id : 20180223170007010008071226339674
          */
 
         private String impr_id;
@@ -523,14 +524,14 @@ public class AuthorInfoBean {
 
     public static class MediaInfoBean {
         /**
-         * avatar_url : http://p2.pstatp.com/large/1566/2791711243
-         * description : 牛弹琴，一个资深媒体人，以专业独到的眼光，冷静平和的心态，解析大千世界，评说新闻背后！
-         * media_id : 3668306863
-         * name : 牛弹琴
+         * avatar_url : http://p3.pstatp.com/large/bc3000723916dbde449
+         * description : 每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。
+         * media_id : 4056945349
+         * name : BWC中文网
          * special_column : []
          * subcribed : 0
-         * user_auth_info : {"auth_type": "0", "auth_info": "资深媒体人"}
-         * user_id : 3647305700
+         * user_auth_info : {"auth_type": "0", "other_auth": {"pgc": "头条号优质原创作者"}, "auth_info": "头条号优质原创作者"}
+         * user_id : 3628653603
          * user_verified : true
          */
 
@@ -621,7 +622,7 @@ public class AuthorInfoBean {
         /**
          * icon_url : http://p3.pstatp.com/origin/13ef000096960314fff4
          * label : 帮上头条
-         * target_url : https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6521070104002691597&item_id=6521070104002691597
+         * target_url : https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6525554080167756302&item_id=6525554080167756302
          */
 
         private String icon_url;
@@ -655,17 +656,17 @@ public class AuthorInfoBean {
 
     public static class UserInfoBean {
         /**
-         * avatar_url : http://p1.pstatp.com/thumb/1566/2791711243
-         * description : 牛弹琴，一个资深媒体人，以专业独到的眼光，冷静平和的心态，解析大千世界，评说新闻背后！
-         * fans_count : 429787
+         * avatar_url : http://p1.pstatp.com/thumb/bc3000723916dbde449
+         * description : 每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。
+         * fans_count : 267837
          * follow : 0
-         * media_id : 3668306863
-         * name : 牛弹琴
+         * media_id : 4056945349
+         * name : BWC中文网
          * special_column : []
          * subcribed : 0
-         * user_auth_info : {"auth_type": "0", "auth_info": "资深媒体人"}
+         * user_auth_info : {"auth_type": "0", "other_auth": {"pgc": "头条号优质原创作者"}, "auth_info": "头条号优质原创作者"}
          * user_decoration :
-         * user_id : 3647305700
+         * user_id : 3628653603
          * user_verified : true
          */
 
@@ -781,8 +782,8 @@ public class AuthorInfoBean {
 
     public static class FilterWordsBean {
         /**
-         * id : 5:49503593
-         * name : 拉黑作者:牛弹琴
+         * id : 5:1303849011
+         * name : 拉黑作者:BWC中文网
          */
 
         private String id;
@@ -807,7 +808,7 @@ public class AuthorInfoBean {
 
     public static class OrderedInfoBean {
         /**
-         * data : [{"link":"xx","word":"泰国"},{"link":"xx","word":"政治"},{"link":"xx","word":"他信"},{"link":"xx","word":"板栗"}]
+         * data : [{"link":"xx","word":"美国"}]
          * name : labels
          * ad_data : xx
          */
@@ -843,7 +844,7 @@ public class AuthorInfoBean {
         public static class DataBean {
             /**
              * link : xx
-             * word : 泰国
+             * word : 美国
              */
 
             private String link;

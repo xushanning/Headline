@@ -6,7 +6,7 @@
 
     <!--主界面-->
     <string name="main_home">首页</string>
-    <string name="main_video">冬瓜视频</string>
+    <string name="main_video">西瓜视频</string>
     <string name="main_small_headline">微头条</string>
     <string name="main_personal_center">我的</string>
 
@@ -32,5 +32,8 @@
     <string name="time_in_a_hour">分钟前</string>
     <string name="time_in_a_day">小时前</string>
     <string name="time_out_a_day">一天前</string>
+
+    <!--home-->
+    <string name="search_default">搜你想搜的</string>
 
 </resources>

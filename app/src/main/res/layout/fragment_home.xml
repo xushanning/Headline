@@ -18,7 +18,7 @@
         android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#FA745A"
+        android:background="#E8222D"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.04" />
+            app:layout_constraintGuide_percent="0.155" />
 
         <View
             android:id="@+id/vSearch"
@@ -55,7 +55,7 @@
             android:id="@+id/tv_suggest_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="百万英雄|发动机的原理|招聘"
+            android:text="@string/search_default"
             android:textColor="#999999"
             app:layout_constraintBottom_toBottomOf="@+id/vSearch"
             app:layout_constraintEnd_toEndOf="@+id/vSearch"
@@ -63,24 +63,32 @@
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="@+id/vSearch" />
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/vSearch"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/vSearch"
-            app:layout_constraintTop_toTopOf="@+id/vSearch"
-            app:srcCompat="@mipmap/camera" />
-
         <android.support.constraint.Guideline
             android:id="@+id/guideline8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.85" />
+            app:layout_constraintGuide_percent="0.845" />
+
+        <ImageView
+            android:id="@+id/img_un_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/vSearch"
+            app:layout_constraintEnd_toStartOf="@+id/vSearch"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/vSearch"
+            app:srcCompat="@mipmap/un_login" />
+
+        <ImageView
+            android:id="@+id/img_release"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/vSearch"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline8"
+            app:layout_constraintTop_toTopOf="@+id/vSearch"
+            app:srcCompat="@mipmap/release" />
 
     </android.support.constraint.ConstraintLayout>
 

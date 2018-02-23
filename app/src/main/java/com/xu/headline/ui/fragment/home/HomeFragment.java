@@ -3,6 +3,9 @@ package com.xu.headline.ui.fragment.home;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
@@ -11,15 +14,16 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeFragmentPagerAdapter;
 import com.xu.headline.base.BaseFragment;
-import com.xu.headline.bean.NewsChannelListBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
 import com.xu.headline.ui.activity.search.SearchActivity;
+import com.xu.headline.utils.ImageTintUtil;
 import com.xu.headline.utils.ToastUtil;
 
 import java.util.List;
@@ -50,6 +54,11 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     ViewPager vpHome;
     @BindView(R.id.tv_suggest_search)
     TextView tvSuggestSearch;
+    @BindView(R.id.img_un_login)
+    ImageView imgUnLogin;
+    @BindView(R.id.img_release)
+    ImageView imgRelease;
+
 
     private HomeFragmentPagerAdapter homeFragmentPagerAdapter;
 
@@ -73,8 +82,19 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
 
     @Override
     public void initOthers() {
+        initImage();
         HomeFragmentPermissionsDispatcher.initChannelWithPermissionCheck(this);
         mPresenter.getSuggestSearch();
+    }
+
+    /**
+     * 初始化图片颜色
+     */
+    private void initImage() {
+        Drawable loginDrawable = imgUnLogin.getDrawable();
+        imgUnLogin.setImageDrawable(ImageTintUtil.tintDrawable(loginDrawable, ColorStateList.valueOf(Color.WHITE)));
+        Drawable releaseDrawable = imgRelease.getDrawable();
+        imgRelease.setImageDrawable(ImageTintUtil.tintDrawable(releaseDrawable, ColorStateList.valueOf(Color.WHITE)));
     }
 
     @NeedsPermission(Manifest.permission.READ_PHONE_STATE)
@@ -142,7 +162,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     }
 
 
-    @OnClick({R.id.vSearch, R.id.img_add})
+    @OnClick({R.id.vSearch, R.id.img_add, R.id.img_un_login, R.id.img_release})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.vSearch:
@@ -152,10 +172,15 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
             case R.id.img_add:
                 ToastUtil.toastShort(getActivity(), "增加频道!");
                 break;
+            case R.id.img_un_login:
+                ToastUtil.toastShort(getActivity(), "登陆!");
+                break;
+            case R.id.img_release:
+                ToastUtil.toastShort(getActivity(), "发布!");
+                break;
             default:
                 break;
         }
     }
-
 
 }
