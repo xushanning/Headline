@@ -1,4 +1,4 @@
-package com.xu.headline.bean;
+package com.xu.headline.bean.authorinfo;
 
 import java.util.List;
 
@@ -13,47 +13,38 @@ public class AuthorInfoBean {
 
 
     /**
-     * ban_bury : 0
+     * ban_bury : 1
      * ban_comment : 0
      * ban_digg : 0
      * bury_count : 0
-     * comment_count : 166
+     * comment_count : 8390
      * context : {"tip":""}
      * detail_show_flags : 0
-     * digg_count : 0
-     * display_url : http://toutiao.com/group/6525554080167756302/
-     * filter_words : [{"id":"5:1303849011","name":"拉黑作者:BWC中文网"},{"id":"1:1632","name":"不想看:财经"},{"id":"6:16641","name":"不想看:经济"},{"id":"6:71197","name":"不想看:委内瑞拉"}]
+     * digg_count : 6
+     * display_url : http://toutiao.com/group/6525910609031070216/
+     * filter_words : [{"id":"5:9300275","name":"拉黑作者:央视新闻"},{"id":"2:11781439","name":"不想看:民生"},{"id":"6:39687","name":"不想看:海南"}]
      * group_flags : 2
-     * group_id : 6525554080167756302
-     * h5_extra : {"have_red_pack":0,"is_original":true,"is_subscribed":0,"media":{"avatar_url":"http://p3.pstatp.com/large/bc3000723916dbde449","can_be_praised":true,"description":"每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。","id":4056945349,"name":"BWC中文网","pgc_custom_menu":"[{\"children\":[],\"name\":\"APP下载\",\"schema_href\":\"sslocal://webview?url=http://dwz.cn/bwcapp\",\"type\":\"href\",\"value\":\"http://dwz.cn/bwcapp\"},{\"children\":[],\"name\":\"更多文章\",\"schema_href\":\"sslocal://webview?url=http://www.bwchinese.com\",\"type\":\"href\",\"value\":\"http://www.bwchinese.com\"}]","user_auth_info":"{\"auth_type\": \"0\", \"other_auth\": {\"pgc\": \"头条号优质原创作者\"}, \"auth_info\": \"头条号优质原创作者\"}","user_decoration":"","user_verified":true}}
+     * group_id : 6525910609031070216
+     * h5_extra : {"have_red_pack":0,"is_original":false,"is_subscribed":0,"media":{"avatar_url":"http://p2.pstatp.com/large/4306/2602403105","can_be_praised":false,"description":"中央电视台新闻中心头条新闻官方帐号，是央视重大新闻、突发事件、重点报道的发布平台。","id":4492956276,"name":"央视新闻","pgc_custom_menu":"[]","user_auth_info":"{\"auth_type\": \"0\", \"auth_info\": \"中央电视台新闻中心官方帐号\"}","user_decoration":"","user_verified":true}}
      * ignore_web_transform : 0
      * info_flag : 7
      * is_wenda : 0
-     * like_count : 343
+     * like_count : 1312
      * like_desc : 关心这篇文章，会推荐更多此类内容
-     * log_pb : {"impr_id":"20180223170007010008071226339674"}
-     * media_info : {"avatar_url":"http://p3.pstatp.com/large/bc3000723916dbde449","description":"每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。","media_id":4056945349,"name":"BWC中文网","special_column":[],"subcribed":0,"user_auth_info":"{\"auth_type\": \"0\", \"other_auth\": {\"pgc\": \"头条号优质原创作者\"}, \"auth_info\": \"头条号优质原创作者\"}","user_id":3628653603,"user_verified":true}
-     * ordered_info : [{"data":[{"link":"xx","word":"美国"}],"name":"labels"},{"data":{"like_num":343,"rewards_list":[],"rewards_list_url":"sslocal://webview?title=èµ\u009eèµ\u008fè¯¦æ\u0083\u0085&url=http://ic.snssdk.com/pgcapi/praise/article_praise_list/?article_id=6525554080167756302","rewards_num":0,"rewards_open_url":"sslocal://webview?title=èµ\u009eèµ\u008f&url=http://ic.snssdk.com/pgcapi/praise/select_amount/?media_id=4056945349&article_id=6525554080167756302","user_like":0},"name":"like_and_rewards"},{"ad_data":"xx","name":"ad"},{"data":[{"aggr_type":1,"group_id":6520895240092516872,"impr_id":"6520895240092516872_6520895240092516872","item_id":6520895240092516872,"log_pb":{"impr_id":"20180223170007010008071226339674"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6520895240092516872&item_id=6520895240092516872&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180223170007010008071226339674\"}&from_gid=6525554080167756302","title":"他的情妇三天供出腐败事实 这一点\u201c秒杀\u201d周永康","type_name":""},{"aggr_type":1,"group_id":6501275500982305294,"impr_id":"6501275500982305294_6501275500982305294","item_id":6501275500982305294,"log_pb":{"impr_id":"20180223170007010008071226339674"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6501275500982305294&item_id=6501275500982305294&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180223170007010008071226339674\"}&from_gid=6525554080167756302","title":"和珅在狱中处死前夕，道出两大贪污缘由，嘉庆听后直接哑口无言！","type_name":""},{"aggr_type":1,"group_id":6501804551874544141,"impr_id":"6501804551874544141_6501804551874544141","item_id":6501804551874544141,"log_pb":{"impr_id":"20180223170007010008071226339674"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6501804551874544141&item_id=6501804551874544141&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180223170007010008071226339674\"}&from_gid=6525554080167756302","title":"破解20年疑团 成都理工大教授称找到西藏高原\u201c消失的油田\u201d","type_name":""},{"aggr_type":1,"group_id":6495678937027314190,"impr_id":"6495678937027314190_6495678937027314190","item_id":6495678937027314190,"log_pb":{"impr_id":"20180223170007010008071226339674"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6495678937027314190&item_id=6495678937027314190&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180223170007010008071226339674\"}&from_gid=6525554080167756302","title":"中风前兆规律！最晚发作前1天！防中风必吃一道菜，吃一个防一个","type_name":""}],"name":"related_news"}]
-     * recommend_sponsor : {"icon_url":"http://p3.pstatp.com/origin/13ef000096960314fff4","label":"帮上头条","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6525554080167756302&item_id=6525554080167756302"}
+     * log_pb : {"impr_id":"20180224162428010010023222209F57"}
+     * media_info : {"avatar_url":"http://p2.pstatp.com/large/4306/2602403105","description":"中央电视台新闻中心头条新闻官方帐号，是央视重大新闻、突发事件、重点报道的发布平台。","media_id":4492956276,"name":"央视新闻","special_column":[{"column_no":1,"name":"V观2016两会"},{"column_no":2,"name":"习主席访问捷克"},{"column_no":4,"name":"大国工匠"}],"subcribed":0,"user_auth_info":"{\"auth_type\": \"0\", \"auth_info\": \"中央电视台新闻中心官方帐号\"}","user_id":4492956276,"user_verified":true}
+     * recommend_sponsor : {"icon_url":"http://p3.pstatp.com/origin/13ef000096960314fff4","label":"帮上头条","target_url":"https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6525910609031070216&item_id=6525910609031070216"}
      * related_gallery : []
      * related_video_section : 0
-     * repin_count : 0
+     * repin_count : 6903
      * script :
-     if(typeof updateAppreciateCountByServer == 'function'){
-     updateAppreciateCountByServer(0);
-     }else{
-     window.updateAppreciateCountByServerCallback = function(){
-     updateAppreciateCountByServer(0);
-     }
-     }
-
-     * share_url : http://m.toutiao.com/group/6525554080167756302/?iid=26696233435&app=news_article&timestamp=1519376407&article_category=stock
-     * source : BWC中文网
-     * ug_install_aid : 1182
-     * url : http://toutiao.com/group/6525554080167756302/
+     * share_url : https://m.toutiao.com/group/6525910609031070216/?iid=25206805877&app=news_article&timestamp=1519460668
+     * source : 央视新闻
+     * ug_install_aid : 0
+     * url : https://mp.weixin.qq.com/s/2BbzHLDLi0J3HhWofWImcA
      * user_bury : 0
      * user_digg : 0
-     * user_info : {"avatar_url":"http://p1.pstatp.com/thumb/bc3000723916dbde449","description":"每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。","fans_count":267837,"follow":0,"media_id":4056945349,"name":"BWC中文网","special_column":[],"subcribed":0,"user_auth_info":"{\"auth_type\": \"0\", \"other_auth\": {\"pgc\": \"头条号优质原创作者\"}, \"auth_info\": \"头条号优质原创作者\"}","user_decoration":"","user_id":3628653603,"user_verified":true}
+     * user_info : {"avatar_url":"http://p3.pstatp.com/thumb/4306/2602403105","description":"中央电视台新闻中心头条新闻官方帐号，是央视重大新闻、突发事件、重点报道的发布平台。","fans_count":93202959,"follow":0,"media_id":4492956276,"name":"央视新闻","special_column":[{"column_no":1,"name":"V观2016两会"},{"column_no":2,"name":"习主席访问捷克"},{"column_no":4,"name":"大国工匠"}],"subcribed":0,"user_auth_info":"{\"auth_type\": \"0\", \"auth_info\": \"中央电视台新闻中心官方帐号\"}","user_decoration":"","user_id":4492956276,"user_verified":true}
      * user_repin : 0
      */
 
@@ -89,8 +80,18 @@ public class AuthorInfoBean {
     private UserInfoBean user_info;
     private int user_repin;
     private List<FilterWordsBean> filter_words;
-    private List<OrderedInfoBean> ordered_info;
     private List<?> related_gallery;
+
+
+    public List<BaseOrderedInfoBean> getOrdered_info() {
+        return ordered_info;
+    }
+
+    public void setOrdered_info(List<BaseOrderedInfoBean> ordered_info) {
+        this.ordered_info = ordered_info;
+    }
+
+    private List<BaseOrderedInfoBean> ordered_info;
 
     public int getBan_bury() {
         return ban_bury;
@@ -348,14 +349,6 @@ public class AuthorInfoBean {
         this.filter_words = filter_words;
     }
 
-    public List<OrderedInfoBean> getOrdered_info() {
-        return ordered_info;
-    }
-
-    public void setOrdered_info(List<OrderedInfoBean> ordered_info) {
-        this.ordered_info = ordered_info;
-    }
-
     public List<?> getRelated_gallery() {
         return related_gallery;
     }
@@ -367,9 +360,9 @@ public class AuthorInfoBean {
     public static class H5ExtraBean {
         /**
          * have_red_pack : 0
-         * is_original : true
+         * is_original : false
          * is_subscribed : 0
-         * media : {"avatar_url":"http://p3.pstatp.com/large/bc3000723916dbde449","can_be_praised":true,"description":"每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。","id":4056945349,"name":"BWC中文网","pgc_custom_menu":"[{\"children\":[],\"name\":\"APP下载\",\"schema_href\":\"sslocal://webview?url=http://dwz.cn/bwcapp\",\"type\":\"href\",\"value\":\"http://dwz.cn/bwcapp\"},{\"children\":[],\"name\":\"更多文章\",\"schema_href\":\"sslocal://webview?url=http://www.bwchinese.com\",\"type\":\"href\",\"value\":\"http://www.bwchinese.com\"}]","user_auth_info":"{\"auth_type\": \"0\", \"other_auth\": {\"pgc\": \"头条号优质原创作者\"}, \"auth_info\": \"头条号优质原创作者\"}","user_decoration":"","user_verified":true}
+         * media : {"avatar_url":"http://p2.pstatp.com/large/4306/2602403105","can_be_praised":false,"description":"中央电视台新闻中心头条新闻官方帐号，是央视重大新闻、突发事件、重点报道的发布平台。","id":4492956276,"name":"央视新闻","pgc_custom_menu":"[]","user_auth_info":"{\"auth_type\": \"0\", \"auth_info\": \"中央电视台新闻中心官方帐号\"}","user_decoration":"","user_verified":true}
          */
 
         private int have_red_pack;
@@ -411,13 +404,13 @@ public class AuthorInfoBean {
 
         public static class MediaBean {
             /**
-             * avatar_url : http://p3.pstatp.com/large/bc3000723916dbde449
-             * can_be_praised : true
-             * description : 每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。
-             * id : 4056945349
-             * name : BWC中文网
-             * pgc_custom_menu : [{"children":[],"name":"APP下载","schema_href":"sslocal://webview?url=http://dwz.cn/bwcapp","type":"href","value":"http://dwz.cn/bwcapp"},{"children":[],"name":"更多文章","schema_href":"sslocal://webview?url=http://www.bwchinese.com","type":"href","value":"http://www.bwchinese.com"}]
-             * user_auth_info : {"auth_type": "0", "other_auth": {"pgc": "头条号优质原创作者"}, "auth_info": "头条号优质原创作者"}
+             * avatar_url : http://p2.pstatp.com/large/4306/2602403105
+             * can_be_praised : false
+             * description : 中央电视台新闻中心头条新闻官方帐号，是央视重大新闻、突发事件、重点报道的发布平台。
+             * id : 4492956276
+             * name : 央视新闻
+             * pgc_custom_menu : []
+             * user_auth_info : {"auth_type": "0", "auth_info": "中央电视台新闻中心官方帐号"}
              * user_decoration :
              * user_verified : true
              */
@@ -508,7 +501,7 @@ public class AuthorInfoBean {
 
     public static class LogPbBean {
         /**
-         * impr_id : 20180223170007010008071226339674
+         * impr_id : 20180224162428010010023222209F57
          */
 
         private String impr_id;
@@ -524,14 +517,14 @@ public class AuthorInfoBean {
 
     public static class MediaInfoBean {
         /**
-         * avatar_url : http://p3.pstatp.com/large/bc3000723916dbde449
-         * description : 每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。
-         * media_id : 4056945349
-         * name : BWC中文网
-         * special_column : []
+         * avatar_url : http://p2.pstatp.com/large/4306/2602403105
+         * description : 中央电视台新闻中心头条新闻官方帐号，是央视重大新闻、突发事件、重点报道的发布平台。
+         * media_id : 4492956276
+         * name : 央视新闻
+         * special_column : [{"column_no":1,"name":"V观2016两会"},{"column_no":2,"name":"习主席访问捷克"},{"column_no":4,"name":"大国工匠"}]
          * subcribed : 0
-         * user_auth_info : {"auth_type": "0", "other_auth": {"pgc": "头条号优质原创作者"}, "auth_info": "头条号优质原创作者"}
-         * user_id : 3628653603
+         * user_auth_info : {"auth_type": "0", "auth_info": "中央电视台新闻中心官方帐号"}
+         * user_id : 4492956276
          * user_verified : true
          */
 
@@ -543,7 +536,7 @@ public class AuthorInfoBean {
         private String user_auth_info;
         private long user_id;
         private boolean user_verified;
-        private List<?> special_column;
+        private List<SpecialColumnBean> special_column;
 
         public String getAvatar_url() {
             return avatar_url;
@@ -609,12 +602,38 @@ public class AuthorInfoBean {
             this.user_verified = user_verified;
         }
 
-        public List<?> getSpecial_column() {
+        public List<SpecialColumnBean> getSpecial_column() {
             return special_column;
         }
 
-        public void setSpecial_column(List<?> special_column) {
+        public void setSpecial_column(List<SpecialColumnBean> special_column) {
             this.special_column = special_column;
+        }
+
+        public static class SpecialColumnBean {
+            /**
+             * column_no : 1
+             * name : V观2016两会
+             */
+
+            private int column_no;
+            private String name;
+
+            public int getColumn_no() {
+                return column_no;
+            }
+
+            public void setColumn_no(int column_no) {
+                this.column_no = column_no;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
         }
     }
 
@@ -622,7 +641,7 @@ public class AuthorInfoBean {
         /**
          * icon_url : http://p3.pstatp.com/origin/13ef000096960314fff4
          * label : 帮上头条
-         * target_url : https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6525554080167756302&item_id=6525554080167756302
+         * target_url : https://i.snssdk.com/ad/pgc_promotion/mobile/create/?group_id=6525910609031070216&item_id=6525910609031070216
          */
 
         private String icon_url;
@@ -656,17 +675,17 @@ public class AuthorInfoBean {
 
     public static class UserInfoBean {
         /**
-         * avatar_url : http://p1.pstatp.com/thumb/bc3000723916dbde449
-         * description : 每天提供原创全球财经观察报道，讲述权力、财富、女人的故事。
-         * fans_count : 267837
+         * avatar_url : http://p3.pstatp.com/thumb/4306/2602403105
+         * description : 中央电视台新闻中心头条新闻官方帐号，是央视重大新闻、突发事件、重点报道的发布平台。
+         * fans_count : 93202959
          * follow : 0
-         * media_id : 4056945349
-         * name : BWC中文网
-         * special_column : []
+         * media_id : 4492956276
+         * name : 央视新闻
+         * special_column : [{"column_no":1,"name":"V观2016两会"},{"column_no":2,"name":"习主席访问捷克"},{"column_no":4,"name":"大国工匠"}]
          * subcribed : 0
-         * user_auth_info : {"auth_type": "0", "other_auth": {"pgc": "头条号优质原创作者"}, "auth_info": "头条号优质原创作者"}
+         * user_auth_info : {"auth_type": "0", "auth_info": "中央电视台新闻中心官方帐号"}
          * user_decoration :
-         * user_id : 3628653603
+         * user_id : 4492956276
          * user_verified : true
          */
 
@@ -681,7 +700,7 @@ public class AuthorInfoBean {
         private String user_decoration;
         private long user_id;
         private boolean user_verified;
-        private List<?> special_column;
+        private List<SpecialColumnBeanX> special_column;
 
         public String getAvatar_url() {
             return avatar_url;
@@ -771,19 +790,45 @@ public class AuthorInfoBean {
             this.user_verified = user_verified;
         }
 
-        public List<?> getSpecial_column() {
+        public List<SpecialColumnBeanX> getSpecial_column() {
             return special_column;
         }
 
-        public void setSpecial_column(List<?> special_column) {
+        public void setSpecial_column(List<SpecialColumnBeanX> special_column) {
             this.special_column = special_column;
+        }
+
+        public static class SpecialColumnBeanX {
+            /**
+             * column_no : 1
+             * name : V观2016两会
+             */
+
+            private int column_no;
+            private String name;
+
+            public int getColumn_no() {
+                return column_no;
+            }
+
+            public void setColumn_no(int column_no) {
+                this.column_no = column_no;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
         }
     }
 
     public static class FilterWordsBean {
         /**
-         * id : 5:1303849011
-         * name : 拉黑作者:BWC中文网
+         * id : 5:9300275
+         * name : 拉黑作者:央视新闻
          */
 
         private String id;
@@ -803,68 +848,6 @@ public class AuthorInfoBean {
 
         public void setName(String name) {
             this.name = name;
-        }
-    }
-
-    public static class OrderedInfoBean {
-        /**
-         * data : [{"link":"xx","word":"美国"}]
-         * name : labels
-         * ad_data : xx
-         */
-
-        private String name;
-        private String ad_data;
-        private List<DataBean> data;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAd_data() {
-            return ad_data;
-        }
-
-        public void setAd_data(String ad_data) {
-            this.ad_data = ad_data;
-        }
-
-        public List<DataBean> getData() {
-            return data;
-        }
-
-        public void setData(List<DataBean> data) {
-            this.data = data;
-        }
-
-        public static class DataBean {
-            /**
-             * link : xx
-             * word : 美国
-             */
-
-            private String link;
-            private String word;
-
-            public String getLink() {
-                return link;
-            }
-
-            public void setLink(String link) {
-                this.link = link;
-            }
-
-            public String getWord() {
-                return word;
-            }
-
-            public void setWord(String word) {
-                this.word = word;
-            }
         }
     }
 }

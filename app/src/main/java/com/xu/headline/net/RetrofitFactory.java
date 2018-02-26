@@ -1,6 +1,10 @@
 package com.xu.headline.net;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.orhanobut.logger.Logger;
+import com.xu.headline.bean.authorinfo.BaseOrderedInfoBean;
+import com.xu.headline.bean.authorinfo.OrderedInfoDeserializer;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -50,7 +54,7 @@ public class RetrofitFactory {
                 String begin = s.substring(0, 1);
                 if ("{".equals(begin)) {
                     //只打印json
-                    Logger.d("响应的Json" + s);
+                    Logger.json(s);
                 }
             }
 
@@ -89,11 +93,14 @@ public class RetrofitFactory {
      * @return TouTiaoApi
      */
     public static TouTiaoApi getTouTiaoApi() {
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(BaseOrderedInfoBean.class, new OrderedInfoDeserializer())
+                .create();
         return TouTiaoApi.getInstance(
                 new Retrofit
                         .Builder()
                         .baseUrl(HttpConstants.TOU_TIAO_BASE_URL)
-                        .addConverterFactory(GsonConverterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create(gson))
                         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                         .client(getOkHttpClient())
                         .build()

@@ -1,7 +1,7 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.bean.AuthorInfoBean;
+import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;

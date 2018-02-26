@@ -3,7 +3,7 @@ package com.xu.headline.ui.activity.newsdetail;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.bean.AuthorInfoBean;
+import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.NewsDetailsBean;
 import com.xu.headline.net.BaseTouTiaoResObserver;
 import com.xu.headline.net.RetrofitFactory;
