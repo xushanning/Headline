@@ -36,4 +36,7 @@
     <!--home-->
     <string name="search_default">搜你想搜的</string>
 
+    <!--newsDetails-->
+    <string name="fans">粉丝</string>
+    <string name="ten_thousand">万</string>
 </resources>

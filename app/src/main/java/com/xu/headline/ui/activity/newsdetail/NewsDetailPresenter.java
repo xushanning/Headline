@@ -38,7 +38,7 @@ public class NewsDetailPresenter extends BasePresenter<INewsDetailContract.INews
                 .subscribe(new BaseTouTiaoResObserver<AuthorInfoBean>() {
                     @Override
                     protected void onSuccess(AuthorInfoBean authorInfoBean) {
-                        Logger.d("这篇文章的来源是:" + authorInfoBean.getSource());
+                        mView.loadAuthorInfo(authorInfoBean.getUser_info());
                     }
                 });
     }
