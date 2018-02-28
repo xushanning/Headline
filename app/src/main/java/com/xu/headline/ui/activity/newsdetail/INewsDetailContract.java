@@ -22,9 +22,9 @@ public interface INewsDetailContract {
         /**
          * 加载作者信息：来源，头像，粉丝数量等
          *
-         * @param userInfoBean 用户信息bean
+         * @param authorInfoBean 用户信息bean
          */
-        void loadAuthorInfo(AuthorInfoBean.UserInfoBean userInfoBean);
+        void loadAuthorInfo(AuthorInfoBean authorInfoBean);
     }
 
     interface INewsDetailPresenter extends IBaseContract.IBasePresenter<INewsDetailView> {

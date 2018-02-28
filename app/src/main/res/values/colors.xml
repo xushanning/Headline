@@ -33,4 +33,9 @@
     <color name="colorCustomNoticeText">#2A90D7</color>
 
 
+    <!--公用-->
+    <color name="color_line">#d8d8d8</color>
+
+    <!--新闻详情页面-->
+
 </resources>

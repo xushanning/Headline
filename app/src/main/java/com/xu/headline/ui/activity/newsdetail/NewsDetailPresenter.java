@@ -38,7 +38,7 @@ public class NewsDetailPresenter extends BasePresenter<INewsDetailContract.INews
                 .subscribe(new BaseTouTiaoResObserver<AuthorInfoBean>() {
                     @Override
                     protected void onSuccess(AuthorInfoBean authorInfoBean) {
-                        mView.loadAuthorInfo(authorInfoBean.getUser_info());
+                        mView.loadAuthorInfo(authorInfoBean );
                     }
                 });
     }

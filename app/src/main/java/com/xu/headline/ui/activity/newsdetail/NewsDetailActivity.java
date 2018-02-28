@@ -2,6 +2,8 @@ package com.xu.headline.ui.activity.newsdetail;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -31,8 +33,8 @@ import butterknife.OnClick;
 public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDetailPresenter> implements INewsDetailContract.INewsDetailView {
     @BindView(R.id.tv_source_bar)
     TextView tvSourceBar;
-    //    @BindView(R.id.tv_comment_count)
-//    TextView tvCommentCount;
+    @BindView(R.id.tv_comment_count)
+    TextView tvCommentCount;
     @BindView(R.id.tv_follow_bar)
     TextView tvFollowBar;
     @BindView(R.id.tv_source_blow)
@@ -51,7 +53,8 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     TextView tvTitle;
     @BindView(R.id.tv_fans_count)
     TextView tvFansCount;
-
+    @BindView(R.id.wb_news_detail)
+    WebView wbNewsDetail;
     /**
      * 一万
      */
@@ -100,7 +103,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         });
     }
 
-    @OnClick({R.id.tv_follow_bar, R.id.bt_follow_blow, R.id.img_back})
+    @OnClick({R.id.tv_follow_bar, R.id.bt_follow_blow, R.id.img_back, R.id.v_write_comment, R.id.img_comment_count, R.id.img_collection, R.id.img_share})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_follow_bar:
@@ -111,6 +114,18 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
                 break;
             case R.id.img_back:
                 finish();
+                break;
+            case R.id.v_write_comment:
+                ToastUtil.toastShort(this, "写评论~");
+                break;
+            case R.id.img_collection:
+                ToastUtil.toastShort(this, "收藏~");
+                break;
+            case R.id.img_share:
+                ToastUtil.toastShort(this, "分享~");
+                break;
+            case R.id.img_comment_count:
+                ToastUtil.toastShort(this, "评论数量~");
                 break;
             default:
                 break;
@@ -124,17 +139,26 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         //tvCommentCount.setText("");
         tvTimeBlow.setText("");
         tvTitle.setText("");
+        WebSettings webSettings = wbNewsDetail.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setBlockNetworkImage(false);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
+        wbNewsDetail.loadData(newsDetailsBean.getContent(), "text/html", "UTF-8");
     }
 
     @Override
-    public void loadAuthorInfo(AuthorInfoBean.UserInfoBean userInfoBean) {
-        tvSourceBar.setText(userInfoBean.getName());
-        if (userInfoBean.getFans_count() == 0) {
+    public void loadAuthorInfo(AuthorInfoBean authorInfoBean) {
+
+        tvSourceBar.setText(authorInfoBean.getUser_info().getName());
+        if (authorInfoBean.getUser_info().getFans_count() == 0) {
             tvFansCount.setVisibility(View.GONE);
         } else {
-            tvFansCount.setText(transformFansCount(userInfoBean.getFans_count()));
+            tvFansCount.setText(transformFansCount(authorInfoBean.getUser_info().getFans_count()) + getString(R.string.fans));
         }
-        ImageLoaderUtil.loadCircleImage(this, userInfoBean.getAvatar_url(), imgSourceBar);
+        ImageLoaderUtil.loadCircleImage(this, authorInfoBean.getUser_info().getAvatar_url(), imgSourceBar);
+        tvCommentCount.setText(transformFansCount(authorInfoBean.getComment_count()) + "");
     }
 
     /**
@@ -157,7 +181,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
             //一万以下的，直接返回
             transformString = fansCount + "";
         }
-        return transformString + getString(R.string.fans);
+        return transformString;
     }
 
 
