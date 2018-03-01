@@ -27,8 +27,7 @@ public class NewsDetailPresenter extends BasePresenter<INewsDetailContract.INews
                 .subscribe(new BaseTouTiaoResObserver<NewsDetailsBean>() {
                     @Override
                     protected void onSuccess(NewsDetailsBean newsDetailsBean) {
-                        Logger.d(newsDetailsBean.getH5_extra().getTitle());
-
+                        mView.loadNewsDetailsData(newsDetailsBean);
                     }
                 });
         RetrofitFactory.getTouTiaoApi()
@@ -38,7 +37,7 @@ public class NewsDetailPresenter extends BasePresenter<INewsDetailContract.INews
                 .subscribe(new BaseTouTiaoResObserver<AuthorInfoBean>() {
                     @Override
                     protected void onSuccess(AuthorInfoBean authorInfoBean) {
-                        mView.loadAuthorInfo(authorInfoBean );
+                        mView.loadAuthorInfo(authorInfoBean);
                     }
                 });
     }

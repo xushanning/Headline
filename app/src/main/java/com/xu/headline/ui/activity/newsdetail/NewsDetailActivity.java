@@ -1,5 +1,6 @@
 package com.xu.headline.ui.activity.newsdetail;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.base.BaseActivity;
 import com.xu.headline.bean.NewsDetailsBean;
@@ -18,6 +20,9 @@ import com.xu.headline.utils.ToastUtil;
 import com.xu.headline.view.CustomScrollView;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,6 +60,9 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     TextView tvFansCount;
     @BindView(R.id.wb_news_detail)
     WebView wbNewsDetail;
+    private static final int ONE_HUNDRED_THOUSAND = 100000;
+    @BindView(R.id.iv_logo)
+    ImageView ivLogo;
     /**
      * 一万
      */
@@ -63,7 +71,6 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     /**
      * 十万
      */
-    private static final int ONE_HUNDRED_THOUSAND = 100000;
 
 
     @Override
@@ -91,12 +98,12 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
                 if (y > rlBlowBar.getHeight()) {
                     imgSourceBar.setVisibility(View.VISIBLE);
                     tvSourceBar.setVisibility(View.VISIBLE);
-                    //tvCommentCount.setVisibility(View.VISIBLE);
+                    tvFansCount.setVisibility(View.VISIBLE);
                     tvFollowBar.setVisibility(View.VISIBLE);
                 } else {
                     imgSourceBar.setVisibility(View.GONE);
                     tvSourceBar.setVisibility(View.GONE);
-                    //tvCommentCount.setVisibility(View.GONE);
+                    tvFansCount.setVisibility(View.GONE);
                     tvFollowBar.setVisibility(View.GONE);
                 }
             }
@@ -138,14 +145,20 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         tvSourceBlow.setText(newsDetailsBean.getH5_extra().getSource());
         //tvCommentCount.setText("");
         tvTimeBlow.setText("");
-        tvTitle.setText("");
+        tvTitle.setText(newsDetailsBean.getH5_extra().getTitle());
         WebSettings webSettings = wbNewsDetail.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setBlockNetworkImage(false);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+        webSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
-        wbNewsDetail.loadData(newsDetailsBean.getContent(), "text/html", "UTF-8");
+        Logger.d(newsDetailsBean.getContent());
+        List<NewsDetailsBean.WebpImageDetailBean> imgList = newsDetailsBean.getWebp_image_detail();
+
+        wbNewsDetail.loadDataWithBaseURL(null, handleHtmlString(newsDetailsBean.getContent(), imgList),
+                "text/html", "UTF-8", null);
+
     }
 
     @Override
@@ -158,6 +171,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
             tvFansCount.setText(transformFansCount(authorInfoBean.getUser_info().getFans_count()) + getString(R.string.fans));
         }
         ImageLoaderUtil.loadCircleImage(this, authorInfoBean.getUser_info().getAvatar_url(), imgSourceBar);
+        ImageLoaderUtil.loadCircleImage(this, authorInfoBean.getUser_info().getAvatar_url(), ivLogo);
         tvCommentCount.setText(transformFansCount(authorInfoBean.getComment_count()) + "");
     }
 
@@ -184,5 +198,28 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         return transformString;
     }
 
+    private String handleHtmlString(String originalHtml, List<NewsDetailsBean.WebpImageDetailBean> imgList) {
+        String reg = "<a[^>]+?href=([\\s\\S]*?)<\\/a>";
+        Pattern pattern = Pattern.compile(reg);
+        Matcher matcher = pattern.matcher(originalHtml);
+        StringBuffer sb = new StringBuffer();
+        int i = 0;
+        boolean result = matcher.find();
+        while (result) {
+            matcher.appendReplacement(sb, "<img src=\"" + imgList.get(i).getUrl() + "\"style=\"width:100%;height:auto\"");
+            i++;
+            Logger.d(matcher.group());
+            result = matcher.find();
+        }
+        matcher.appendTail(sb);
+        Logger.d(sb.toString());
+        return sb.toString();
+    }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }
