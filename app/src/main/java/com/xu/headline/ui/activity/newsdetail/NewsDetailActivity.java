@@ -2,6 +2,8 @@ package com.xu.headline.ui.activity.newsdetail;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -12,14 +14,20 @@ import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
+import com.xu.headline.adapter.NewsDetailLabelsQuickAdapter;
 import com.xu.headline.base.BaseActivity;
 import com.xu.headline.bean.NewsDetailsBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
+import com.xu.headline.bean.authorinfo.BaseOrderedInfoBean;
+import com.xu.headline.bean.authorinfo.OrderedInfoBean1;
+import com.xu.headline.bean.authorinfo.OrderedInfoDeserializer;
 import com.xu.headline.utils.ImageLoaderUtil;
+import com.xu.headline.utils.TimeUtil;
 import com.xu.headline.utils.ToastUtil;
 import com.xu.headline.view.CustomScrollView;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -63,15 +71,20 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     private static final int ONE_HUNDRED_THOUSAND = 100000;
     @BindView(R.id.iv_logo)
     ImageView ivLogo;
+    @BindView(R.id.rv_labels)
+    RecyclerView rvLabels;
+    @BindView(R.id.rv_recommend_news)
+    RecyclerView rvRecommendNews;
+    @BindView(R.id.rv_comment_list)
+    RecyclerView rvCommentList;
+    @BindView(R.id.tv_like_count)
+    TextView tvLikeCount;
     /**
      * 一万
      */
     private static final int TEN_THOUSAND = 10000;
 
-    /**
-     * 十万
-     */
-
+    private NewsDetailLabelsQuickAdapter labelsQuickAdapter;
 
     @Override
     public int setLayoutId() {
@@ -89,9 +102,6 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         long newsID = getIntent().getLongExtra("newsID", 0);
         String channelID = getIntent().getStringExtra("channelID");
         mPresenter.getNewsDetailsData(newsID, channelID);
-
-        //StatusBarUtil.setColorForSwipeBack(this, Color.parseColor("#BDBDBD"), 30);
-
         customScrollView.setOnScrollChangedListener(new CustomScrollView.OnScrollChangedListener() {
             @Override
             public void onScrollChanged(int x, int y, int oldX, int oldY) {
@@ -108,6 +118,15 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
                 }
             }
         });
+        initRecyclerView();
+    }
+
+    private void initRecyclerView() {
+        labelsQuickAdapter = new NewsDetailLabelsQuickAdapter(new ArrayList<OrderedInfoBean1>());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        rvLabels.setLayoutManager(linearLayoutManager);
+        rvLabels.setAdapter(labelsQuickAdapter);
     }
 
     @OnClick({R.id.tv_follow_bar, R.id.bt_follow_blow, R.id.img_back, R.id.v_write_comment, R.id.img_comment_count, R.id.img_collection, R.id.img_share})
@@ -143,8 +162,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     public void loadNewsDetailsData(NewsDetailsBean newsDetailsBean) {
         tvSourceBar.setText(newsDetailsBean.getH5_extra().getSource());
         tvSourceBlow.setText(newsDetailsBean.getH5_extra().getSource());
-        //tvCommentCount.setText("");
-        tvTimeBlow.setText("");
+        tvTimeBlow.setText(TimeUtil.transformNewsPublishTime(Integer.valueOf(newsDetailsBean.getH5_extra().getPublish_stamp())));
         tvTitle.setText(newsDetailsBean.getH5_extra().getTitle());
         WebSettings webSettings = wbNewsDetail.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -163,7 +181,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
 
     @Override
     public void loadAuthorInfo(AuthorInfoBean authorInfoBean) {
-
+        tvLikeCount.setText(authorInfoBean.getLike_count() + "");
         tvSourceBar.setText(authorInfoBean.getUser_info().getName());
         if (authorInfoBean.getUser_info().getFans_count() == 0) {
             tvFansCount.setVisibility(View.GONE);
@@ -173,6 +191,28 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         ImageLoaderUtil.loadCircleImage(this, authorInfoBean.getUser_info().getAvatar_url(), imgSourceBar);
         ImageLoaderUtil.loadCircleImage(this, authorInfoBean.getUser_info().getAvatar_url(), ivLogo);
         tvCommentCount.setText(transformFansCount(authorInfoBean.getComment_count()) + "");
+        for (int i = 0; i < authorInfoBean.getOrdered_info().size(); i++) {
+            switch (authorInfoBean.getOrdered_info().get(i).getName()) {
+                case OrderedInfoDeserializer.LABELS:
+                    //标签
+                    BaseOrderedInfoBean<List<OrderedInfoBean1>> data = authorInfoBean.getOrdered_info().get(0);
+                    labelsQuickAdapter.addData(data.getData());
+                    break;
+                case OrderedInfoDeserializer.LIKE_END_REWARDS:
+                    //无用
+                    break;
+                case OrderedInfoDeserializer.AD:
+                    //广告
+                    break;
+                case OrderedInfoDeserializer.RELATED_NEWS:
+                    //推荐
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
     }
 
     /**
@@ -206,7 +246,9 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         int i = 0;
         boolean result = matcher.find();
         while (result) {
-            matcher.appendReplacement(sb, "<img src=\"" + imgList.get(i).getUrl() + "\"style=\"width:100%;height:auto\"");
+            if (imgList.size() > i) {
+                matcher.appendReplacement(sb, "<img src=\"" + imgList.get(i).getUrl() + "\"style=\"width:100%;height:auto\"");
+            }
             i++;
             Logger.d(matcher.group());
             result = matcher.find();
@@ -216,10 +258,5 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         return sb.toString();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

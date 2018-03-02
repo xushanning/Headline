@@ -29,7 +29,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
-
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_back"
             app:layout_constraintTop_toTopOf="parent"
@@ -44,6 +44,7 @@
             android:text="--"
             android:textColor="@android:color/black"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintStart_toEndOf="@+id/img_source_bar"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -56,6 +57,7 @@
             android:text="--万粉丝"
             android:textColor="#989898"
             android:textSize="@dimen/sp_12"
+            android:visibility="gone"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_source_bar" />
@@ -101,15 +103,14 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:text=""
+                    android:text="标题"
                     android:textColor="#333333"
                     android:textSize="24sp" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_title"
-                    android:visibility="gone">
+                    android:layout_below="@id/tv_title">
 
 
                     <ImageView
@@ -157,6 +158,16 @@
 
             <WebView
                 android:id="@+id/wb_news_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/include_news_details_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/include_comment_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

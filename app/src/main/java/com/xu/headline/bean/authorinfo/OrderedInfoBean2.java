@@ -5,37 +5,8 @@ package com.xu.headline.bean.authorinfo;
  * @author xu
  */
 
-public class OrderedInfoBean2 extends BaseOrderedInfoBean {
+public class OrderedInfoBean2   {
 
-    /**
-     * data : {"like_num":1312,"user_like":0}
-     * name : like_and_rewards
-     */
-
-    private DataBean data;
-    private String name;
-
-    public DataBean getData() {
-        return data;
-    }
-
-    public void setData(DataBean data) {
-        this.data = data;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public static class DataBean {
-        /**
-         * like_num : 1312
-         * user_like : 0
-         */
 
         private int like_num;
         private int user_like;
@@ -55,5 +26,5 @@ public class OrderedInfoBean2 extends BaseOrderedInfoBean {
         public void setUser_like(int user_like) {
             this.user_like = user_like;
         }
-    }
+
 }

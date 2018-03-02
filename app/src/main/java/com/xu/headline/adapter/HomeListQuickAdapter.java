@@ -7,6 +7,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.utils.ImageLoaderUtil;
+import com.xu.headline.utils.TimeUtil;
 
 import java.util.List;
 
@@ -17,19 +18,6 @@ import java.util.List;
  */
 
 public class HomeListQuickAdapter extends BaseMultiItemQuickAdapter<MultiNewsItem, BaseViewHolder> {
-    /**
-     * 文章发布时间在一分钟内
-     */
-    private static final int IN_A_MINUTE = 60;
-    /**
-     * 文章发布时间在一小时内
-     */
-    private static final int IN_A_HOUR = 3600;
-    /**
-     * 文章发布时间在一天内
-     */
-    private static final int IN_A_DAY = 86400;
-
     public HomeListQuickAdapter(List<MultiNewsItem> data) {
         super(data);
         addItemType(MultiNewsItem.TEXT_NEWS, R.layout.item_news_text);
@@ -46,16 +34,7 @@ public class HomeListQuickAdapter extends BaseMultiItemQuickAdapter<MultiNewsIte
         helper.setText(R.id.tv_title, item.getItemBean().getTitle())
                 .addOnClickListener(R.id.img_close);
         if (item.getItemBean().getPublish_time() != 0) {
-            int timeInterval = (int) System.currentTimeMillis() / 1000 - item.getItemBean().getPublish_time();
-            if (timeInterval <= IN_A_MINUTE) {
-                helper.setText(R.id.tv_time, mContext.getString(R.string.time_in_a_minute));
-            } else if (timeInterval > IN_A_MINUTE && timeInterval <= IN_A_HOUR) {
-                helper.setText(R.id.tv_time, timeInterval / 60 + mContext.getString(R.string.time_in_a_hour));
-            } else if (timeInterval > IN_A_HOUR && timeInterval <= IN_A_DAY) {
-                helper.setText(R.id.tv_time, timeInterval / 3600 + mContext.getString(R.string.time_in_a_day));
-            } else {
-                helper.setText(R.id.tv_time, mContext.getString(R.string.time_out_a_day));
-            }
+            helper.setText(R.id.tv_time, TimeUtil.transformNewsPublishTime(item.getItemBean().getPublish_time()));
         }
 
 

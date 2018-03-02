@@ -1,39 +1,14 @@
 package com.xu.headline.bean.authorinfo;
 
-import java.util.List;
-
 /**
  * Created by xusn10 on 2018/2/24.
+ *
  * @author xu
  */
 
-public class OrderedInfoBean4 extends BaseOrderedInfoBean {
+public class OrderedInfoBean4  {
 
-    /**
-     * data : [{"aggr_type":1,"group_id":6519344328546976260,"impr_id":"6519344328546976260_6519344328546976260","item_id":6519344328546976260,"log_pb":{"impr_id":"20180224162428010010023222209F57"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6519344328546976260&item_id=6519344328546976260&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180224162428010010023222209F57\"}&from_gid=6525910609031070216","title":"阿司匹林肠溶片是终身吃，还是吃一段时间就不吃了？","type_name":""},{"aggr_type":1,"group_id":6523892928937460231,"impr_id":"6523892928937460231_6523892928937460231","item_id":6523892928937460231,"log_pb":{"impr_id":"20180224162428010010023222209F57"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6523892928937460231&item_id=6523892928937460231&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180224162428010010023222209F57\"}&from_gid=6525910609031070216","title":"中国战机不如土耳其？巴铁为何弃中国战机而选择土耳其战机","type_name":""},{"aggr_type":1,"group_id":6519802799394390531,"impr_id":"6519802799394390531_6519802799394390531","item_id":6519802799394390531,"log_pb":{"impr_id":"20180224162428010010023222209F57"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6519802799394390531&item_id=6519802799394390531&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180224162428010010023222209F57\"}&from_gid=6525910609031070216","title":"人工授精的过程和授精后注意事项","type_name":""},{"aggr_type":1,"group_id":6522288471229334019,"impr_id":"6522288471229334019_6522288471229334019","item_id":6522288471229334019,"log_pb":{"impr_id":"20180224162428010010023222209F57"},"open_page_url":"sslocal://detail?is_quick_exit=1&groupid=6522288471229334019&item_id=6522288471229334019&gd_label=click_related&gd_ext_json={\"enter_from\":\"click_related\"}&log_pb={\"impr_id\":\"20180224162428010010023222209F57\"}&from_gid=6525910609031070216","title":"一年军费近5万亿，战机数量高达4万架，为何一直都拖不垮","type_name":""}]
-     * name : related_news
-     */
 
-    private String name;
-    private List<DataBean> data;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<DataBean> getData() {
-        return data;
-    }
-
-    public void setData(List<DataBean> data) {
-        this.data = data;
-    }
-
-    public static class DataBean {
         /**
          * aggr_type : 1
          * group_id : 6519344328546976260
@@ -133,5 +108,5 @@ public class OrderedInfoBean4 extends BaseOrderedInfoBean {
                 this.impr_id = impr_id;
             }
         }
-    }
+
 }

@@ -6,8 +6,10 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.List;
 
 /**
  * Created by xusn10 on 2018/2/26.
@@ -16,24 +18,33 @@ import java.lang.reflect.Type;
  */
 
 public class OrderedInfoDeserializer implements JsonDeserializer<BaseOrderedInfoBean> {
-    private static final String LABELS = "labels";
-    private static final String LIKE_END_REWARDS = "like_and_rewards";
-    private static final String AD = "ad";
-    private static final String RELATED_NEWS = "related_news";
+    public static final String LABELS = "labels";
+    public static final String LIKE_END_REWARDS = "like_and_rewards";
+    public static final String AD = "ad";
+    public static final String RELATED_NEWS = "related_news";
 
     @Override
     public BaseOrderedInfoBean deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
         String name = jsonObject.get("name").getAsString();
+        Type type;
         switch (name) {
             case LABELS:
-                return new Gson().fromJson(json, OrderedInfoBean1.class);
+                type = new TypeToken<BaseOrderedInfoBean<List<OrderedInfoBean1>>>() {
+                }.getType();
+                return new Gson().fromJson(json, type);
             case LIKE_END_REWARDS:
-                return new Gson().fromJson(json, OrderedInfoBean2.class);
+                type = new TypeToken<BaseOrderedInfoBean<OrderedInfoBean2>>() {
+                }.getType();
+                return new Gson().fromJson(json, type);
             case AD:
-                return new Gson().fromJson(json, OrderedInfoBean3.class);
+                type = new TypeToken<BaseOrderedInfoBean<OrderedInfoBean3>>() {
+                }.getType();
+                return new Gson().fromJson(json, type);
             case RELATED_NEWS:
-                return new Gson().fromJson(json, OrderedInfoBean4.class);
+                type = new TypeToken<BaseOrderedInfoBean<List<OrderedInfoBean4>>>() {
+                }.getType();
+                return new Gson().fromJson(json, type);
             default:
                 return null;
         }

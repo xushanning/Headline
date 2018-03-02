@@ -6,7 +6,7 @@ package com.xu.headline.bean.authorinfo;
  * @author xu
  */
 
-public class OrderedInfoBean3 extends BaseOrderedInfoBean {
+public class OrderedInfoBean3  {
 
 
     /**
@@ -15,7 +15,6 @@ public class OrderedInfoBean3 extends BaseOrderedInfoBean {
      */
 
     private String ad_data;
-    private String name;
 
     public String getAd_data() {
         return ad_data;
@@ -25,11 +24,4 @@ public class OrderedInfoBean3 extends BaseOrderedInfoBean {
         this.ad_data = ad_data;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
