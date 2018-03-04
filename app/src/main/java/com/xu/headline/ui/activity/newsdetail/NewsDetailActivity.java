@@ -1,7 +1,6 @@
 package com.xu.headline.ui.activity.newsdetail;
 
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -33,7 +32,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -68,7 +66,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     TextView tvFansCount;
     @BindView(R.id.wb_news_detail)
     WebView wbNewsDetail;
-    private static final int ONE_HUNDRED_THOUSAND = 100000;
+
     @BindView(R.id.iv_logo)
     ImageView ivLogo;
     @BindView(R.id.rv_labels)
@@ -83,7 +81,10 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
      * 一万
      */
     private static final int TEN_THOUSAND = 10000;
-
+    /**
+     * 十万
+     */
+    private static final int ONE_HUNDRED_THOUSAND = 100000;
     private NewsDetailLabelsQuickAdapter labelsQuickAdapter;
 
     @Override
