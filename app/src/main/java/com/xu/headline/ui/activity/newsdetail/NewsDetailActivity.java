@@ -12,13 +12,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xu.headline.R;
+import com.xu.headline.adapter.NewsCommentQuickAdapter;
 import com.xu.headline.adapter.NewsDetailLabelsQuickAdapter;
+import com.xu.headline.adapter.RecommendQuickAdapter;
 import com.xu.headline.base.BaseActivity;
+import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.NewsDetailsBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.authorinfo.BaseOrderedInfoBean;
 import com.xu.headline.bean.authorinfo.OrderedInfoBean1;
+import com.xu.headline.bean.authorinfo.OrderedInfoBean4;
 import com.xu.headline.bean.authorinfo.OrderedInfoDeserializer;
 import com.xu.headline.utils.ImageLoaderUtil;
 import com.xu.headline.utils.TimeUtil;
@@ -77,6 +84,8 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     RecyclerView rvCommentList;
     @BindView(R.id.tv_like_count)
     TextView tvLikeCount;
+    @BindView(R.id.smart_refresh)
+    SmartRefreshLayout smartRefresh;
     /**
      * 一万
      */
@@ -86,6 +95,10 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
      */
     private static final int ONE_HUNDRED_THOUSAND = 100000;
     private NewsDetailLabelsQuickAdapter labelsQuickAdapter;
+    private RecommendQuickAdapter recommendQuickAdapter;
+    private NewsCommentQuickAdapter commentQuickAdapter;
+
+    private CommentListBean commentListBean;
 
     @Override
     public int setLayoutId() {
@@ -119,15 +132,42 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
                 }
             }
         });
+        smartRefresh.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(RefreshLayout refreshLayout) {
+                if (commentListBean.isHas_more()) {
+                    //有更多
+
+                } else {
+
+                }
+            }
+        });
+
         initRecyclerView();
     }
 
     private void initRecyclerView() {
+        //标签adapter
         labelsQuickAdapter = new NewsDetailLabelsQuickAdapter(new ArrayList<OrderedInfoBean1>());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        rvLabels.setLayoutManager(linearLayoutManager);
+        LinearLayoutManager labelsLinearLayoutManager = new LinearLayoutManager(this);
+        labelsLinearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        rvLabels.setLayoutManager(labelsLinearLayoutManager);
         rvLabels.setAdapter(labelsQuickAdapter);
+
+        //推荐adapter
+        recommendQuickAdapter = new RecommendQuickAdapter(new ArrayList<OrderedInfoBean4>());
+        LinearLayoutManager recommendLinearLayoutManager = new LinearLayoutManager(this);
+        rvRecommendNews.setLayoutManager(recommendLinearLayoutManager);
+        rvRecommendNews.setAdapter(recommendQuickAdapter);
+
+        //评论列表adapter
+        commentQuickAdapter = new NewsCommentQuickAdapter(new ArrayList<CommentListBean.DataBean>());
+        LinearLayoutManager commentLinearLayoutManager = new LinearLayoutManager(this);
+        rvCommentList.setNestedScrollingEnabled(false);
+        rvCommentList.setLayoutManager(commentLinearLayoutManager);
+        rvCommentList.setAdapter(commentQuickAdapter);
+
     }
 
     @OnClick({R.id.tv_follow_bar, R.id.bt_follow_blow, R.id.img_back, R.id.v_write_comment, R.id.img_comment_count, R.id.img_collection, R.id.img_share})
@@ -172,7 +212,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
-        Logger.d(newsDetailsBean.getContent());
+        // Logger.d(newsDetailsBean.getContent());
         List<NewsDetailsBean.WebpImageDetailBean> imgList = newsDetailsBean.getWebp_image_detail();
 
         wbNewsDetail.loadDataWithBaseURL(null, handleHtmlString(newsDetailsBean.getContent(), imgList),
@@ -196,7 +236,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
             switch (authorInfoBean.getOrdered_info().get(i).getName()) {
                 case OrderedInfoDeserializer.LABELS:
                     //标签
-                    BaseOrderedInfoBean<List<OrderedInfoBean1>> data = authorInfoBean.getOrdered_info().get(0);
+                    BaseOrderedInfoBean<List<OrderedInfoBean1>> data = authorInfoBean.getOrdered_info().get(i);
                     labelsQuickAdapter.addData(data.getData());
                     break;
                 case OrderedInfoDeserializer.LIKE_END_REWARDS:
@@ -205,8 +245,13 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
                 case OrderedInfoDeserializer.AD:
                     //广告
                     break;
+                case OrderedInfoDeserializer.ALERT_TEXT:
+
+                    break;
                 case OrderedInfoDeserializer.RELATED_NEWS:
                     //推荐
+                    BaseOrderedInfoBean<List<OrderedInfoBean4>> recommendData = authorInfoBean.getOrdered_info().get(i);
+                    recommendQuickAdapter.addData(recommendData.getData());
                     break;
                 default:
                     break;
@@ -214,6 +259,12 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         }
 
 
+    }
+
+    @Override
+    public void loadCommentList(CommentListBean commentListBean) {
+        this.commentListBean = commentListBean;
+        commentQuickAdapter.addData(commentListBean.getData());
     }
 
     /**
@@ -255,7 +306,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
             result = matcher.find();
         }
         matcher.appendTail(sb);
-        Logger.d(sb.toString());
+        //Logger.d(sb.toString());
         return sb.toString();
     }
 

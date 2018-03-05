@@ -22,6 +22,7 @@ public class OrderedInfoDeserializer implements JsonDeserializer<BaseOrderedInfo
     public static final String LIKE_END_REWARDS = "like_and_rewards";
     public static final String AD = "ad";
     public static final String RELATED_NEWS = "related_news";
+    public static final String ALERT_TEXT = "alert_text";
 
     @Override
     public BaseOrderedInfoBean deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
@@ -43,6 +44,10 @@ public class OrderedInfoDeserializer implements JsonDeserializer<BaseOrderedInfo
                 return new Gson().fromJson(json, type);
             case RELATED_NEWS:
                 type = new TypeToken<BaseOrderedInfoBean<List<OrderedInfoBean4>>>() {
+                }.getType();
+                return new Gson().fromJson(json, type);
+            case ALERT_TEXT:
+                type = new TypeToken<BaseOrderedInfoBean<String>>() {
                 }.getType();
                 return new Gson().fromJson(json, type);
             default:

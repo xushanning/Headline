@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,6 +39,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import io.reactivex.Observable;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
 /**
@@ -73,7 +76,8 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
      * 频道名称
      */
     private String channelID;
-
+    private boolean isShowing;
+    private Disposable delayDisposable;
 
     public static HomeListFragment newInstance(String channelID) {
         Bundle args = new Bundle();
@@ -216,10 +220,14 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
      * @param text 需要展示的文字
      */
     private void showNotice(String text) {
+        if (isShowing) {
+            return;
+        }
+        isShowing = true;
         llCustomNotice.setVisibility(View.VISIBLE);
         tvNotice.setText(text);
         //延时一段时间后，进行动画
-        Observable.timer(2000, TimeUnit.MILLISECONDS)
+        delayDisposable = Observable.timer(2000, TimeUnit.MILLISECONDS)
                 .compose(TransformUtils.<Long>defaultSchedulers())
                 .subscribe(new Consumer<Long>() {
                     @Override
@@ -229,15 +237,18 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
                             @Override
                             public void onAnimationUpdate(ValueAnimator animation) {
                                 int value = (int) animation.getAnimatedValue();
-                                ViewGroup.LayoutParams layoutParams = llCustomNotice.getLayoutParams();
-                                layoutParams.height = value;
-                                llCustomNotice.setLayoutParams(layoutParams);
+                                if (llCustomNotice.getLayoutParams() != null) {
+                                    ViewGroup.LayoutParams layoutParams = llCustomNotice.getLayoutParams();
+                                    layoutParams.height = value;
+                                    llCustomNotice.setLayoutParams(layoutParams);
+                                }
                             }
                         });
                         animator.addListener(new AnimatorListenerAdapter() {
                             @Override
                             public void onAnimationEnd(Animator animation) {
                                 llCustomNotice.setVisibility(View.GONE);
+                                isShowing = false;
                             }
                         });
                         animator.setDuration(500);
@@ -247,5 +258,14 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
 
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (delayDisposable != null) {
+            delayDisposable.dispose();
+            llCustomNotice.setVisibility(View.GONE);
+        }
+
+    }
 
 }

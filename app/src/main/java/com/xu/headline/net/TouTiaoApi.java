@@ -1,6 +1,7 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
+import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
@@ -72,12 +73,23 @@ public class TouTiaoApi {
     /**
      * 获取头条号作者信息
      *
-     * @param newsID  id
+     * @param newsID   id
      * @param category 文章来源类型
      * @return observable
      */
     public Observable<BaseResBean<AuthorInfoBean>> getAuthorInfo(long newsID, String category) {
         return touTiaoApiService.getAuthorInfo(39.908766, 116.366742, newsID, newsID, 1, 1, category, 0, "25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
+                654, "6.5.4", "android");
+    }
+
+    /**
+     * 获取评论列表
+     * @param newsID id
+     * @param category 文章来源类型
+     * @return observable
+     */
+    public Observable<CommentListBean> getCommentList(long newsID, String category) {
+        return touTiaoApiService.getCommentList(newsID, newsID, 1, 20, 0, 0, 1, "47840702832", "wifi", "wifi", category, 13, "news_article",
                 654, "6.5.4", "android");
     }
 }

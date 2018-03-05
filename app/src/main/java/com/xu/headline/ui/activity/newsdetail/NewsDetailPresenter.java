@@ -3,11 +3,16 @@ package com.xu.headline.ui.activity.newsdetail;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
+import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.NewsDetailsBean;
 import com.xu.headline.net.BaseTouTiaoResObserver;
 import com.xu.headline.net.RetrofitFactory;
 import com.xu.headline.utils.TransformUtils;
+
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by xusn10 on 2018/1/19.
@@ -38,6 +43,16 @@ public class NewsDetailPresenter extends BasePresenter<INewsDetailContract.INews
                     @Override
                     protected void onSuccess(AuthorInfoBean authorInfoBean) {
                         mView.loadAuthorInfo(authorInfoBean);
+                    }
+                });
+        RetrofitFactory.getTouTiaoApi()
+                .getCommentList(newsID, channelID)
+                .compose(mView.<CommentListBean>bindToLife())
+                .compose(TransformUtils.<CommentListBean>defaultSchedulers())
+                .subscribe(new Consumer<CommentListBean>() {
+                    @Override
+                    public void accept(CommentListBean commentListBean) throws Exception {
+                        mView.loadCommentList(commentListBean);
                     }
                 });
     }

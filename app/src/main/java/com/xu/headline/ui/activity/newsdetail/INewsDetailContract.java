@@ -1,6 +1,7 @@
 package com.xu.headline.ui.activity.newsdetail;
 
 import com.xu.headline.base.IBaseContract;
+import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.NewsDetailsBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 
@@ -25,6 +26,13 @@ public interface INewsDetailContract {
          * @param authorInfoBean 用户信息bean
          */
         void loadAuthorInfo(AuthorInfoBean authorInfoBean);
+
+        /**
+         * 加载评论列表
+         *
+         * @param commentListBean 评论列表
+         */
+        void loadCommentList(CommentListBean commentListBean);
     }
 
     interface INewsDetailPresenter extends IBaseContract.IBasePresenter<INewsDetailView> {

@@ -3,6 +3,9 @@ package com.xu.headline.utils;
 import com.xu.headline.MyApplication;
 import com.xu.headline.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by xusn10 on 2018/3/2.
  * 转换文章发布的时间工具类
@@ -36,11 +39,12 @@ public class TimeUtil {
         if (timeInterval <= IN_A_MINUTE) {
             result = MyApplication.getContext().getString(R.string.time_in_a_minute);
         } else if (timeInterval > IN_A_MINUTE && timeInterval <= IN_A_HOUR) {
-            result = MyApplication.getContext().getString(R.string.time_in_a_hour);
+            result = timeInterval / 60 + MyApplication.getContext().getString(R.string.time_in_a_hour);
         } else if (timeInterval > IN_A_HOUR && timeInterval <= IN_A_DAY) {
-            result = MyApplication.getContext().getString(R.string.time_in_a_day);
+            result = timeInterval / 3600 + MyApplication.getContext().getString(R.string.time_in_a_day);
         } else {
-            result = MyApplication.getContext().getString(R.string.time_out_a_day);
+            SimpleDateFormat myFmt = new SimpleDateFormat("MM-dd HH:mm·");
+            result = myFmt.format(new Date(timeStamp * 1000) + MyApplication.getContext().getString(R.string.time_out_a_day));
         }
         return result;
     }
