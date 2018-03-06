@@ -35,6 +35,8 @@
 
     <!--公用-->
     <color name="color_line">#d8d8d8</color>
+    <color name="color_222222">#222222</color>
+    <color name="color_e8e8e8">#E8E8E8</color>
 
     <!--新闻详情页面-->
 
