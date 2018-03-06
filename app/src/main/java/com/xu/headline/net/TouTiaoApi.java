@@ -2,6 +2,8 @@ package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.CommentListBean;
+import com.xu.headline.bean.CommentReplyListBean;
+import com.xu.headline.bean.CommentReplyThemeBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
@@ -84,12 +86,35 @@ public class TouTiaoApi {
 
     /**
      * 获取评论列表
-     * @param newsID id
+     *
+     * @param newsID   id
      * @param category 文章来源类型
      * @return observable
      */
     public Observable<CommentListBean> getCommentList(long newsID, String category) {
         return touTiaoApiService.getCommentList(newsID, newsID, 1, 20, 0, 0, 1, "47840702832", "wifi", "wifi", category, 13, "news_article",
+                654, "6.5.4", "android");
+    }
+
+    /**
+     * 获取评论回复主题
+     *
+     * @param commentID 评论id
+     * @return observable
+     */
+    public Observable<CommentReplyThemeBean> getCommentReplyTheme(long commentID) {
+        return touTiaoApiService.getCommentReplyTheme(commentID, 5, "25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
+                654, "6.5.4", "android");
+    }
+
+    /**
+     * 获取评论回复的列表
+     *
+     * @param commentID 评论id
+     * @return observable
+     */
+    public Observable<CommentReplyListBean> getCommentReplyList(long commentID) {
+        return touTiaoApiService.getCommentReplyList(commentID, 20, 0, "25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
                 654, "6.5.4", "android");
     }
 }

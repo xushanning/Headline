@@ -15,12 +15,12 @@ public class HttpConstants {
     public static final String SHOW_API_BASE_URL = "http://route.showapi.com/";
 
 
-    public static final String TOU_TIAO_BASE_URL = "https://lf.snssdk.com/";
+    static final String TOU_TIAO_BASE_URL = "https://lf.snssdk.com/";
 
     /**
      * 头条新闻文章详情的base
      */
-      static final String TOU_TIAO_ARTICAL_BASE_URL = "https://a3.pstatp.com/";
+    static final String TOU_TIAO_ARTICAL_BASE_URL = "https://a3.pstatp.com/";
     /**
      * 请求成功
      */

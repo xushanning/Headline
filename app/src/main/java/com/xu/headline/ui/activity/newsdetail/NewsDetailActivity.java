@@ -1,5 +1,6 @@
 package com.xu.headline.ui.activity.newsdetail;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -27,6 +29,7 @@ import com.xu.headline.bean.authorinfo.BaseOrderedInfoBean;
 import com.xu.headline.bean.authorinfo.OrderedInfoBean1;
 import com.xu.headline.bean.authorinfo.OrderedInfoBean4;
 import com.xu.headline.bean.authorinfo.OrderedInfoDeserializer;
+import com.xu.headline.ui.activity.commentreply.CommentReplyActivity;
 import com.xu.headline.utils.ImageLoaderUtil;
 import com.xu.headline.utils.TimeUtil;
 import com.xu.headline.utils.ToastUtil;
@@ -167,6 +170,16 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         rvCommentList.setNestedScrollingEnabled(false);
         rvCommentList.setLayoutManager(commentLinearLayoutManager);
         rvCommentList.setAdapter(commentQuickAdapter);
+        commentQuickAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                CommentListBean.DataBean dataBean = (CommentListBean.DataBean) adapter.getItem(position);
+                Intent intent = new Intent(NewsDetailActivity.this, CommentReplyActivity.class);
+                intent.putExtra("commentID", dataBean.getComment().getId());
+                startActivity(intent);
+
+            }
+        });
 
     }
 

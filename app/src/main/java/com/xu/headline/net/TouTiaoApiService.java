@@ -1,6 +1,8 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
+import com.xu.headline.bean.CommentReplyListBean;
+import com.xu.headline.bean.CommentReplyThemeBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.SuggestSearchBean;
@@ -144,14 +146,14 @@ public interface TouTiaoApiService {
     /**
      * 获取头条号作者的信息
      *
-     * @param latitude 纬度
-     * @param longitude 经度
-     * @param groupID g
-     * @param itemID i
-     * @param aggrType a
-     * @param context c
-     * @param category 文章类型：热点、图片、新时代  之类
-     * @param articlePage 第几页
+     * @param latitude       纬度
+     * @param longitude      经度
+     * @param groupID        g
+     * @param itemID         i
+     * @param aggrType       a
+     * @param context        c
+     * @param category       文章类型：热点、图片、新时代  之类
+     * @param articlePage    第几页
      * @param iid            id
      * @param deviceID       d
      * @param ac             a
@@ -183,5 +185,65 @@ public interface TouTiaoApiService {
                                                           @Query("version_name") String versionName,
                                                           @Query("device_platform") String devicePlatform);
 
+    /**
+     * 获取评论回复的主题（回复的那条评论）
+     *
+     * @param commentID      评论id
+     * @param source         来源
+     * @param iid            iid
+     * @param deviceID       设备id
+     * @param ac             ac
+     * @param channel        频道
+     * @param aid            aid
+     * @param appName        appName
+     * @param versionCode    code
+     * @param versionName    name
+     * @param devicePlatform p
+     * @return observable
+     */
+
+    @GET("2/comment/v1/detail/")
+    Observable<CommentReplyThemeBean> getCommentReplyTheme(@Query("comment_id") long commentID,
+                                                           @Query("source") int source,
+                                                           @Query("iid") String iid,
+                                                           @Query("device_id") String deviceID,
+                                                           @Query("ac") String ac,
+                                                           @Query("channel") String channel,
+                                                           @Query("aid") int aid,
+                                                           @Query("app_name") String appName,
+                                                           @Query("version_code") int versionCode,
+                                                           @Query("version_name") String versionName,
+                                                           @Query("device_platform") String devicePlatform);
+
+    /**
+     * 获取评论回复的热门回复和全部回复
+     *
+     * @param commentID      评论id
+     * @param replyCount     获取的回复数量
+     * @param offset         offset
+     * @param iid            iid
+     * @param deviceID       设备id
+     * @param ac             ac
+     * @param channel        频道
+     * @param aid            aid
+     * @param appName        appName
+     * @param versionCode    code
+     * @param versionName    版本名
+     * @param devicePlatform 平台
+     * @return observer
+     */
+    @GET("2/comment/v1/reply_list/")
+    Observable<CommentReplyListBean> getCommentReplyList(@Query("id") long commentID,
+                                                         @Query("count") int replyCount,
+                                                         @Query("offset") int offset,
+                                                         @Query("iid") String iid,
+                                                         @Query("device_id") String deviceID,
+                                                         @Query("ac") String ac,
+                                                         @Query("channel") String channel,
+                                                         @Query("aid") int aid,
+                                                         @Query("app_name") String appName,
+                                                         @Query("version_code") int versionCode,
+                                                         @Query("version_name") String versionName,
+                                                         @Query("device_platform") String devicePlatform);
 
 }

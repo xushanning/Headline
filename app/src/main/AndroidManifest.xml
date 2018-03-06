@@ -27,8 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.newsdetail.NewsDetailActivity"></activity>
-        <activity android:name=".ui.activity.search.SearchActivity"></activity>
+        <activity android:name=".ui.activity.newsdetail.NewsDetailActivity"/>
+        <activity android:name=".ui.activity.search.SearchActivity"/>
+        <activity android:name=".ui.activity.commentreply.CommentReplyActivity"/>
     </application>
 
 </manifest>

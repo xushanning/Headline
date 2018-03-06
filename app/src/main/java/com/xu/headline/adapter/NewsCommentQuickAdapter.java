@@ -1,6 +1,7 @@
 package com.xu.headline.adapter;
 
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -34,6 +35,7 @@ public class NewsCommentQuickAdapter extends BaseQuickAdapter<CommentListBean.Da
                 .setText(R.id.tv_comment, commentBean.getText())
                 .setText(R.id.tv_comment_time, TimeUtil.transformNewsPublishTime(commentBean.getCreate_time()));
         if (commentBean.getReply_count() != 0) {
+            helper.getView(R.id.tv_single_comment_reply_count).setVisibility(View.VISIBLE);
             helper.setText(R.id.tv_single_comment_reply_count, commentBean.getReply_count() + MyApplication.getContext().getString(R.string.reply));
         }
         ImageLoaderUtil.
