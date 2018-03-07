@@ -21,9 +21,9 @@ import java.util.List;
  *         评论list的adapter
  */
 
-public class NewsCommentQuickAdapter extends BaseQuickAdapter<CommentListBean.DataBean, BaseViewHolder> {
+public class NewsCommentListQuickAdapter extends BaseQuickAdapter<CommentListBean.DataBean, BaseViewHolder> {
 
-    public NewsCommentQuickAdapter(@Nullable List<CommentListBean.DataBean> data) {
+    public NewsCommentListQuickAdapter(@Nullable List<CommentListBean.DataBean> data) {
         super(R.layout.item_news_details_comment, data);
     }
 
@@ -36,7 +36,11 @@ public class NewsCommentQuickAdapter extends BaseQuickAdapter<CommentListBean.Da
                 .setText(R.id.tv_comment_time, TimeUtil.transformNewsPublishTime(commentBean.getCreate_time()));
         if (commentBean.getReply_count() != 0) {
             helper.getView(R.id.tv_single_comment_reply_count).setVisibility(View.VISIBLE);
-            helper.setText(R.id.tv_single_comment_reply_count, commentBean.getReply_count() + MyApplication.getContext().getString(R.string.reply));
+            helper.getView(R.id.tv_reply).setVisibility(View.GONE);
+            helper.setText(R.id.tv_single_comment_reply_count, MyApplication.getContext().getString(R.string.reply_count, commentBean.getReply_count()));
+        } else {
+            helper.getView(R.id.tv_single_comment_reply_count).setVisibility(View.GONE);
+            helper.getView(R.id.tv_reply).setVisibility(View.VISIBLE);
         }
         ImageLoaderUtil.
                 loadCircleImage(MyApplication.getContext(), commentBean.getUser_profile_image_url(), (ImageView) helper.getView(R.id.img_user_portrait));

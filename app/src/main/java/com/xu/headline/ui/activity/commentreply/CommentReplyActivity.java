@@ -8,8 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.xu.headline.R;
-import com.xu.headline.adapter.NewsCommentAllReplyQuickAdapter;
-import com.xu.headline.adapter.NewsCommentHotReplyQuickAdapter;
+import com.xu.headline.adapter.NewsCommentReplyQuickAdapter;
 import com.xu.headline.base.BaseActivity;
 import com.xu.headline.bean.CommentReplyListBean;
 import com.xu.headline.bean.CommentReplyThemeBean;
@@ -55,8 +54,8 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
     @BindView(R.id.tv_appreciate_count_right)
     TextView tvAppreciateCountRight;
 
-    private NewsCommentHotReplyQuickAdapter hotReplyQucikAdapter;
-    private NewsCommentAllReplyQuickAdapter allReplyQuickAdapter;
+    private NewsCommentReplyQuickAdapter hotReplyQucikAdapter;
+    private NewsCommentReplyQuickAdapter allReplyQuickAdapter;
 
     @Override
     public int setLayoutId() {
@@ -80,13 +79,13 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
     }
 
     private void initRecyclerView() {
-        hotReplyQucikAdapter = new NewsCommentHotReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.HotCommentsBean>());
+        hotReplyQucikAdapter = new NewsCommentReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.CommentsBean>());
         LinearLayoutManager hotReplyLinearLayoutManager = new LinearLayoutManager(this);
         hotReplyLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvCommentHotReply.setLayoutManager(hotReplyLinearLayoutManager);
         rvCommentHotReply.setAdapter(hotReplyQucikAdapter);
 
-        allReplyQuickAdapter = new NewsCommentAllReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.DataBean>());
+        allReplyQuickAdapter = new NewsCommentReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.CommentsBean>());
         LinearLayoutManager allReplyLinearLayoutManager = new LinearLayoutManager(this);
         allReplyLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvCommentAllReply.setLayoutManager(allReplyLinearLayoutManager);
@@ -109,7 +108,7 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
     @Override
     public void loadCommentReplyList(CommentReplyListBean commentReplyListBean) {
         CommentReplyListBean.DataBeanX dataBeanX = commentReplyListBean.getData();
-        List<CommentReplyListBean.DataBeanX.DataBean> dataBeanList = dataBeanX.getData();
+        List<CommentReplyListBean.DataBeanX.CommentsBean> dataBeanList = dataBeanX.getData();
         if (dataBeanList != null) {
             if (dataBeanList.get(0) != null) {
                 ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(0).getUser().getAvatar_url(), imgAppreciate1);

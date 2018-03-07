@@ -1,6 +1,7 @@
 package com.xu.headline.adapter;
 
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -17,16 +18,17 @@ import java.util.List;
  * Created by Administrator on 2018/3/6.
  *
  * @author xu
- *         热门评论的adapter
+ *         评论回复的列表adapter
  */
 
-public class NewsCommentHotReplyQuickAdapter extends BaseQuickAdapter<CommentReplyListBean.DataBeanX.HotCommentsBean, BaseViewHolder> {
-    public NewsCommentHotReplyQuickAdapter(@Nullable List<CommentReplyListBean.DataBeanX.HotCommentsBean> data) {
+public class NewsCommentReplyQuickAdapter extends BaseQuickAdapter<CommentReplyListBean.DataBeanX.CommentsBean, BaseViewHolder> {
+    public NewsCommentReplyQuickAdapter(@Nullable List<CommentReplyListBean.DataBeanX.CommentsBean> data) {
         super(R.layout.item_news_details_comment, data);
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, CommentReplyListBean.DataBeanX.HotCommentsBean item) {
+    protected void convert(BaseViewHolder helper, CommentReplyListBean.DataBeanX.CommentsBean item) {
+        helper.getView(R.id.tv_single_comment_reply_count).setVisibility(View.GONE);
         helper.setText(R.id.tv_user_name, item.getUser().getName())
                 .setText(R.id.tv_appreciate_count, MyApplication.getContext().getString(R.string.x_only_digit, item.getDigg_count()))
                 .setText(R.id.tv_comment, item.getText())

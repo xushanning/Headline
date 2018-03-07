@@ -18,7 +18,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xu.headline.R;
-import com.xu.headline.adapter.NewsCommentQuickAdapter;
+import com.xu.headline.adapter.NewsCommentListQuickAdapter;
 import com.xu.headline.adapter.NewsDetailLabelsQuickAdapter;
 import com.xu.headline.adapter.RecommendQuickAdapter;
 import com.xu.headline.base.BaseActivity;
@@ -99,7 +99,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     private static final int ONE_HUNDRED_THOUSAND = 100000;
     private NewsDetailLabelsQuickAdapter labelsQuickAdapter;
     private RecommendQuickAdapter recommendQuickAdapter;
-    private NewsCommentQuickAdapter commentQuickAdapter;
+    private NewsCommentListQuickAdapter commentQuickAdapter;
 
     private CommentListBean commentListBean;
 
@@ -165,7 +165,7 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
         rvRecommendNews.setAdapter(recommendQuickAdapter);
 
         //评论列表adapter
-        commentQuickAdapter = new NewsCommentQuickAdapter(new ArrayList<CommentListBean.DataBean>());
+        commentQuickAdapter = new NewsCommentListQuickAdapter(new ArrayList<CommentListBean.DataBean>());
         LinearLayoutManager commentLinearLayoutManager = new LinearLayoutManager(this);
         rvCommentList.setNestedScrollingEnabled(false);
         rvCommentList.setLayoutManager(commentLinearLayoutManager);
