@@ -42,7 +42,7 @@
         android:id="@+id/tv_appreciate_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2692"
+        android:text="@string/x_only_digit"
         app:layout_constraintBottom_toBottomOf="@+id/v_comment_count"
         app:layout_constraintEnd_toEndOf="@+id/v_comment_count"
         app:layout_constraintTop_toTopOf="@+id/v_comment_count" />

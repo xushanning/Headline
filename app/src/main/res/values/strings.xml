@@ -48,4 +48,10 @@
     <string name="report">举报</string>
     <string name="hot_comment">热门评论</string>
     <string name="all_comment">全部评论</string>
+    <string name="x_comment_count">%1$d条回复</string>
+    <string name="x_appreciate_count">%1$d人赞过></string>
+
+
+    <!--公共-->
+    <string name="x_only_digit">%1$d</string>
 </resources>

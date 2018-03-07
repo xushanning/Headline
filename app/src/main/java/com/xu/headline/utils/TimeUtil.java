@@ -44,7 +44,7 @@ public class TimeUtil {
             result = timeInterval / 3600 + MyApplication.getContext().getString(R.string.time_in_a_day);
         } else {
             SimpleDateFormat myFmt = new SimpleDateFormat("MM-dd HH:mm·");
-            result = myFmt.format(new Date(timeStamp * 1000) + MyApplication.getContext().getString(R.string.time_out_a_day));
+            result = myFmt.format(new Date(timeStamp * 1000) );
         }
         return result;
     }

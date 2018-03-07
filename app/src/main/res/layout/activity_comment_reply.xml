@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -29,8 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
-            android:text="62条回复"
-            android:textColor="#222222"
+            android:text="@string/x_comment_count"
+            android:textColor="@color/color_222222"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +64,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/img_be_reply"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="16dp"
@@ -81,9 +80,9 @@
                     android:layout_marginStart="10dp"
                     android:text="挥剑下江南"
                     android:textColor="#406599"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toTopOf="@+id/imageView4"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_be_reply"
+                    app:layout_constraintStart_toEndOf="@+id/img_be_reply"
+                    app:layout_constraintTop_toTopOf="@+id/img_be_reply"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
@@ -171,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="280人赞过 >"
+                    android:text="@string/x_appreciate_count"
                     android:textColor="@color/color_222222"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="@+id/img_appreciate_3"
@@ -179,11 +178,11 @@
                     app:layout_constraintTop_toTopOf="@+id/img_appreciate_3" />
 
                 <TextView
-                    android:id="@+id/textView20"
+                    android:id="@+id/tv_appreciate_count_right"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
-                    android:text="280"
+                    android:text="@string/x_only_digit"
                     android:textColor="#979FAC"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_appreciate_count_left"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -194,9 +193,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="3dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView20"
-                    app:layout_constraintEnd_toStartOf="@+id/textView20"
-                    app:layout_constraintTop_toTopOf="@+id/textView20"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_appreciate_count_right"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_appreciate_count_right"
+                    app:layout_constraintTop_toTopOf="@+id/tv_appreciate_count_right"
                     app:srcCompat="@mipmap/like" />
 
                 <View

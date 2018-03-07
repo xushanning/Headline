@@ -1,12 +1,26 @@
 package com.xu.headline.ui.activity.commentreply;
 
 import android.content.Intent;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
+import com.xu.headline.adapter.NewsCommentAllReplyQuickAdapter;
+import com.xu.headline.adapter.NewsCommentHotReplyQuickAdapter;
 import com.xu.headline.base.BaseActivity;
 import com.xu.headline.bean.CommentReplyListBean;
 import com.xu.headline.bean.CommentReplyThemeBean;
+import com.xu.headline.utils.ImageLoaderUtil;
+import com.xu.headline.utils.TimeUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by xusn10 on 2018/3/6.
@@ -16,6 +30,34 @@ import com.xu.headline.bean.CommentReplyThemeBean;
  */
 
 public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICommentReplyPresenter> implements ICommentReplyContract.ICommentReplyView {
+    @BindView(R.id.tv_reply_count)
+    TextView tvReplyCount;
+    @BindView(R.id.img_be_reply)
+    ImageView imgBeReply;
+    @BindView(R.id.tv_be_reply_user_name)
+    TextView tvBeReplyUserName;
+    @BindView(R.id.tv_be_reply_comment)
+    TextView tvBeReplyComment;
+    @BindView(R.id.tv_comment_time)
+    TextView tvCommentTime;
+    @BindView(R.id.img_appreciate_1)
+    ImageView imgAppreciate1;
+    @BindView(R.id.img_appreciate_2)
+    ImageView imgAppreciate2;
+    @BindView(R.id.img_appreciate_3)
+    ImageView imgAppreciate3;
+    @BindView(R.id.tv_appreciate_count_left)
+    TextView tvAppreciateCountLeft;
+    @BindView(R.id.rv_comment_hot_reply)
+    RecyclerView rvCommentHotReply;
+    @BindView(R.id.rv_comment_all_reply)
+    RecyclerView rvCommentAllReply;
+    @BindView(R.id.tv_appreciate_count_right)
+    TextView tvAppreciateCountRight;
+
+    private NewsCommentHotReplyQuickAdapter hotReplyQucikAdapter;
+    private NewsCommentAllReplyQuickAdapter allReplyQuickAdapter;
+
     @Override
     public int setLayoutId() {
         return R.layout.activity_comment_reply;
@@ -29,6 +71,7 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
         if (commentID != 0) {
             mPresenter.getCommentReplyData(commentID);
         }
+        initRecyclerView();
     }
 
     @Override
@@ -36,13 +79,65 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
         return new CommentReplyPresenter();
     }
 
+    private void initRecyclerView() {
+        hotReplyQucikAdapter = new NewsCommentHotReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.HotCommentsBean>());
+        LinearLayoutManager hotReplyLinearLayoutManager = new LinearLayoutManager(this);
+        hotReplyLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvCommentHotReply.setLayoutManager(hotReplyLinearLayoutManager);
+        rvCommentHotReply.setAdapter(hotReplyQucikAdapter);
+
+        allReplyQuickAdapter = new NewsCommentAllReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.DataBean>());
+        LinearLayoutManager allReplyLinearLayoutManager = new LinearLayoutManager(this);
+        allReplyLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvCommentAllReply.setLayoutManager(allReplyLinearLayoutManager);
+        rvCommentAllReply.setAdapter(allReplyQuickAdapter);
+    }
+
     @Override
     public void loadCommentReplyTheme(CommentReplyThemeBean commentReplyThemeBean) {
-        Logger.d(commentReplyThemeBean.getData().getText());
+        CommentReplyThemeBean.DataBean dataBean = commentReplyThemeBean.getData();
+        tvReplyCount.setText(getString(R.string.x_comment_count, dataBean.getComment_count()));
+        ImageLoaderUtil.loadCircleImage(this, dataBean.getUser().getAvatar_url(), imgBeReply);
+        tvBeReplyUserName.setText(dataBean.getUser().getScreen_name());
+        tvBeReplyComment.setText(dataBean.getText());
+        tvCommentTime.setText(TimeUtil.transformNewsPublishTime(dataBean.getCreate_time()));
+        tvAppreciateCountLeft.setText(getString(R.string.x_appreciate_count, dataBean.getDigg_count()));
+        tvAppreciateCountRight.setText(getString(R.string.x_only_digit, dataBean.getDigg_count()));
+
     }
 
     @Override
     public void loadCommentReplyList(CommentReplyListBean commentReplyListBean) {
+        CommentReplyListBean.DataBeanX dataBeanX = commentReplyListBean.getData();
+        List<CommentReplyListBean.DataBeanX.DataBean> dataBeanList = dataBeanX.getData();
+        if (dataBeanList != null) {
+            if (dataBeanList.get(0) != null) {
+                ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(0).getUser().getAvatar_url(), imgAppreciate1);
+            }
+            if (dataBeanList.get(1) != null) {
+                ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(1).getUser().getAvatar_url(), imgAppreciate2);
+            }
+            if (dataBeanList.get(2) != null) {
+                ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(2).getUser().getAvatar_url(), imgAppreciate3);
+            }
+            allReplyQuickAdapter.addData(dataBeanList);
+        }
 
+        if (dataBeanX.getHot_comments() != null) {
+            hotReplyQucikAdapter.addData(dataBeanX.getHot_comments());
+        }
+    }
+
+
+    @OnClick({R.id.img_cancel, R.id.tv_pay_attention_to})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.img_cancel:
+                break;
+            case R.id.tv_pay_attention_to:
+                break;
+            default:
+                break;
+        }
     }
 }
