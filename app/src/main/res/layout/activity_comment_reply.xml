@@ -140,12 +140,14 @@
                     android:id="@+id/img_appreciate_1"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
+                    android:visibility="gone"
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="@+id/tv_comment_time"
                     app:layout_constraintTop_toBottomOf="@+id/tv_comment_time"
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/img_appreciate_2"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
@@ -156,6 +158,7 @@
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/img_appreciate_3"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
@@ -209,19 +212,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_appreciate_1" />
 
-                <TextView
-                    android:id="@+id/textView21"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/hot_comment"
-                    android:textColor="@color/color_222222"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/view" />
+
             </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tv_hot_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/hot_comment"
+                android:textColor="@color/color_222222" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_comment_hot_reply"
@@ -233,6 +235,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:text="@string/all_comment"
                 android:textColor="@color/color_222222" />
 

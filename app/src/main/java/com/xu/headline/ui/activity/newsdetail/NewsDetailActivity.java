@@ -315,7 +315,6 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
                 matcher.appendReplacement(sb, "<img src=\"" + imgList.get(i).getUrl() + "\"style=\"width:100%;height:auto\"");
             }
             i++;
-            Logger.d(matcher.group());
             result = matcher.find();
         }
         matcher.appendTail(sb);

@@ -1,12 +1,14 @@
 package com.xu.headline.ui.activity.commentreply;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.NewsCommentReplyQuickAdapter;
 import com.xu.headline.base.BaseActivity;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -53,8 +56,11 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
     RecyclerView rvCommentAllReply;
     @BindView(R.id.tv_appreciate_count_right)
     TextView tvAppreciateCountRight;
+    @BindView(R.id.tv_hot_reply)
+    TextView tvHotReply;
 
-    private NewsCommentReplyQuickAdapter hotReplyQucikAdapter;
+
+    private NewsCommentReplyQuickAdapter hotReplyQuickAdapter;
     private NewsCommentReplyQuickAdapter allReplyQuickAdapter;
 
     @Override
@@ -79,14 +85,26 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
     }
 
     private void initRecyclerView() {
-        hotReplyQucikAdapter = new NewsCommentReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.CommentsBean>());
-        LinearLayoutManager hotReplyLinearLayoutManager = new LinearLayoutManager(this);
+        hotReplyQuickAdapter = new NewsCommentReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.CommentsBean>());
+        LinearLayoutManager hotReplyLinearLayoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                //禁止recyclerView滑动
+                return false;
+            }
+        };
         hotReplyLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvCommentHotReply.setLayoutManager(hotReplyLinearLayoutManager);
-        rvCommentHotReply.setAdapter(hotReplyQucikAdapter);
+        rvCommentHotReply.setAdapter(hotReplyQuickAdapter);
 
         allReplyQuickAdapter = new NewsCommentReplyQuickAdapter(new ArrayList<CommentReplyListBean.DataBeanX.CommentsBean>());
-        LinearLayoutManager allReplyLinearLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager allReplyLinearLayoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                //禁止recyclerView滑动
+                return false;
+            }
+        };
         allReplyLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvCommentAllReply.setLayoutManager(allReplyLinearLayoutManager);
         rvCommentAllReply.setAdapter(allReplyQuickAdapter);
@@ -110,20 +128,28 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
         CommentReplyListBean.DataBeanX dataBeanX = commentReplyListBean.getData();
         List<CommentReplyListBean.DataBeanX.CommentsBean> dataBeanList = dataBeanX.getData();
         if (dataBeanList != null) {
-            if (dataBeanList.get(0) != null) {
-                ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(0).getUser().getAvatar_url(), imgAppreciate1);
-            }
-            if (dataBeanList.get(1) != null) {
-                ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(1).getUser().getAvatar_url(), imgAppreciate2);
-            }
-            if (dataBeanList.get(2) != null) {
-                ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(2).getUser().getAvatar_url(), imgAppreciate3);
+            Logger.d("3");
+            Logger.d(dataBeanList.size());
+            for (int i = 0; i < dataBeanList.size(); i++) {
+                if (i == 0) {
+                    imgAppreciate1.setVisibility(View.VISIBLE);
+                    ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(i).getUser().getAvatar_url(), imgAppreciate1);
+                } else if (i == 1) {
+                    imgAppreciate2.setVisibility(View.VISIBLE);
+                    ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(i).getUser().getAvatar_url(), imgAppreciate2);
+                } else if (i == 2) {
+                    imgAppreciate3.setVisibility(View.VISIBLE);
+                    ImageLoaderUtil.loadCircleImage(this, dataBeanList.get(i).getUser().getAvatar_url(), imgAppreciate3);
+                }
             }
             allReplyQuickAdapter.addData(dataBeanList);
+        } else {
+            //隐藏全部评论
         }
-
-        if (dataBeanX.getHot_comments() != null) {
-            hotReplyQucikAdapter.addData(dataBeanX.getHot_comments());
+        if (dataBeanX.getHot_comments() != null && dataBeanX.getHot_comments().size() != 0) {
+            hotReplyQuickAdapter.addData(dataBeanX.getHot_comments());
+        } else {
+            tvHotReply.setVisibility(View.GONE);
         }
     }
 
@@ -138,5 +164,13 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
             default:
                 break;
         }
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
     }
 }
