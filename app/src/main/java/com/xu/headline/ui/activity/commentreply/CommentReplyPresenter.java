@@ -4,6 +4,7 @@ import com.xu.headline.base.BasePresenter;
 import com.xu.headline.bean.CommentReplyListBean;
 import com.xu.headline.bean.CommentReplyThemeBean;
 import com.xu.headline.net.RetrofitFactory;
+import com.xu.headline.net.RetryRequestWithDelay;
 import com.xu.headline.net.TouTiaoApi;
 import com.xu.headline.net.TouTiaoApiService;
 import com.xu.headline.utils.TransformUtils;
@@ -38,6 +39,7 @@ public class CommentReplyPresenter extends BasePresenter<ICommentReplyContract.I
         //热门回复和全部回复
         RetrofitFactory.getTouTiaoApi()
                 .getCommentReplyList(commentID)
+                .retryWhen(new RetryRequestWithDelay(3, 3000))
                 .compose(mView.<CommentReplyListBean>bindToLife())
                 .compose(TransformUtils.<CommentReplyListBean>defaultSchedulers())
                 .subscribe(new Consumer<CommentReplyListBean>() {

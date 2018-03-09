@@ -76,7 +76,6 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     TextView tvFansCount;
     @BindView(R.id.wb_news_detail)
     WebView wbNewsDetail;
-
     @BindView(R.id.iv_logo)
     ImageView ivLogo;
     @BindView(R.id.rv_labels)
@@ -174,9 +173,15 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 CommentListBean.DataBean dataBean = (CommentListBean.DataBean) adapter.getItem(position);
-                Intent intent = new Intent(NewsDetailActivity.this, CommentReplyActivity.class);
-                intent.putExtra("commentID", dataBean.getComment().getId());
-                startActivity(intent);
+                if (dataBean.getComment().getReply_count() != 0) {
+                    Intent intent = new Intent(NewsDetailActivity.this, CommentReplyActivity.class);
+                    intent.putExtra("commentID", dataBean.getComment().getId());
+                    startActivity(intent);
+                } else {
+                    //回复
+                    
+                }
+
 
             }
         });

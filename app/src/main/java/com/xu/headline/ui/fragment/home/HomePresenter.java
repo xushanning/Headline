@@ -75,6 +75,8 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                 }
             }
         }).subscribeOn(Schedulers.io());
+
+
         Observable<List<NewsSuggestChannelBean.DataBean>> netWorkObservable =
                 RetrofitFactory.getTouTiaoApi()
                         .getSuggestChannel()
