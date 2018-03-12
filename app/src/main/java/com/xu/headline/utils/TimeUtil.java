@@ -1,5 +1,6 @@
 package com.xu.headline.utils;
 
+import com.orhanobut.logger.Logger;
 import com.xu.headline.MyApplication;
 import com.xu.headline.R;
 
@@ -35,7 +36,7 @@ public class TimeUtil {
      */
     public static String transformNewsPublishTime(int timeStamp) {
         String result;
-        int timeInterval = (int) System.currentTimeMillis() / 1000 - timeStamp;
+        int timeInterval = (int) (System.currentTimeMillis() / 1000) - timeStamp;
         if (timeInterval <= IN_A_MINUTE) {
             result = MyApplication.getContext().getString(R.string.time_in_a_minute);
         } else if (timeInterval > IN_A_MINUTE && timeInterval <= IN_A_HOUR) {
@@ -44,7 +45,7 @@ public class TimeUtil {
             result = timeInterval / 3600 + MyApplication.getContext().getString(R.string.time_in_a_day);
         } else {
             SimpleDateFormat myFmt = new SimpleDateFormat("MM-dd HH:mm·");
-            result = myFmt.format(new Date(timeStamp * 1000) );
+            result = myFmt.format(new Date(timeStamp * 1000));
         }
         return result;
     }

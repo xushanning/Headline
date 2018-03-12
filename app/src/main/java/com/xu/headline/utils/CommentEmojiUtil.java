@@ -1,11 +1,18 @@
 package com.xu.headline.utils;
 
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ImageSpan;
 
+import com.xu.headline.MyApplication;
 import com.xu.headline.R;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Administrator on 2018/3/10.
@@ -16,17 +23,35 @@ import java.util.Map;
  */
 
 public class CommentEmojiUtil {
-    public static Map<String, Integer> emojiMap;
+    private static Map<String, Integer> emojiMap;
+    /**
+     * 判断表情的正则表达式 [中英文]
+     */
+    private static final String EMOJI = "\\[[\\u4e00-\\u9fa5a-zA-Z]+]";
 
+    /**
+     * 获取含有表情的spannableString
+     *
+     * @param commentString 服务器传过来的原始string
+     * @return 处理过的string
+     */
     public static SpannableString getEmojiString(String commentString) {
         SpannableString spannableString = new SpannableString(commentString);
-
-
+        Pattern pattern = Pattern.compile(EMOJI);
+        Matcher matcher = pattern.matcher(spannableString);
+        boolean result = matcher.find();
+        while (result) {
+            Drawable drawable = ContextCompat.getDrawable(MyApplication.getContext(), emojiMap.get(matcher.group()));
+            drawable.setBounds(0, 0, 42, 42);
+            ImageSpan imageSpan = new ImageSpan(drawable);
+            spannableString.setSpan(imageSpan, matcher.start(), matcher.end(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            result = matcher.find();
+        }
         return spannableString;
     }
 
     static {
-        emojiMap = new HashMap<String, Integer>();
+        emojiMap = new HashMap<>();
         //第一页
         emojiMap.put("[捂脸]", R.mipmap.emoji1_1_1);
         emojiMap.put("[大笑]", R.mipmap.emoji1_1_2);

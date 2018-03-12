@@ -9,6 +9,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.xu.headline.MyApplication;
 import com.xu.headline.R;
 import com.xu.headline.bean.CommentReplyListBean;
+import com.xu.headline.utils.CommentEmojiUtil;
 import com.xu.headline.utils.ImageLoaderUtil;
 import com.xu.headline.utils.TimeUtil;
 
@@ -31,7 +32,7 @@ public class NewsCommentReplyQuickAdapter extends BaseQuickAdapter<CommentReplyL
         helper.getView(R.id.tv_single_comment_reply_count).setVisibility(View.GONE);
         helper.setText(R.id.tv_user_name, item.getUser().getName())
                 .setText(R.id.tv_appreciate_count, MyApplication.getContext().getString(R.string.x_only_digit, item.getDigg_count()))
-                .setText(R.id.tv_comment, item.getText())
+                .setText(R.id.tv_comment, CommentEmojiUtil.getEmojiString(item.getText()))
                 .setText(R.id.tv_comment_time, TimeUtil.transformNewsPublishTime(item.getCreate_time()));
         ImageLoaderUtil.loadCircleImage(MyApplication.getContext(), item.getUser().getAvatar_url(), (ImageView) helper.getView(R.id.img_user_portrait));
     }

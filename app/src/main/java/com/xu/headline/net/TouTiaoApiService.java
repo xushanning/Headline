@@ -83,25 +83,61 @@ public interface TouTiaoApiService {
      *
      * @param listCount         20
      * @param category          新闻类型
+     * @param concernID         id
      * @param refer             1
      * @param refreshReason     1
      * @param sessionRefreshIdx 5
      * @param count             20
-     * @param currentTime       当前时间
+     * @param lastBeHotTime     当前时间
      * @param lastRefreshTime   上一次刷新时间
-     * @param iid
-     * @return observable
+     * @param locMode           mode
+     * @param currentTime       时间
+     * @param latitude          纬度
+     * @param longitude         经度
+     * @param city              城市
+     * @param from              如何操作的？下拉，上拉？
+     * @param lac               lac
+     * @param cid               cid
+     * @param pluginEnable      是否可用
+     * @param iid               iid
+     * @param deviceID          设备id
+     * @param ac                ac
+     * @param channel           频道
+     * @param aid               aid
+     * @param appName           name
+     * @param versionCode       版本号
+     * @param versionName       版本名称
+     * @param devicePlatform    平台
+     * @return Observable
      */
     @GET("api/news/feed/v74/")
     Observable<TouTiaoNewsListBean> getNewsList(@Query("list_count") int listCount,
                                                 @Query("category") String category,
+                                                @Query("concern_id") String concernID,
                                                 @Query("refer") int refer,
                                                 @Query("refresh_reason") int refreshReason,
                                                 @Query("session_refresh_idx") int sessionRefreshIdx,
                                                 @Query("count") int count,
-                                                @Query("min_behot_time") long lastRefreshTime,
-                                                @Query("last_refresh_sub_entrance_interval") long currentTime,
-                                                @Query("iid") String iid);
+                                                @Query("min_behot_time") long lastBeHotTime,
+                                                @Query("last_refresh_sub_entrance_interval") long lastRefreshTime,
+                                                @Query("loc_mode") int locMode,
+                                                @Query("loc_time") long currentTime,
+                                                @Query("latitude") double latitude,
+                                                @Query("longitude") double longitude,
+                                                @Query("city") String city,
+                                                @Query("tt_from") String from,
+                                                @Query("lac") int lac,
+                                                @Query("cid") int cid,
+                                                @Query("plugin_enable") int pluginEnable,
+                                                @Query("iid") String iid,
+                                                @Query("device_id") String deviceID,
+                                                @Query("ac") String ac,
+                                                @Query("channel") String channel,
+                                                @Query("aid") int aid, @Query("app_name") String appName,
+                                                @Query("version_code") int versionCode,
+                                                @Query("version_name") String versionName,
+                                                @Query("device_platform") String devicePlatform);
+
 
     /**
      * 获取评论列表

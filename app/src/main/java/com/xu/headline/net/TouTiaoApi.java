@@ -69,7 +69,8 @@ public class TouTiaoApi {
      * @return observable
      */
     public Observable<TouTiaoNewsListBean> getNewsList(String category, long lastRefreshTime) {
-        return touTiaoApiService.getNewsList(20, category, 1, 1, 5, 20, lastRefreshTime, System.currentTimeMillis() / 1000, "25206805877");
+        return touTiaoApiService.getNewsList(20, category, "6213176537160616450", 1, 1, 5, 20, lastRefreshTime, System.currentTimeMillis() / 1000, 7, System.currentTimeMillis() / 1000,
+                39.916559445439894, 116.38022377094337, "北京", "pull", 4105, 4794480, 3, "25206805877", "47840702832", "wifi", "huawei", 13, "news_article", 654, "6.5.4", "android");
     }
 
     /**
