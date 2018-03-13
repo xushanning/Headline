@@ -22,6 +22,16 @@ public class VideoListFragment extends BaseFragment<IVideoListContract.IVideoLis
 
     @Override
     public IVideoListContract.IVideoListPresenter createPresenter() {
-        return new IVideoListPresenter();
+        return new VideoListPresenter();
+    }
+
+    @Override
+    public void netConnected() {
+
+    }
+
+    @Override
+    public void netDisconnected() {
+
     }
 }

@@ -96,7 +96,6 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     public void initOthers() {
         if (getArguments() != null) {
             channelID = getArguments().getString("channelID");
-            mPresenter.getNewsList(channelID, FIRST_LOAD);
         }
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -193,10 +192,10 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
     private void recommendHasOrNot(List<MultiNewsItem> itemBeans) {
         smartRefreshLayout.finishRefresh();
         if (itemBeans.size() == 0) {
-            showNotice("暂无更新,休息一会");
+            showNotice(getString(R.string.no_update));
         } else {
             homeListQuickAdapter.addData(0, itemBeans);
-            showNotice("今日头条推荐引擎有" + itemBeans.size() + "条更新");
+            showNotice(getString(R.string.update_count, itemBeans.size()));
         }
     }
 
@@ -268,4 +267,13 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
 
     }
 
+    @Override
+    public void netConnected() {
+        mPresenter.getNewsList(channelID, FIRST_LOAD);
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

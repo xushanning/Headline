@@ -8,7 +8,7 @@ import com.xu.headline.base.BasePresenter;
  * @author xu
  */
 
-public class IVideoListPresenter extends BasePresenter<IVideoListContract.IVideoListView> implements IVideoListContract.IVideoListPresenter {
+public class VideoListPresenter extends BasePresenter<IVideoListContract.IVideoListView> implements IVideoListContract.IVideoListPresenter {
 
 
 }

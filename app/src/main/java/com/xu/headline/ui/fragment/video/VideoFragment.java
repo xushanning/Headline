@@ -62,4 +62,14 @@ public class VideoFragment extends BaseFragment<IVideoContract.IVideoPresenter> 
     public void loadVideoChannel(List<VideoChannelBean.TypesBean> channelList) {
 
     }
+
+    @Override
+    public void netConnected() {
+
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

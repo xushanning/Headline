@@ -175,4 +175,13 @@ public class MainActivity extends BaseActivity<IMainContract.IMainPresenter> imp
     }
 
 
+    @Override
+    public void netConnected() {
+
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

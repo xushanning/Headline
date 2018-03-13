@@ -328,4 +328,13 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
     }
 
 
+    @Override
+    public void netConnected() {
+
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

@@ -32,7 +32,8 @@
     <string name="time_in_a_hour">分钟前</string>
     <string name="time_in_a_day">小时前</string>
     <string name="time_out_a_day">一天前</string>
-
+    <string name="no_update">暂无更新,休息一会</string>
+    <string name="update_count">今日头条推荐引擎有%1$d条更新</string>
     <!--home-->
     <string name="search_default">搜你想搜的</string>
 
@@ -54,4 +55,5 @@
 
     <!--公共-->
     <string name="x_only_digit">%1$d</string>
+    <string name="no_network">网络不可用</string>
 </resources>

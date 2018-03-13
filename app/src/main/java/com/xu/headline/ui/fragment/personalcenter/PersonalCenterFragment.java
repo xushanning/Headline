@@ -41,4 +41,14 @@ public class PersonalCenterFragment extends BaseFragment<IPersonalCenterContract
     public IPersonalCenterContract.IPersonalCenterPresenter createPresenter() {
         return new PersonalCenterPresenter();
     }
+
+    @Override
+    public void netConnected() {
+
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

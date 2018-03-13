@@ -97,4 +97,13 @@ public class WelcomeActivity extends BaseActivity<IWelcomeContract.IWelcomePrese
     }
 
 
+    @Override
+    public void netConnected() {
+
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

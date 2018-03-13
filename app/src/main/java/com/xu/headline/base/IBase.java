@@ -1,12 +1,14 @@
 package com.xu.headline.base;
 
+import com.xu.headline.receiver.NetBroadcastReceiver;
+
 /**
  * Created by xusn10 on 2018/1/16.
  *
  * @author xusn10
  */
 
-public interface IBase {
+public interface IBase extends NetBroadcastReceiver.NetworkListener {
     /**
      * 设置layout
      *

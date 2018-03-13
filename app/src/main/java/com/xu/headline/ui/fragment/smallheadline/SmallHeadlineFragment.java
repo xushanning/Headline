@@ -42,4 +42,14 @@ public class SmallHeadlineFragment extends BaseFragment<ISmallHeadline.ISmallHea
     public ISmallHeadline.ISmallHeadlinePresenter createPresenter() {
         return new SmallHeadlinePresenter();
     }
+
+    @Override
+    public void netConnected() {
+
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

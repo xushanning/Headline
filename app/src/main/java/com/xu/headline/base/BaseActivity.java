@@ -1,10 +1,14 @@
 package com.xu.headline.base;
 
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.xu.headline.receiver.NetBroadcastReceiver;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -20,13 +24,12 @@ public abstract class BaseActivity<T extends IBaseContract.IBasePresenter> exten
     protected T mPresenter;
     private Unbinder bind;
     public CompositeDisposable mCompositeDisposable = new CompositeDisposable();
+    private NetBroadcastReceiver netBroadcastReceiver;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setLayoutId());
-        //initScreen();
-
         mPresenter = setPresenter();
         if (mPresenter == null) {
             throw new NullPointerException("presenter 不能为空!");
@@ -36,6 +39,18 @@ public abstract class BaseActivity<T extends IBaseContract.IBasePresenter> exten
             mPresenter.attachView(this);
         }
         initOthers();
+        initNetReceiver();
+    }
+
+    /**
+     * 初始化网络广播接收
+     */
+    private void initNetReceiver() {
+        netBroadcastReceiver = new NetBroadcastReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(netBroadcastReceiver, filter);
+        netBroadcastReceiver.setOnNetworkListener(this);
     }
 
     /**
@@ -61,7 +76,9 @@ public abstract class BaseActivity<T extends IBaseContract.IBasePresenter> exten
             mPresenter.detachView();
         }
         bind.unbind();
-
+        if (netBroadcastReceiver != null) {
+            unregisterReceiver(netBroadcastReceiver);
+        }
     }
 
     /**

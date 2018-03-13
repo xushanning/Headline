@@ -103,4 +103,14 @@ public class SearchActivity extends BaseActivity<ISearchContract.ISearchPresente
         clSearch.setVisibility(View.GONE);
       //  homeListQuickAdapter.setNewData(searchListBeans);
     }
+
+    @Override
+    public void netConnected() {
+
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

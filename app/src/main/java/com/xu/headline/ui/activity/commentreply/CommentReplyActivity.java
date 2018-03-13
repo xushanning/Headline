@@ -167,5 +167,13 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
     }
 
 
+    @Override
+    public void netConnected() {
 
+    }
+
+    @Override
+    public void netDisconnected() {
+
+    }
 }

@@ -83,8 +83,6 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     @Override
     public void initOthers() {
         initImage();
-        HomeFragmentPermissionsDispatcher.initChannelWithPermissionCheck(this);
-        mPresenter.getSuggestSearch();
     }
 
     /**
@@ -183,4 +181,14 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
         }
     }
 
+    @Override
+    public void netConnected() {
+        HomeFragmentPermissionsDispatcher.initChannelWithPermissionCheck(this);
+        mPresenter.getSuggestSearch();
+    }
+
+    @Override
+    public void netDisconnected() {
+        //无网络展示无网络
+    }
 }
