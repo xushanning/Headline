@@ -10,12 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.github.nukc.stateview.StateView;
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -24,15 +23,12 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeListQuickAdapter;
 import com.xu.headline.adapter.MultiNewsItem;
-import com.xu.headline.base.BaseFragment;
-import com.xu.headline.bean.NewsListBean;
+import com.xu.headline.base.BaseViewPagerFragment;
 import com.xu.headline.ui.activity.newsdetail.NewsDetailActivity;
 import com.xu.headline.utils.TransformUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -49,7 +45,7 @@ import io.reactivex.functions.Consumer;
  * @author xu
  */
 
-public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPresenter> implements IHomeListContract.IHomeListView {
+public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IHomeListPresenter> implements IHomeListContract.IHomeListView {
     @BindView(R.id.rv_home_detail)
     RecyclerView rvHomeDetail;
     @BindView(R.id.tv_notice)
@@ -150,11 +146,18 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
         int h = View.MeasureSpec.makeMeasureSpec(0,
                 View.MeasureSpec.UNSPECIFIED);
         llCustomNotice.measure(w, h);
+
     }
 
     @Override
     public IHomeListContract.IHomeListPresenter createPresenter() {
         return new HomeListPresenter();
+    }
+
+    @Override
+    public void startLoadData() {
+        Logger.d("显示重试");
+        mPresenter.getNewsList(channelID, FIRST_LOAD);
     }
 
     @Override
@@ -164,6 +167,7 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
             // homeListQuickAdapter.setEmptyView();
             showNotice("暂无更新,休息一会");
         } else {
+            mStateView.showContent();
             switch (actionType) {
                 case FIRST_LOAD:
                     recommendHasOrNot(itemBeans);
@@ -269,11 +273,13 @@ public class HomeListFragment extends BaseFragment<IHomeListContract.IHomeListPr
 
     @Override
     public void netConnected() {
-        mPresenter.getNewsList(channelID, FIRST_LOAD);
+
     }
 
     @Override
     public void netDisconnected() {
-
+        //  mStateView.showRetry();
     }
+
+
 }

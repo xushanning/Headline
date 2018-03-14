@@ -48,6 +48,7 @@ dependencies {
     implementation rootProject.ext.dependencies["baseRecyclerViewAdapterHelper"]
     implementation rootProject.ext.dependencies["searchView"]
     implementation rootProject.ext.dependencies["smartRefreshLayout"]
+    implementation rootProject.ext.dependencies["stateView"]
 
 
     implementation rootProject.ext.dependencies["glide"]

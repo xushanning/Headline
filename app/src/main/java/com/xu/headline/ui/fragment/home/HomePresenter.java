@@ -22,6 +22,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -113,8 +114,9 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                         }).subscribeOn(Schedulers.io());
         //且只有前一个 Observable 终止(onComplete) 后才会订阅下一个 Observable
         Observable.concat(dataBaseObservable, netWorkObservable)
-                .compose(mView.<List<NewsSuggestChannelBean.DataBean>>bindToLife())
                 .compose(TransformUtils.<List<NewsSuggestChannelBean.DataBean>>defaultSchedulers())
+                .compose(mView.<List<NewsSuggestChannelBean.DataBean>>bindToLife())
+                .firstElement()
                 .subscribe(new Consumer<List<NewsSuggestChannelBean.DataBean>>() {
                     @Override
                     public void accept(List<NewsSuggestChannelBean.DataBean> channelListBeans) throws Exception {

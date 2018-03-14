@@ -60,8 +60,6 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     ImageView imgRelease;
 
 
-    private HomeFragmentPagerAdapter homeFragmentPagerAdapter;
-
     /**
      * 实例化
      *
@@ -83,6 +81,8 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     @Override
     public void initOthers() {
         initImage();
+        HomeFragmentPermissionsDispatcher.initChannelWithPermissionCheck(this);
+        mPresenter.getSuggestSearch();
     }
 
     /**
@@ -143,7 +143,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     public void loadData(List<NewsSuggestChannelBean.DataBean> list) {
         if (list != null) {
             //这里用getChildFragmentManager()，获取的是子容器的manager，而getFragmentManager是获取的父容器的manager
-            homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), list);
+            HomeFragmentPagerAdapter homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), list);
             vpHome.setAdapter(homeFragmentPagerAdapter);
             vpHome.setCurrentItem(1, false);
             tabLayoutHome.setupWithViewPager(vpHome);
@@ -183,8 +183,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
 
     @Override
     public void netConnected() {
-        HomeFragmentPermissionsDispatcher.initChannelWithPermissionCheck(this);
-        mPresenter.getSuggestSearch();
+
     }
 
     @Override

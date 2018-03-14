@@ -55,6 +55,7 @@ ext {
             "baseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
             "searchView"                   : "com.carson_ho:SearchLayout:1.0.1",
             "smartRefreshLayout"           : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1",
+            "stateView"                    : "com.github.nukc.stateview:library:1.3.4",
 
             //animation
             "supportCompat"                : "com.android.support:support-compat:25.1.1",
