@@ -13,6 +13,7 @@ import com.ashokvarma.bottomnavigation.TextBadgeItem;
 import com.jaeger.library.StatusBarUtil;
 import com.xu.headline.R;
 import com.xu.headline.base.BaseActivity;
+import com.xu.headline.ui.fragment.TestFragment;
 import com.xu.headline.ui.fragment.home.HomeFragment;
 import com.xu.headline.ui.fragment.personalcenter.PersonalCenterFragment;
 import com.xu.headline.ui.fragment.smallheadline.SmallHeadlineFragment;
@@ -150,7 +151,8 @@ public class MainActivity extends BaseActivity<IMainContract.IMainPresenter> imp
                 fragment = SmallHeadlineFragment.newInstance();
                 break;
             case SHOW_PERSONAL_CENTER:
-                fragment = PersonalCenterFragment.newInstance();
+                // fragment = PersonalCenterFragment.newInstance();
+                fragment = new TestFragment();
                 break;
             default:
                 break;

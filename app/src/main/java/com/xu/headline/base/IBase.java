@@ -1,5 +1,7 @@
 package com.xu.headline.base;
 
+import android.view.View;
+
 import com.xu.headline.receiver.NetBroadcastReceiver;
 
 /**

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -32,8 +31,6 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -86,6 +83,11 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
     @Override
     public int setLayoutId() {
         return R.layout.fragment_home_detail;
+    }
+
+    @Override
+    public View setReplaceView() {
+        return rvHomeDetail;
     }
 
     @Override
@@ -146,7 +148,6 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
         int h = View.MeasureSpec.makeMeasureSpec(0,
                 View.MeasureSpec.UNSPECIFIED);
         llCustomNotice.measure(w, h);
-
     }
 
     @Override
@@ -156,7 +157,8 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
 
     @Override
     public void startLoadData() {
-        Logger.d("显示重试");
+        //showLoading();
+
         mPresenter.getNewsList(channelID, FIRST_LOAD);
     }
 
@@ -167,7 +169,7 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
             // homeListQuickAdapter.setEmptyView();
             showNotice("暂无更新,休息一会");
         } else {
-            mStateView.showContent();
+            hideStateView();
             switch (actionType) {
                 case FIRST_LOAD:
                     recommendHasOrNot(itemBeans);

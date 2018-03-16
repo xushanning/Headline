@@ -1,10 +1,11 @@
 package com.xu.headline.ui.fragment.personalcenter;
 
 import android.os.Bundle;
+import android.view.View;
 
+import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.base.BaseFragment;
-import com.xu.headline.ui.fragment.home.HomeFragment;
 
 /**
  * Created by Administrator on 2018/1/16.
@@ -33,7 +34,19 @@ public class PersonalCenterFragment extends BaseFragment<IPersonalCenterContract
     }
 
     @Override
+    public View setReplaceView() {
+        return null;
+    }
+
+    @Override
     public void initOthers() {
+        Logger.d("显示loading");
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
     }
 
