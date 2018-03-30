@@ -4,16 +4,19 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.github.nukc.stateview.StateView;
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -25,12 +28,15 @@ import com.xu.headline.adapter.MultiNewsItem;
 import com.xu.headline.base.BaseViewPagerFragment;
 import com.xu.headline.ui.activity.newsdetail.NewsDetailActivity;
 import com.xu.headline.utils.TransformUtils;
+import com.xu.headline.view.MultipleStatusView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
@@ -51,6 +57,11 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
     LinearLayout llCustomNotice;
     @BindView(R.id.refresh_layout)
     SmartRefreshLayout smartRefreshLayout;
+    @BindView(R.id.ms_status_view)
+    MultipleStatusView msStatusView;
+//    @BindView(R.id.img_refresh)
+//    ImageView imgRefresh;
+
 
     private HomeListQuickAdapter homeListQuickAdapter;
     /**
@@ -83,11 +94,6 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
     @Override
     public int setLayoutId() {
         return R.layout.fragment_home_detail;
-    }
-
-    @Override
-    public View setReplaceView() {
-        return rvHomeDetail;
     }
 
     @Override
@@ -132,6 +138,8 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
+
+               // animatedVectorDrawable.start();
                 mPresenter.getNewsList(channelID, PULL_DOWN_LOAD);
             }
         });
@@ -140,6 +148,14 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
                 mPresenter.getNewsList(channelID, PULL_LOAD);
+            }
+        });
+        //重试
+        msStatusView.setOnRetryClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Logger.d("重试");
+
             }
         });
         //牵扯到动画，必须测量
@@ -157,19 +173,16 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
 
     @Override
     public void startLoadData() {
-        //showLoading();
-
+        msStatusView.showLoading();
         mPresenter.getNewsList(channelID, FIRST_LOAD);
     }
 
     @Override
     public void loadNewsList(List<MultiNewsItem> itemBeans, int actionType) {
+        msStatusView.showContent();
         if (itemBeans == null) {
-            //展示加载失败的view
-            // homeListQuickAdapter.setEmptyView();
             showNotice("暂无更新,休息一会");
         } else {
-            hideStateView();
             switch (actionType) {
                 case FIRST_LOAD:
                     recommendHasOrNot(itemBeans);
@@ -280,7 +293,6 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
 
     @Override
     public void netDisconnected() {
-        //  mStateView.showRetry();
     }
 
 

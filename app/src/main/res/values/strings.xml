@@ -55,5 +55,5 @@
 
     <!--公共-->
     <string name="x_only_digit">%1$d</string>
-    <string name="no_network">网络不可用</string>
+    <string name="no_network">网络不给力,点击屏幕重试</string>
 </resources>

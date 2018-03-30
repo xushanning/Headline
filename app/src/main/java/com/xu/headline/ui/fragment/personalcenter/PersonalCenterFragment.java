@@ -33,10 +33,7 @@ public class PersonalCenterFragment extends BaseFragment<IPersonalCenterContract
         return R.layout.fragment_personal_center;
     }
 
-    @Override
-    public View setReplaceView() {
-        return null;
-    }
+
 
     @Override
     public void initOthers() {

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
+    <!--起点为短线-->
+    <objectAnimator
+        android:duration="500"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="pathData"
+        android:valueFrom="M60,25
+                          L80,25
+                          M60,35
+                          L80,35
+                          M60,45
+                          L80,45"
+        android:valueTo=" M20,55
+                          L80,55
+                          M20,65
+                          L80,65
+                          M20,75
+                          L80,75"
+        android:valueType="pathType" />
+    <objectAnimator
+        android:duration="500"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="pathData"
+        android:valueFrom="M20,55
+                          L80,55
+                          M20,65
+                          L80,65
+                          M20,75
+                          L80,75"
+        android:valueTo="M20,55
+                         L40,55
+                         M20,65
+                         L40,65
+                         M20,75
+                         L40,75"
+        android:valueType="pathType" />
+    <objectAnimator
+        android:duration="500"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="pathData"
+        android:valueFrom="M20,55
+                         L40,55
+                         M20,65
+                         L40,65
+                         M20,75
+                         L40,75"
+        android:valueTo="M20,25
+                         L80,25
+                         M20,35
+                         L80,35
+                         M20,45
+                         L80,45"
+        android:valueType="pathType" />
+    <objectAnimator
+        android:duration="500"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="pathData"
+        android:valueFrom="M20,25
+                         L80,25
+                         M20,35
+                         L80,35
+                         M20,45
+                         L80,45"
+        android:valueTo="M60,25
+                          L80,25
+                          M60,35
+                          L80,35
+                          M60,45
+                          L80,45"
+        android:valueType="pathType" />
+</set>

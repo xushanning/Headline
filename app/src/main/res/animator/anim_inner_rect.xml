@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="sequentially">
+    <!--里面的长方形-->
+    <objectAnimator
+        android:duration="500"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="pathData"
+        android:valueFrom="M21,26
+                          L49,26
+                          L49,44
+                          L21,44"
+        android:valueTo="M51,26
+                         L79,26
+                         L79,44
+                         L51,44"
+        android:valueType="pathType" />
+    <objectAnimator
+        android:duration="500"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="pathData"
+        android:valueFrom="M51,26
+                         L79,26
+                         L79,44
+                         L51,44"
+        android:valueTo="M51,56
+                         L79,56
+                         L79,74
+                         L51,74"
+        android:valueType="pathType" />
+    <objectAnimator
+        android:duration="500"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="pathData"
+        android:valueFrom="M51,56
+                         L79,56
+                         L79,74
+                         L51,74"
+        android:valueTo="M21,56
+                         L49,56
+                         L49,74
+                         L21,74"
+        android:valueType="pathType" />
+    <objectAnimator
+        android:duration="500"
+        android:interpolator="@android:interpolator/decelerate_cubic"
+        android:propertyName="pathData"
+        android:valueFrom="M21,56
+                         L49,56
+                         L49,74
+                         L21,74"
+        android:valueTo="M21,26
+                          L49,26
+                          L49,44
+                          L21,44"
+        android:valueType="pathType" />
+
+</set>
