@@ -11,9 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,9 +27,7 @@ import com.xu.headline.utils.ToastUtil;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -50,7 +46,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
 
     @BindView(R.id.tab_layout_home)
     TabLayout tabLayoutHome;
-    @BindView(R.id.vp_home)
+    @BindView(R.id.vp_fragment)
     ViewPager vpHome;
     @BindView(R.id.tv_suggest_search)
     TextView tvSuggestSearch;
@@ -74,7 +70,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
 
     @Override
     public int setLayoutId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_home_and_video;
     }
 
 

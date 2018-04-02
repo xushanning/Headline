@@ -1,45 +1,44 @@
 package com.xu.headline.db.dbbean;
 
 import com.xu.headline.bean.NewsSuggestChannelBean;
+import com.xu.headline.bean.VideoChannelBean;
 import com.xu.headline.db.helper.ChannelListConvert;
+import com.xu.headline.db.helper.VideoChannelConvert;
 
 import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 
 import java.util.List;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
- * 数据库订阅bean
- * Created by xusn10 on 2018/1/25.
- *
- * @author xu
+ * @author 言吾許
  */
 @Entity
-public class SubscribeChannelDbBean {
+public class VideoChannelDbBean {
     @Id(autoincrement = true)
     private Long id;
     /**
      * iMei号作为区分的标志
      */
     private String iMei;
-    @Convert(columnType = String.class, converter = ChannelListConvert.class)
-    private List<NewsSuggestChannelBean.DataBean> channels;
+    @Convert(columnType = String.class, converter = VideoChannelConvert.class)
+    private List<VideoChannelBean> channels;
     /**
      * 获取频道的时间（如果超过24小时，那么重新获取）
      */
     private long time;
-    @Generated(hash = 966944541)
-    public SubscribeChannelDbBean(Long id, String iMei,
-            List<NewsSuggestChannelBean.DataBean> channels, long time) {
+    @Generated(hash = 717867207)
+    public VideoChannelDbBean(Long id, String iMei, List<VideoChannelBean> channels,
+            long time) {
         this.id = id;
         this.iMei = iMei;
         this.channels = channels;
         this.time = time;
     }
-    @Generated(hash = 764994389)
-    public SubscribeChannelDbBean() {
+    @Generated(hash = 1568404659)
+    public VideoChannelDbBean() {
     }
     public Long getId() {
         return this.id;
@@ -53,10 +52,10 @@ public class SubscribeChannelDbBean {
     public void setIMei(String iMei) {
         this.iMei = iMei;
     }
-    public List<NewsSuggestChannelBean.DataBean> getChannels() {
+    public List<VideoChannelBean> getChannels() {
         return this.channels;
     }
-    public void setChannels(List<NewsSuggestChannelBean.DataBean> channels) {
+    public void setChannels(List<VideoChannelBean> channels) {
         this.channels = channels;
     }
     public long getTime() {
@@ -65,5 +64,4 @@ public class SubscribeChannelDbBean {
     public void setTime(long time) {
         this.time = time;
     }
-
 }

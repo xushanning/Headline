@@ -2,7 +2,9 @@ package com.xu.headline.view;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Animatable2;
 import android.graphics.drawable.AnimatedVectorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
@@ -15,11 +17,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.api.RefreshKernel;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.constant.RefreshState;
 import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
 import com.xu.headline.R;
+import com.xu.headline.utils.TransformUtils;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by xusn10 on 2018/3/21.
@@ -29,8 +38,12 @@ import com.xu.headline.R;
  */
 
 public class RefreshHeader extends LinearLayout implements com.scwang.smartrefresh.layout.api.RefreshHeader {
-    private ImageView imageView;
+    /**
+     * 动画是否在执行
+     */
+    private boolean isShow;
     private TextView textView;
+    private AnimatedVectorDrawable animatedVectorDrawable;
 
     public RefreshHeader(Context context) {
         this(context, null);
@@ -47,8 +60,8 @@ public class RefreshHeader extends LinearLayout implements com.scwang.smartrefre
 
     private void initView(Context context) {
         setOrientation(VERTICAL);
-        imageView = new ImageView(context);
-        final AnimatedVectorDrawable animatedVectorDrawable = (AnimatedVectorDrawable) ContextCompat.getDrawable(context, R.drawable.refresh_vector);
+        ImageView imageView = new ImageView(context);
+        animatedVectorDrawable = (AnimatedVectorDrawable) ContextCompat.getDrawable(context, R.drawable.refresh_vector);
         imageView.setImageDrawable(animatedVectorDrawable);
         imageView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         addView(imageView);
@@ -103,6 +116,8 @@ public class RefreshHeader extends LinearLayout implements com.scwang.smartrefre
 
     @Override
     public int onFinish(@NonNull RefreshLayout refreshLayout, boolean success) {
+        Logger.d("刷新完成");
+        isShow = false;
         return 0;
     }
 
@@ -125,6 +140,30 @@ public class RefreshHeader extends LinearLayout implements com.scwang.smartrefre
                 break;
             case Refreshing:
                 textView.setText("推荐中");
+                //动画
+                Logger.d("推荐中。。。");
+                animatedVectorDrawable.start();
+                animatedVectorDrawable.registerAnimationCallback(new Animatable2.AnimationCallback() {
+                    @Override
+                    public void onAnimationEnd(Drawable drawable) {
+                        Observable.create(new ObservableOnSubscribe<Boolean>() {
+                            @Override
+                            public void subscribe(ObservableEmitter<Boolean> e) throws Exception {
+                                e.onNext(isShow);
+                                e.onComplete();
+                            }
+                        }).compose(TransformUtils.<Boolean>defaultSchedulers())
+                                .subscribe(new Consumer<Boolean>() {
+                                    @Override
+                                    public void accept(Boolean aBoolean) throws Exception {
+                                        if (isShow) {
+                                            animatedVectorDrawable.start();
+                                        }
+                                    }
+                                });
+                    }
+                });
+
                 break;
             case ReleaseToRefresh:
                 textView.setText("松开推荐");

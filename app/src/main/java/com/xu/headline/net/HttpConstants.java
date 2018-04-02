@@ -9,10 +9,7 @@ package com.xu.headline.net;
 
 public class HttpConstants {
 
-    /**
-     * showApi
-     */
-    public static final String SHOW_API_BASE_URL = "http://route.showapi.com/";
+
 
 
     static final String TOU_TIAO_BASE_URL = "https://lf.snssdk.com/";

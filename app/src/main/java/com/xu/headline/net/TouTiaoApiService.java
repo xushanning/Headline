@@ -3,11 +3,14 @@ package com.xu.headline.net;
 import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.CommentReplyListBean;
 import com.xu.headline.bean.CommentReplyThemeBean;
+import com.xu.headline.bean.VideoChannelBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
 import com.xu.headline.bean.TouTiaoNewsListBean;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -54,7 +57,7 @@ public interface TouTiaoApiService {
                                                                 @Query("device_platform") String devicePlatform);
 
     /**
-     * 获取频道名称
+     * 获取新闻频道名称
      *
      * @param iid            id
      * @param deviceID       d
@@ -281,5 +284,31 @@ public interface TouTiaoApiService {
                                                          @Query("version_code") int versionCode,
                                                          @Query("version_name") String versionName,
                                                          @Query("device_platform") String devicePlatform);
+
+    /**
+     * 获取视频列表
+     *
+     * @param iid            iid
+     * @param deviceID       设备id
+     * @param ac             ac
+     * @param channel        频道
+     * @param aid            aid
+     * @param appName        appName
+     * @param versionCode    code
+     * @param versionName    版本名
+     * @param devicePlatform 平台
+     * @return observer
+     */
+    @GET("video_api/get_category/v1/")
+    Observable<BaseResBean<List<VideoChannelBean>>> getVideoChannleList(@Query("iid") String iid,
+                                                                        @Query("device_id") String deviceID,
+                                                                        @Query("ac") String ac,
+                                                                        @Query("channel") String channel,
+                                                                        @Query("aid") int aid,
+                                                                        @Query("app_name") String appName,
+                                                                        @Query("version_code") int versionCode,
+                                                                        @Query("version_name") String versionName,
+                                                                        @Query("device_platform") String devicePlatform);
+
 
 }

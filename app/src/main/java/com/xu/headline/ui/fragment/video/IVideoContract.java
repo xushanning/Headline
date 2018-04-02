@@ -17,13 +17,13 @@ public interface IVideoContract {
          *
          * @param channelList 频道列表
          */
-        void loadVideoChannel(List<VideoChannelBean.TypesBean> channelList);
+        void loadVideoChannel(List<VideoChannelBean> channelList);
     }
 
     interface IVideoPresenter extends IBaseContract.IBasePresenter<IVideoView> {
         /**
          * 获取视频列表
          */
-        void getVideoChannel();
+        void initVideoChannel();
     }
 }

@@ -25,11 +25,6 @@ import butterknife.Unbinder;
 
 public class VideoFragment extends BaseFragment<IVideoContract.IVideoPresenter> implements IVideoContract.IVideoView {
 
-    @BindView(R.id.tl_video)
-    TabLayout tlVideo;
-    @BindView(R.id.vp_video)
-    ViewPager vpVideo;
-
     /**
      * 实例化
      *
@@ -45,7 +40,7 @@ public class VideoFragment extends BaseFragment<IVideoContract.IVideoPresenter> 
 
     @Override
     public int setLayoutId() {
-        return R.layout.fragment_video;
+        return R.layout.fragment_home_and_video;
     }
 
     @Override
@@ -59,7 +54,7 @@ public class VideoFragment extends BaseFragment<IVideoContract.IVideoPresenter> 
     }
 
     @Override
-    public void loadVideoChannel(List<VideoChannelBean.TypesBean> channelList) {
+    public void loadVideoChannel(List<VideoChannelBean> channelList) {
 
     }
 

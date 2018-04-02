@@ -4,10 +4,13 @@ import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.CommentListBean;
 import com.xu.headline.bean.CommentReplyListBean;
 import com.xu.headline.bean.CommentReplyThemeBean;
+import com.xu.headline.bean.VideoChannelBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.SuggestSearchBean;
 import com.xu.headline.bean.NewsSuggestChannelBean;
 import com.xu.headline.bean.TouTiaoNewsListBean;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 
@@ -116,6 +119,16 @@ public class TouTiaoApi {
      */
     public Observable<CommentReplyListBean> getCommentReplyList(long commentID) {
         return touTiaoApiService.getCommentReplyList(commentID, 20, 0, "25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
+                654, "6.5.4", "android");
+    }
+
+    /**
+     * 获取视频频道列表
+     *
+     * @return observable
+     */
+    public Observable<BaseResBean<List<VideoChannelBean>>> getVideoChannleList() {
+        return touTiaoApiService.getVideoChannleList("25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
                 654, "6.5.4", "android");
     }
 }

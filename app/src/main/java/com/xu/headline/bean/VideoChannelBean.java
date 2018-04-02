@@ -1,7 +1,5 @@
 package com.xu.headline.bean;
 
-import java.util.List;
-
 /**
  * 视频频道bean
  * Created by Administrator on 2018/1/24.
@@ -12,252 +10,87 @@ import java.util.List;
 public class VideoChannelBean {
 
 
+    /**
+     * category : subv_voice
+     * category_type : 0
+     * web_url :
+     * flags : 0
+     * name : 音乐
+     * tip_new : 0
+     * icon_url :
+     * type : 4
+     */
 
-    private int totalPage;
-    private int currentPage;
-    private String type;
-    private List<TypesBean> types;
-    private List<ItemBean> item;
+    private String category;
+    private int category_type;
+    private String web_url;
+    private int flags;
+    private String name;
+    private int tip_new;
+    private String icon_url;
+    private int type;
 
-    public int getTotalPage() {
-        return totalPage;
+    public String getCategory() {
+        return category;
     }
 
-    public void setTotalPage(int totalPage) {
-        this.totalPage = totalPage;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public int getCurrentPage() {
-        return currentPage;
+    public int getCategory_type() {
+        return category_type;
     }
 
-    public void setCurrentPage(int currentPage) {
-        this.currentPage = currentPage;
+    public void setCategory_type(int category_type) {
+        this.category_type = category_type;
     }
 
-    public String getType() {
+    public String getWeb_url() {
+        return web_url;
+    }
+
+    public void setWeb_url(String web_url) {
+        this.web_url = web_url;
+    }
+
+    public int getFlags() {
+        return flags;
+    }
+
+    public void setFlags(int flags) {
+        this.flags = flags;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getTip_new() {
+        return tip_new;
+    }
+
+    public void setTip_new(int tip_new) {
+        this.tip_new = tip_new;
+    }
+
+    public String getIcon_url() {
+        return icon_url;
+    }
+
+    public void setIcon_url(String icon_url) {
+        this.icon_url = icon_url;
+    }
+
+    public int getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
-    }
-
-    public List<TypesBean> getTypes() {
-        return types;
-    }
-
-    public void setTypes(List<TypesBean> types) {
-        this.types = types;
-    }
-
-    public List<ItemBean> getItem() {
-        return item;
-    }
-
-    public void setItem(List<ItemBean> item) {
-        this.item = item;
-    }
-
-    public static class TypesBean {
-        /**
-         * id : 9
-         * name : 娱乐
-         * chType : video
-         * position : down
-         */
-
-        private int id;
-        private String name;
-        private String chType;
-        private String position;
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getChType() {
-            return chType;
-        }
-
-        public void setChType(String chType) {
-            this.chType = chType;
-        }
-
-        public String getPosition() {
-            return position;
-        }
-
-        public void setPosition(String position) {
-            this.position = position;
-        }
-    }
-
-    public static class ItemBean {
-        /**
-         * documentId : video_47005f7a-f915-49d1-9a6f-93a074ff6b26
-         * title : 7旬老汉被冤入狱10余载 现场哭诉警方施虐全过程
-         * image : http://d.ifengimg.com/w640_h360_q80/p3.ifengimg.com/a/2018_04/9a32290d2dbbbc0.jpg
-         * thumbnail : http://d.ifengimg.com/w640_h360_q80/p3.ifengimg.com/a/2018_04/9a32290d2dbbbc0.jpg
-         * guid : 47005f7a-f915-49d1-9a6f-93a074ff6b26
-         * type : phvideo
-         * duration : 329
-         * shareUrl : http://share.iclient.ifeng.com/sharenews.f?guid=47005f7a-f915-49d1-9a6f-93a074ff6b26
-         * commentsUrl : http://share.iclient.ifeng.com/sharenews.f?guid=47005f7a-f915-49d1-9a6f-93a074ff6b26
-         * video_url : http://ips.ifeng.com/video19.ifeng.com/video09/2018/01/24/19424009-102-9987625-162014.mp4
-         * video_size : 21950
-         * praise : 48
-         * tread : 9
-         * playTime : 16367
-         * commentsall : 0
-         */
-
-        private String documentId;
-        private String title;
-        private String image;
-        private String thumbnail;
-        private String guid;
-        private String type;
-        private int duration;
-        private String shareUrl;
-        private String commentsUrl;
-        private String video_url;
-        private int video_size;
-        private String praise;
-        private String tread;
-        private String playTime;
-        private int commentsall;
-
-        public String getDocumentId() {
-            return documentId;
-        }
-
-        public void setDocumentId(String documentId) {
-            this.documentId = documentId;
-        }
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getImage() {
-            return image;
-        }
-
-        public void setImage(String image) {
-            this.image = image;
-        }
-
-        public String getThumbnail() {
-            return thumbnail;
-        }
-
-        public void setThumbnail(String thumbnail) {
-            this.thumbnail = thumbnail;
-        }
-
-        public String getGuid() {
-            return guid;
-        }
-
-        public void setGuid(String guid) {
-            this.guid = guid;
-        }
-
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public int getDuration() {
-            return duration;
-        }
-
-        public void setDuration(int duration) {
-            this.duration = duration;
-        }
-
-        public String getShareUrl() {
-            return shareUrl;
-        }
-
-        public void setShareUrl(String shareUrl) {
-            this.shareUrl = shareUrl;
-        }
-
-        public String getCommentsUrl() {
-            return commentsUrl;
-        }
-
-        public void setCommentsUrl(String commentsUrl) {
-            this.commentsUrl = commentsUrl;
-        }
-
-        public String getVideo_url() {
-            return video_url;
-        }
-
-        public void setVideo_url(String video_url) {
-            this.video_url = video_url;
-        }
-
-        public int getVideo_size() {
-            return video_size;
-        }
-
-        public void setVideo_size(int video_size) {
-            this.video_size = video_size;
-        }
-
-        public String getPraise() {
-            return praise;
-        }
-
-        public void setPraise(String praise) {
-            this.praise = praise;
-        }
-
-        public String getTread() {
-            return tread;
-        }
-
-        public void setTread(String tread) {
-            this.tread = tread;
-        }
-
-        public String getPlayTime() {
-            return playTime;
-        }
-
-        public void setPlayTime(String playTime) {
-            this.playTime = playTime;
-        }
-
-        public int getCommentsall() {
-            return commentsall;
-        }
-
-        public void setCommentsall(int commentsall) {
-            this.commentsall = commentsall;
-        }
     }
 }

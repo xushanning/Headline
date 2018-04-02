@@ -59,23 +59,21 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
     SmartRefreshLayout smartRefreshLayout;
     @BindView(R.id.ms_status_view)
     MultipleStatusView msStatusView;
-//    @BindView(R.id.img_refresh)
-//    ImageView imgRefresh;
 
 
     private HomeListQuickAdapter homeListQuickAdapter;
-    /**
-     * 第一次加载
-     */
-    public static final int FIRST_LOAD = 1;
-    /**
-     * 上拉加载
-     */
-    public static final int PULL_LOAD = 2;
-    /**
-     * 下拉加载
-     */
-    public static final int PULL_DOWN_LOAD = 3;
+//    /**
+//     * 第一次加载
+//     */
+//    public static final int FIRST_LOAD = 1;
+//    /**
+//     * 上拉加载
+//     */
+//    public static final int PULL_LOAD = 2;
+//    /**
+//     * 下拉加载
+//     */
+//    public static final int PULL_DOWN_LOAD = 3;
     /**
      * 频道名称
      */
@@ -138,16 +136,15 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-
-               // animatedVectorDrawable.start();
-                mPresenter.getNewsList(channelID, PULL_DOWN_LOAD);
+                mPresenter.getNewsList(channelID);
             }
         });
         //上拉加载
         smartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                mPresenter.getNewsList(channelID, PULL_LOAD);
+                //mPresenter.getNewsList(channelID, PULL_LOAD);
+
             }
         });
         //重试
@@ -173,49 +170,30 @@ public class HomeListFragment extends BaseViewPagerFragment<IHomeListContract.IH
 
     @Override
     public void startLoadData() {
+        //加载本地数据库里的数据
         msStatusView.showLoading();
-        mPresenter.getNewsList(channelID, FIRST_LOAD);
+        //网络获取
+        mPresenter.getNewsList(channelID);
     }
 
     @Override
-    public void loadNewsList(List<MultiNewsItem> itemBeans, int actionType) {
+    public void loadNewsList(List<MultiNewsItem> itemBeans) {
+        Logger.d("展示内容");
+        smartRefreshLayout.finishRefresh();
         msStatusView.showContent();
-        if (itemBeans == null) {
-            showNotice("暂无更新,休息一会");
+        if (itemBeans == null || itemBeans.size() == 0) {
+            showNotice(getString(R.string.no_update));
         } else {
-            switch (actionType) {
-                case FIRST_LOAD:
-                    recommendHasOrNot(itemBeans);
-                    break;
-                case PULL_LOAD:
-                    homeListQuickAdapter.addData(itemBeans);
-                    break;
-                case PULL_DOWN_LOAD:
-                    //刷新后移动到第一个
-                    rvHomeDetail.scrollToPosition(0);
-                    recommendHasOrNot(itemBeans);
-                    break;
-                default:
-                    break;
-            }
-
+            homeListQuickAdapter.addData(0, itemBeans);
+            rvHomeDetail.scrollToPosition(0);
+            showNotice(getString(R.string.update_count, itemBeans.size()));
         }
 
     }
 
-    /**
-     * 根据有没有数据加载不提供的notice
-     *
-     * @param itemBeans 数据
-     */
-    private void recommendHasOrNot(List<MultiNewsItem> itemBeans) {
-        smartRefreshLayout.finishRefresh();
-        if (itemBeans.size() == 0) {
-            showNotice(getString(R.string.no_update));
-        } else {
-            homeListQuickAdapter.addData(0, itemBeans);
-            showNotice(getString(R.string.update_count, itemBeans.size()));
-        }
+    @Override
+    public void loadHistoryNewsFrDb(List<MultiNewsItem> itemBeans) {
+        homeListQuickAdapter.addData(itemBeans);
     }
 
 

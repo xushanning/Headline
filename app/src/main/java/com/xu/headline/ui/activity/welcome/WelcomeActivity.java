@@ -45,7 +45,7 @@ public class WelcomeActivity extends BaseActivity<IWelcomeContract.IWelcomePrese
     public void initOthers() {
         super.initOthers();
         //必应每日壁纸 来源于 https://www.dujin.org/fenxiang/jiaocheng/3618.html.
-        ImageLoaderUtil.loadImage(this, "https://api.dujin.org/bing/1920.php", imgAd);
+        ImageLoaderUtil.loadImage(this, "https://api.dujin.org/bing/1366.php", imgAd);
         //jumpToMain();
         mCompositeDisposable.add(Observable.interval(0, 1, TimeUnit.SECONDS)
                 .compose(TransformUtils.<Long>defaultSchedulers())
