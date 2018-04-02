@@ -20,6 +20,7 @@ import com.xu.headline.R;
 import com.xu.headline.adapter.HomeFragmentPagerAdapter;
 import com.xu.headline.base.BaseFragment;
 import com.xu.headline.bean.NewsSuggestChannelBean;
+import com.xu.headline.ui.activity.channelmanager.ChannelManagerActivity;
 import com.xu.headline.ui.activity.search.SearchActivity;
 import com.xu.headline.utils.ImageTintUtil;
 import com.xu.headline.utils.ToastUtil;
@@ -160,11 +161,12 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.vSearch:
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                startActivity(intent);
+                Intent searchIntent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(searchIntent);
                 break;
             case R.id.img_add:
-                ToastUtil.toastShort(getActivity(), "增加频道!");
+                Intent channelManagerIntent = new Intent(getActivity(), ChannelManagerActivity.class);
+                startActivity(channelManagerIntent);
                 break;
             case R.id.img_un_login:
                 ToastUtil.toastShort(getActivity(), "登陆!");

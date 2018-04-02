@@ -31,6 +31,7 @@
         <activity android:name=".ui.activity.newsdetail.NewsDetailActivity" />
         <activity android:name=".ui.activity.search.SearchActivity" />
         <activity android:name=".ui.activity.commentreply.CommentReplyActivity" />
+        <activity android:name=".ui.activity.channelmanager.ChannelManagerActivity" />
     </application>
 
 </manifest>
