@@ -172,10 +172,8 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
                 break;
             case R.id.img_add:
                 Intent channelManagerIntent = new Intent(getActivity(), ChannelManagerActivity.class);
-                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeCustomAnimation(getActivity(), R.anim.pop_show_anim, R.anim.pop_hidden_anim);
+                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeCustomAnimation(getActivity(), R.anim.activity_show_anim, R.anim.acitivity_hidden_anim);
                 ActivityCompat.startActivity(getActivity(), channelManagerIntent, optionsCompat.toBundle());
-                //getActivity().overridePendingTransition(R.anim.activity_open,0);
-                // showPopWindow();
                 break;
             case R.id.img_un_login:
                 ToastUtil.toastShort(getActivity(), "登陆!");
