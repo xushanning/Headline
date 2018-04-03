@@ -1,5 +1,9 @@
 package com.xu.headline.ui.activity.channelmanager;
 
+import com.jaeger.library.StatusBarUtil;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrConfig;
+import com.r0adkll.slidr.model.SlidrPosition;
 import com.xu.headline.R;
 import com.xu.headline.base.BaseActivity;
 
@@ -29,4 +33,16 @@ public class ChannelManagerActivity extends BaseActivity<IChannelManagerContract
     public IChannelManagerContract.IChannelPresenter setPresenter() {
         return new ChannelManagerPresenter();
     }
+
+    @Override
+    public void initOthers() {
+        StatusBarUtil.setTransparent(this);
+        SlidrConfig config = new SlidrConfig.Builder()
+                .position(SlidrPosition.TOP)
+                .edge(true)
+                .scrimStartAlpha(0f)
+                .build();
+        Slidr.attach(this, config);
+    }
+
 }

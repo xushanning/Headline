@@ -57,6 +57,7 @@ ext {
             "smartRefreshLayout"           : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1",
             "skeleton"                     : "com.ethanhua:skeleton:1.1.0",
             "shimmerlayout"                : "io.supercharge:shimmerlayout:2.0.0",
+            "slideBack"                    : "com.r0adkll:slidableactivity:2.0.6",
 
             //animation
             "supportCompat"                : "com.android.support:support-compat:25.1.1",
