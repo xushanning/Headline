@@ -7,7 +7,7 @@ import com.xu.headline.bean.CommentReplyThemeBean;
 import com.xu.headline.bean.VideoChannelBean;
 import com.xu.headline.bean.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.SuggestSearchBean;
-import com.xu.headline.bean.NewsSuggestChannelBean;
+import com.xu.headline.bean.NewsChannelListBean;
 import com.xu.headline.bean.TouTiaoNewsListBean;
 
 import java.util.List;
@@ -59,8 +59,8 @@ public class TouTiaoApi {
      *
      * @return observable
      */
-    public Observable<BaseResBean<NewsSuggestChannelBean>> getSuggestChannel() {
-        return touTiaoApiService.getSuggestChannel("25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
+    public Observable<BaseResBean<NewsChannelListBean>> getNewsChannelList() {
+        return touTiaoApiService.getNewsChannelList("25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
                 654, "6.5.4", "android");
     }
 
@@ -127,8 +127,19 @@ public class TouTiaoApi {
      *
      * @return observable
      */
-    public Observable<BaseResBean<List<VideoChannelBean>>> getVideoChannleList() {
-        return touTiaoApiService.getVideoChannleList("25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
+    public Observable<BaseResBean<List<VideoChannelBean>>> getVideoChannelList() {
+        return touTiaoApiService.getVideoChannelList("25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
                 654, "6.5.4", "android");
     }
+
+    /**
+     * 获取推荐频道列表
+     *
+     * @return observable
+     */
+    public Observable<BaseResBean<NewsChannelListBean>> getRecommendChannelList() {
+        return touTiaoApiService.getRecommendChannelList("25206805877", "47840702832", "wifi", "huawei", 13, "news_article",
+                654, "6.5.4", "android");
+    }
+
 }

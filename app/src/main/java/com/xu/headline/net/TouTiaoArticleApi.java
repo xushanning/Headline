@@ -2,7 +2,6 @@ package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.NewsDetailsBean;
-import com.xu.headline.bean.NewsSuggestChannelBean;
 
 import io.reactivex.Observable;
 

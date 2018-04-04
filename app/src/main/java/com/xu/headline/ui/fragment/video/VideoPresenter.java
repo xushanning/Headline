@@ -8,13 +8,10 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.MyApplication;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.bean.NewsSuggestChannelBean;
 import com.xu.headline.bean.VideoChannelBean;
 import com.xu.headline.db.SubscribeChannelDbBeanDao;
 import com.xu.headline.db.VideoChannelDbBeanDao;
-import com.xu.headline.db.dbbean.SubscribeChannelDbBean;
 import com.xu.headline.db.dbbean.VideoChannelDbBean;
-import com.xu.headline.net.BaseTouTiaoResObserver;
 import com.xu.headline.net.HttpConstants;
 import com.xu.headline.net.RetrofitFactory;
 import com.xu.headline.utils.TransformUtils;
@@ -75,7 +72,7 @@ public class VideoPresenter extends BasePresenter<IVideoContract.IVideoView> imp
         Observable<List<VideoChannelBean>> netWorkObservable =
                 RetrofitFactory.
                         getTouTiaoApi()
-                        .getVideoChannleList()
+                        .getVideoChannelList()
                         .map(new Function<BaseResBean<List<VideoChannelBean>>, List<VideoChannelBean>>() {
                             @Override
                             public List<VideoChannelBean> apply(BaseResBean<List<VideoChannelBean>> listBaseResBean) throws Exception {

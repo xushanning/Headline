@@ -9,7 +9,7 @@ import com.xu.headline.MyApplication;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.SuggestSearchBean;
-import com.xu.headline.bean.NewsSuggestChannelBean;
+import com.xu.headline.bean.NewsChannelListBean;
 import com.xu.headline.db.SubscribeChannelDbBeanDao;
 import com.xu.headline.db.dbbean.SubscribeChannelDbBean;
 import com.xu.headline.net.BaseTouTiaoResObserver;
@@ -22,7 +22,6 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -54,9 +53,9 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
         TelephonyManager telephonyManager = (TelephonyManager) MyApplication.getContext().getSystemService(Context.TELEPHONY_SERVICE);
         @SuppressLint("MissingPermission") final String iMei = telephonyManager.getDeviceId();
 
-        Observable<List<NewsSuggestChannelBean.DataBean>> dataBaseObservable = Observable.create(new ObservableOnSubscribe<List<NewsSuggestChannelBean.DataBean>>() {
+        Observable<List<NewsChannelListBean.ChannelBean>> dataBaseObservable = Observable.create(new ObservableOnSubscribe<List<NewsChannelListBean.ChannelBean>>() {
             @Override
-            public void subscribe(ObservableEmitter<List<NewsSuggestChannelBean.DataBean>> e) throws Exception {
+            public void subscribe(ObservableEmitter<List<NewsChannelListBean.ChannelBean>> e) throws Exception {
                 SubscribeChannelDbBeanDao channelDbBeanDao = MyApplication.getInstance().getDaoSession().getSubscribeChannelDbBeanDao();
                 SubscribeChannelDbBean channelDbBean = channelDbBeanDao.queryBuilder().where(SubscribeChannelDbBeanDao.Properties.IMei.eq(iMei)).build().unique();
                 if (channelDbBean == null) {
@@ -78,18 +77,18 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
         }).subscribeOn(Schedulers.io());
 
 
-        Observable<List<NewsSuggestChannelBean.DataBean>> netWorkObservable =
+        Observable<List<NewsChannelListBean.ChannelBean>> netWorkObservable =
                 RetrofitFactory.getTouTiaoApi()
-                        .getSuggestChannel()
-                        .map(new Function<BaseResBean<NewsSuggestChannelBean>, List<NewsSuggestChannelBean.DataBean>>() {
+                        .getNewsChannelList()
+                        .map(new Function<BaseResBean<NewsChannelListBean>, List<NewsChannelListBean.ChannelBean>>() {
                             @Override
-                            public List<NewsSuggestChannelBean.DataBean> apply(BaseResBean<NewsSuggestChannelBean> baseResBean) throws Exception {
+                            public List<NewsChannelListBean.ChannelBean> apply(BaseResBean<NewsChannelListBean> baseResBean) throws Exception {
                                 return HttpConstants.REQUEST_SUCCESS.equals(baseResBean.getMessage()) ? baseResBean.getData().getData() : null;
                             }
                         })
-                        .doOnNext(new Consumer<List<NewsSuggestChannelBean.DataBean>>() {
+                        .doOnNext(new Consumer<List<NewsChannelListBean.ChannelBean>>() {
                             @Override
-                            public void accept(List<NewsSuggestChannelBean.DataBean> channelListBeans) throws Exception {
+                            public void accept(List<NewsChannelListBean.ChannelBean> channelListBeans) throws Exception {
                                 //请求成功，存数据库
                                 if (channelListBeans != null) {
                                     //看是否有，如果有，那么更新
@@ -114,12 +113,12 @@ public class HomePresenter extends BasePresenter<IHomeContract.IHomeView> implem
                         }).subscribeOn(Schedulers.io());
         //且只有前一个 Observable 终止(onComplete) 后才会订阅下一个 Observable
         Observable.concat(dataBaseObservable, netWorkObservable)
-                .compose(TransformUtils.<List<NewsSuggestChannelBean.DataBean>>defaultSchedulers())
-                .compose(mView.<List<NewsSuggestChannelBean.DataBean>>bindToLife())
+                .compose(TransformUtils.<List<NewsChannelListBean.ChannelBean>>defaultSchedulers())
+                .compose(mView.<List<NewsChannelListBean.ChannelBean>>bindToLife())
                 .firstElement()
-                .subscribe(new Consumer<List<NewsSuggestChannelBean.DataBean>>() {
+                .subscribe(new Consumer<List<NewsChannelListBean.ChannelBean>>() {
                     @Override
-                    public void accept(List<NewsSuggestChannelBean.DataBean> channelListBeans) throws Exception {
+                    public void accept(List<NewsChannelListBean.ChannelBean> channelListBeans) throws Exception {
                         mView.loadData(channelListBeans);
                     }
                 }, new Consumer<Throwable>() {

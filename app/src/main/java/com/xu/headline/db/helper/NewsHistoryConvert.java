@@ -3,7 +3,6 @@ package com.xu.headline.db.helper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xu.headline.adapter.MultiNewsItem;
-import com.xu.headline.bean.NewsSuggestChannelBean;
 
 import org.greenrobot.greendao.converter.PropertyConverter;
 

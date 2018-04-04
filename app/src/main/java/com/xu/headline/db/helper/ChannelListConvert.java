@@ -3,7 +3,6 @@ package com.xu.headline.db.helper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.xu.headline.bean.NewsChannelListBean;
-import com.xu.headline.bean.NewsSuggestChannelBean;
 
 import org.greenrobot.greendao.converter.PropertyConverter;
 
@@ -16,21 +15,21 @@ import java.util.List;
  * @author xu
  */
 
-public class ChannelListConvert implements PropertyConverter<List<NewsSuggestChannelBean.DataBean>, String> {
+public class ChannelListConvert implements PropertyConverter<List<NewsChannelListBean.ChannelBean>, String> {
     private Gson gson = new Gson();
 
     @Override
-    public List<NewsSuggestChannelBean.DataBean> convertToEntityProperty(String databaseValue) {
+    public List<NewsChannelListBean.ChannelBean> convertToEntityProperty(String databaseValue) {
         if (databaseValue == null) {
             return null;
         } else {
-            return gson.fromJson(databaseValue, new TypeToken<List<NewsSuggestChannelBean.DataBean>>() {
+            return gson.fromJson(databaseValue, new TypeToken<List<NewsChannelListBean.ChannelBean>>() {
             }.getType());
         }
     }
 
     @Override
-    public String convertToDatabaseValue(List<NewsSuggestChannelBean.DataBean> entityProperty) {
+    public String convertToDatabaseValue(List<NewsChannelListBean.ChannelBean> entityProperty) {
         if (entityProperty == null) {
             return null;
         } else {

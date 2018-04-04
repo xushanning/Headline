@@ -52,8 +52,15 @@
     <string name="x_comment_count">%1$d条回复</string>
     <string name="x_appreciate_count">%1$d人赞过></string>
 
+    <!--channelManager-->
+    <string name="my_channel">我的频道</string>
+    <string name="enter_channel">点击进入频道</string>
+    <string name="edit">编辑</string>
+    <string name="recommend_channel">推荐频道</string>
+    <string name="add_channel">点击添加频道</string>
 
     <!--公共-->
     <string name="x_only_digit">%1$d</string>
     <string name="no_network">网络不给力,点击屏幕重试</string>
+    <string name="default_string">关注</string>
 </resources>

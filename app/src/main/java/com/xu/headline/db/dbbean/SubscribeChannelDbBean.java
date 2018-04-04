@@ -1,6 +1,6 @@
 package com.xu.headline.db.dbbean;
 
-import com.xu.headline.bean.NewsSuggestChannelBean;
+import com.xu.headline.bean.NewsChannelListBean;
 import com.xu.headline.db.helper.ChannelListConvert;
 
 import org.greenrobot.greendao.annotation.Convert;
@@ -25,14 +25,14 @@ public class SubscribeChannelDbBean {
      */
     private String iMei;
     @Convert(columnType = String.class, converter = ChannelListConvert.class)
-    private List<NewsSuggestChannelBean.DataBean> channels;
+    private List<NewsChannelListBean.ChannelBean> channels;
     /**
      * 获取频道的时间（如果超过24小时，那么重新获取）
      */
     private long time;
-    @Generated(hash = 966944541)
+    @Generated(hash = 681923920)
     public SubscribeChannelDbBean(Long id, String iMei,
-            List<NewsSuggestChannelBean.DataBean> channels, long time) {
+            List<NewsChannelListBean.ChannelBean> channels, long time) {
         this.id = id;
         this.iMei = iMei;
         this.channels = channels;
@@ -53,10 +53,10 @@ public class SubscribeChannelDbBean {
     public void setIMei(String iMei) {
         this.iMei = iMei;
     }
-    public List<NewsSuggestChannelBean.DataBean> getChannels() {
+    public List<NewsChannelListBean.ChannelBean> getChannels() {
         return this.channels;
     }
-    public void setChannels(List<NewsSuggestChannelBean.DataBean> channels) {
+    public void setChannels(List<NewsChannelListBean.ChannelBean> channels) {
         this.channels = channels;
     }
     public long getTime() {
@@ -65,5 +65,6 @@ public class SubscribeChannelDbBean {
     public void setTime(long time) {
         this.time = time;
     }
+ 
 
 }

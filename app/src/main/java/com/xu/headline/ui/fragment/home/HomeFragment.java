@@ -23,7 +23,7 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeFragmentPagerAdapter;
 import com.xu.headline.base.BaseFragment;
-import com.xu.headline.bean.NewsSuggestChannelBean;
+import com.xu.headline.bean.NewsChannelListBean;
 import com.xu.headline.ui.activity.channelmanager.ChannelManagerActivity;
 import com.xu.headline.ui.activity.search.SearchActivity;
 import com.xu.headline.utils.ImageTintUtil;
@@ -143,7 +143,7 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     }
 
     @Override
-    public void loadData(List<NewsSuggestChannelBean.DataBean> list) {
+    public void loadData(List<NewsChannelListBean.ChannelBean> list) {
         if (list != null) {
             //这里用getChildFragmentManager()，获取的是子容器的manager，而getFragmentManager是获取的父容器的manager
             HomeFragmentPagerAdapter homeFragmentPagerAdapter = new HomeFragmentPagerAdapter(getChildFragmentManager(), list);

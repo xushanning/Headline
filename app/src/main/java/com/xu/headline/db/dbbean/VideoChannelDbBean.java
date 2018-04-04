@@ -1,8 +1,6 @@
 package com.xu.headline.db.dbbean;
 
-import com.xu.headline.bean.NewsSuggestChannelBean;
 import com.xu.headline.bean.VideoChannelBean;
-import com.xu.headline.db.helper.ChannelListConvert;
 import com.xu.headline.db.helper.VideoChannelConvert;
 
 import org.greenrobot.greendao.annotation.Convert;

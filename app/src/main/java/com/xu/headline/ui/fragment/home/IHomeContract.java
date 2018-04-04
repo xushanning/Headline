@@ -2,7 +2,6 @@ package com.xu.headline.ui.fragment.home;
 
 import com.xu.headline.base.IBaseContract;
 import com.xu.headline.bean.NewsChannelListBean;
-import com.xu.headline.bean.NewsSuggestChannelBean;
 
 import java.util.List;
 
@@ -19,7 +18,7 @@ public interface IHomeContract {
          *
          * @param channelList 频道列表
          */
-        void loadData(List<NewsSuggestChannelBean.DataBean> channelList);
+        void loadData(List<NewsChannelListBean.ChannelBean> channelList);
 
         /**
          * 加载推荐搜索的内容

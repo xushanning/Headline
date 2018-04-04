@@ -15,6 +15,9 @@ public interface IChannelManagerContract {
     }
 
     interface IChannelPresenter extends IBaseContract.IBasePresenter<IChannelView> {
-
+        /**
+         * 获取推荐频道列表
+         */
+        void getRecommendChannelList();
     }
 }
