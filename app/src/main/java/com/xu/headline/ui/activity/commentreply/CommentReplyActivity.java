@@ -1,7 +1,6 @@
 package com.xu.headline.ui.activity.commentreply;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,6 +8,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
+import com.r0adkll.slidr.Slidr;
+import com.r0adkll.slidr.model.SlidrConfig;
+import com.r0adkll.slidr.model.SlidrInterface;
+import com.r0adkll.slidr.model.SlidrPosition;
 import com.xu.headline.R;
 import com.xu.headline.adapter.NewsCommentReplyQuickAdapter;
 import com.xu.headline.base.BaseActivity;
@@ -16,12 +19,12 @@ import com.xu.headline.bean.CommentReplyListBean;
 import com.xu.headline.bean.CommentReplyThemeBean;
 import com.xu.headline.utils.ImageLoaderUtil;
 import com.xu.headline.utils.TimeUtil;
+import com.xu.headline.view.CustomScrollView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -58,7 +61,10 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
     TextView tvAppreciateCountRight;
     @BindView(R.id.tv_hot_reply)
     TextView tvHotReply;
+    @BindView(R.id.svReply)
+    CustomScrollView svReply;
 
+    private SlidrInterface slidrInterface;
 
     private NewsCommentReplyQuickAdapter hotReplyQuickAdapter;
     private NewsCommentReplyQuickAdapter allReplyQuickAdapter;
@@ -77,6 +83,23 @@ public class CommentReplyActivity extends BaseActivity<ICommentReplyContract.ICo
             mPresenter.getCommentReplyData(commentID);
         }
         initRecyclerView();
+        SlidrConfig slidrConfig = new SlidrConfig.Builder()
+                .position(SlidrPosition.TOP)
+                .scrimStartAlpha(0f)
+                .build();
+        slidrInterface = Slidr.attach(this, slidrConfig);
+        slidrInterface.unlock();
+        svReply.setOnScrollToTopListener(new CustomScrollView.OnScrollToTopListener() {
+            @Override
+            public void onScrollToTop() {
+                slidrInterface.unlock();
+            }
+
+            @Override
+            public void onNotScrollToTop() {
+                slidrInterface.lock();
+            }
+        });
     }
 
     @Override

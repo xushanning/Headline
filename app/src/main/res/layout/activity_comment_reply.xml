@@ -46,7 +46,8 @@
             app:srcCompat="@mipmap/cancel" />
     </android.support.constraint.ConstraintLayout>
 
-    <ScrollView
+    <com.xu.headline.view.CustomScrollView
+        android:id="@+id/svReply"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/include_bottom_bar"
@@ -140,29 +141,29 @@
                     android:id="@+id/img_appreciate_1"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:visibility="gone"
                     android:layout_marginTop="8dp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="@+id/tv_comment_time"
                     app:layout_constraintTop_toBottomOf="@+id/tv_comment_time"
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <ImageView
-                    android:visibility="gone"
                     android:id="@+id/img_appreciate_2"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="5dp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/img_appreciate_1"
                     app:layout_constraintStart_toEndOf="@+id/img_appreciate_1"
                     app:layout_constraintTop_toTopOf="@+id/img_appreciate_1"
                     app:srcCompat="@mipmap/ic_launcher" />
 
                 <ImageView
-                    android:visibility="gone"
                     android:id="@+id/img_appreciate_3"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginStart="5dp"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="@+id/img_appreciate_2"
                     app:layout_constraintStart_toEndOf="@+id/img_appreciate_2"
                     app:layout_constraintTop_toTopOf="@+id/img_appreciate_2"
@@ -245,7 +246,7 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-    </ScrollView>
+    </com.xu.headline.view.CustomScrollView>
 
 
 </android.support.constraint.ConstraintLayout>

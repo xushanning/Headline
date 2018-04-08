@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -16,7 +15,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.orhanobut.logger.Logger;
@@ -59,9 +57,8 @@ public class HomeFragment extends BaseFragment<IHomeContract.IHomePresenter> imp
     ImageView imgUnLogin;
     @BindView(R.id.img_release)
     ImageView imgRelease;
-    @BindView(R.id.cl_home_video)
-    ConstraintLayout clHomeVideo;
-    private PopupWindow window;
+
+
 
     /**
      * 实例化

@@ -2,6 +2,8 @@ package com.xu.headline.ui.activity.newsdetail;
 
 import android.content.Intent;
 import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -13,7 +15,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -174,12 +175,13 @@ public class NewsDetailActivity extends BaseActivity<INewsDetailContract.INewsDe
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 CommentListBean.DataBean dataBean = (CommentListBean.DataBean) adapter.getItem(position);
                 if (dataBean.getComment().getReply_count() != 0) {
-                    Intent intent = new Intent(NewsDetailActivity.this, CommentReplyActivity.class);
-                    intent.putExtra("commentID", dataBean.getComment().getId());
-                    startActivity(intent);
+                    Intent replyIntent = new Intent(NewsDetailActivity.this, CommentReplyActivity.class);
+                    replyIntent.putExtra("commentID", dataBean.getComment().getId());
+                    ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeCustomAnimation(NewsDetailActivity.this, R.anim.activity_show_anim, R.anim.acitivity_hidden_anim);
+                    ActivityCompat.startActivity(NewsDetailActivity.this, replyIntent, optionsCompat.toBundle());
                 } else {
                     //回复
-                    
+
                 }
 
 

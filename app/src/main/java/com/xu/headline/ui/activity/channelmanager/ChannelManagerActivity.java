@@ -7,9 +7,9 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jaeger.library.StatusBarUtil;
-import com.orhanobut.logger.Logger;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrConfig;
+import com.r0adkll.slidr.model.SlidrInterface;
 import com.r0adkll.slidr.model.SlidrPosition;
 import com.xu.headline.R;
 import com.xu.headline.adapter.ChannelManagerQuickAdapter;
@@ -31,8 +31,7 @@ public class ChannelManagerActivity extends BaseActivity<IChannelManagerContract
     @BindView(R.id.rv_channel_manager)
     RecyclerView rvChannelManager;
 
-    private SlidrConfig.Builder slidrBuilder;
-    private boolean flag = false;
+    private SlidrInterface slidrInterface;
 
     @Override
     public int setLayoutId() {
@@ -57,30 +56,20 @@ public class ChannelManagerActivity extends BaseActivity<IChannelManagerContract
     @Override
     public void initOthers() {
         StatusBarUtil.setTransparent(this);
-        slidrBuilder = new SlidrConfig.Builder();
-        slidrBuilder.position(SlidrPosition.TOP)
-                .edge(true)
-                .scrimStartAlpha(0f);
-        Slidr.attach(this, slidrBuilder.build());
+        SlidrConfig slidrConfig = new SlidrConfig.Builder()
+                .position(SlidrPosition.TOP)
+                .scrimStartAlpha(0f)
+                .build();
+        slidrInterface = Slidr.attach(this, slidrConfig);
+        slidrInterface.unlock();
         rvChannelManager.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
                 //如果已近到达顶部
                 if (!rvChannelManager.canScrollVertically(-1)) {
-                    if (flag) {
-                        flag = false;
-                        Logger.d("到达顶部啦");
-                        slidrBuilder.edge(false);
-                        Slidr.attach(ChannelManagerActivity.this, slidrBuilder.build());
-                    }
+                    slidrInterface.unlock();
                 } else {
-                    if (!flag) {
-                        slidrBuilder.edge(true);
-                        Slidr.attach(ChannelManagerActivity.this, slidrBuilder.build());
-                        flag = true;
-                    }
-
+                    slidrInterface.lock();
                 }
             }
         });
