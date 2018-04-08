@@ -1,6 +1,6 @@
 package com.xu.headline.db.dbbean;
 
-import com.xu.headline.adapter.MultiNewsItem;
+import com.xu.headline.adapter.entity.MultiNewsItem;
 import com.xu.headline.db.helper.NewsHistoryConvert;
 
 import org.greenrobot.greendao.annotation.Convert;

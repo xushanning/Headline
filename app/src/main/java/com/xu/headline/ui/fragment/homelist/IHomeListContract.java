@@ -1,8 +1,7 @@
 package com.xu.headline.ui.fragment.homelist;
 
-import com.xu.headline.adapter.MultiNewsItem;
+import com.xu.headline.adapter.entity.MultiNewsItem;
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.NewsListBean;
 
 import java.util.List;
 

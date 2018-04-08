@@ -3,7 +3,7 @@ package com.xu.headline.ui.fragment.homelist;
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.MyApplication;
-import com.xu.headline.adapter.MultiNewsItem;
+import com.xu.headline.adapter.entity.MultiNewsItem;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.bean.TouTiaoListItemBean;
 import com.xu.headline.bean.TouTiaoNewsListBean;

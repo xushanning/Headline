@@ -1,6 +1,9 @@
 package com.xu.headline.ui.activity.channelmanager;
 
+import com.xu.headline.adapter.entity.MultiChannelManagerItem;
 import com.xu.headline.base.IBaseContract;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2018/4/2.
@@ -11,7 +14,12 @@ import com.xu.headline.base.IBaseContract;
 public interface IChannelManagerContract {
 
     interface IChannelView extends IBaseContract.IBaseView {
-
+        /**
+         * 加载频道信息
+         *
+         * @param multiChannelManagerItems 频道信息items
+         */
+        void loadChannels(List<MultiChannelManagerItem> multiChannelManagerItems);
     }
 
     interface IChannelPresenter extends IBaseContract.IBasePresenter<IChannelView> {

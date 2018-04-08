@@ -1,4 +1,4 @@
-package com.xu.headline.adapter;
+package com.xu.headline.adapter.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.xu.headline.bean.NewsChannelListBean;

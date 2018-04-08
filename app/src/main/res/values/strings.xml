@@ -58,6 +58,8 @@
     <string name="edit">编辑</string>
     <string name="recommend_channel">推荐频道</string>
     <string name="add_channel">点击添加频道</string>
+    <string name="drag_sort">拖拽可以排序</string>
+    <string name="edit_complete">完成</string>
 
     <!--公共-->
     <string name="x_only_digit">%1$d</string>

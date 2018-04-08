@@ -4,8 +4,8 @@ import android.widget.ImageView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
-import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
+import com.xu.headline.adapter.entity.MultiNewsItem;
 import com.xu.headline.utils.ImageLoaderUtil;
 import com.xu.headline.utils.TimeUtil;
 
