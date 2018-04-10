@@ -1,7 +1,7 @@
 package com.xu.headline.ui.fragment.video;
 
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.VideoChannelBean;
+import com.xu.headline.bean.response.VideoChannelBean;
 
 import java.util.List;
 

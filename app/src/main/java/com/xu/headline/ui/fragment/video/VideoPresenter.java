@@ -8,7 +8,7 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.MyApplication;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.bean.VideoChannelBean;
+import com.xu.headline.bean.response.VideoChannelBean;
 import com.xu.headline.db.SubscribeChannelDbBeanDao;
 import com.xu.headline.db.VideoChannelDbBeanDao;
 import com.xu.headline.db.dbbean.VideoChannelDbBean;

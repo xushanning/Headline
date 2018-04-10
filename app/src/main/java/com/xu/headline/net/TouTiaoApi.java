@@ -1,14 +1,14 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.bean.CommentListBean;
-import com.xu.headline.bean.CommentReplyListBean;
-import com.xu.headline.bean.CommentReplyThemeBean;
-import com.xu.headline.bean.VideoChannelBean;
-import com.xu.headline.bean.authorinfo.AuthorInfoBean;
-import com.xu.headline.bean.SuggestSearchBean;
-import com.xu.headline.bean.NewsChannelListBean;
-import com.xu.headline.bean.TouTiaoNewsListBean;
+import com.xu.headline.bean.response.CommentListBean;
+import com.xu.headline.bean.response.CommentReplyListBean;
+import com.xu.headline.bean.response.CommentReplyThemeBean;
+import com.xu.headline.bean.response.VideoChannelBean;
+import com.xu.headline.bean.response.authorinfo.AuthorInfoBean;
+import com.xu.headline.bean.response.SuggestSearchBean;
+import com.xu.headline.bean.response.NewsChannelListBean;
+import com.xu.headline.bean.response.TouTiaoNewsListBean;
 
 import java.util.List;
 

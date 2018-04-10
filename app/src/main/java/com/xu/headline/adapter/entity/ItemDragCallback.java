@@ -21,6 +21,10 @@ public class ItemDragCallback extends ItemTouchHelper.Callback {
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+        //我的频道标题 和 频道推荐标题 推荐频道，不能移动
+        if (viewHolder.getLayoutPosition() == 0 || viewHolder.getLayoutPosition() > adapter.getMyChannelCount() ) {
+            return 0;
+        }
         //四个方向都能拖拽
         int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
         int swipeFlags = 0;

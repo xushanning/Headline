@@ -1,12 +1,10 @@
 package com.xu.headline.ui.activity.commentreply;
 
 import com.xu.headline.base.BasePresenter;
-import com.xu.headline.bean.CommentReplyListBean;
-import com.xu.headline.bean.CommentReplyThemeBean;
+import com.xu.headline.bean.response.CommentReplyListBean;
+import com.xu.headline.bean.response.CommentReplyThemeBean;
 import com.xu.headline.net.RetrofitFactory;
 import com.xu.headline.net.RetryRequestWithDelay;
-import com.xu.headline.net.TouTiaoApi;
-import com.xu.headline.net.TouTiaoApiService;
 import com.xu.headline.utils.TransformUtils;
 
 import io.reactivex.functions.Consumer;

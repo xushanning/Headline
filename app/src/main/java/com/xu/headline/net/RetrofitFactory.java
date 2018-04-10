@@ -3,8 +3,8 @@ package com.xu.headline.net;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.orhanobut.logger.Logger;
-import com.xu.headline.bean.authorinfo.BaseOrderedInfoBean;
-import com.xu.headline.bean.authorinfo.OrderedInfoDeserializer;
+import com.xu.headline.bean.response.authorinfo.BaseOrderedInfoBean;
+import com.xu.headline.bean.response.authorinfo.OrderedInfoDeserializer;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;

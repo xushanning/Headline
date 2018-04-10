@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.adapter.HomeListQuickAdapter;
 import com.xu.headline.base.BaseActivity;
-import com.xu.headline.bean.IDataNewsBean;
+import com.xu.headline.bean.response.IDataNewsBean;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.xu.headline.bean.NewsChannelListBean;
+import com.xu.headline.bean.response.NewsChannelListBean;
 import com.xu.headline.ui.fragment.homelist.HomeListFragment;
 
 import java.util.List;

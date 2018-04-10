@@ -1,7 +1,7 @@
 package com.xu.headline.ui.activity.search;
 
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.IDataNewsBean;
+import com.xu.headline.bean.response.IDataNewsBean;
 
 import java.util.List;
 

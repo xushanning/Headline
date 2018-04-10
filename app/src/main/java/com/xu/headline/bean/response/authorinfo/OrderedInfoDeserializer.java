@@ -1,4 +1,4 @@
-package com.xu.headline.bean.authorinfo;
+package com.xu.headline.bean.response.authorinfo;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonDeserializationContext;

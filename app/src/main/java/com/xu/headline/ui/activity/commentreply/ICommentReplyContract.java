@@ -1,8 +1,8 @@
 package com.xu.headline.ui.activity.commentreply;
 
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.CommentReplyListBean;
-import com.xu.headline.bean.CommentReplyThemeBean;
+import com.xu.headline.bean.response.CommentReplyListBean;
+import com.xu.headline.bean.response.CommentReplyThemeBean;
 
 /**
  * Created by xusn10 on 2018/3/6.

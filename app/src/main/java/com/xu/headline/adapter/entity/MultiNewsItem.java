@@ -1,7 +1,7 @@
 package com.xu.headline.adapter.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.xu.headline.bean.TouTiaoListItemBean;
+import com.xu.headline.bean.response.TouTiaoListItemBean;
 
 /**
  * Created by xusn10 on 2018/2/7.

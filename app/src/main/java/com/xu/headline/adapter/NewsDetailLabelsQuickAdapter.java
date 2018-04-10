@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xu.headline.R;
-import com.xu.headline.bean.authorinfo.OrderedInfoBean1;
+import com.xu.headline.bean.response.authorinfo.OrderedInfoBean1;
 
 import java.util.List;
 

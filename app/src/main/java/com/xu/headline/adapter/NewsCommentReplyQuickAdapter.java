@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xu.headline.MyApplication;
 import com.xu.headline.R;
-import com.xu.headline.bean.CommentReplyListBean;
+import com.xu.headline.bean.response.CommentReplyListBean;
 import com.xu.headline.utils.CommentEmojiUtil;
 import com.xu.headline.utils.ImageLoaderUtil;
 import com.xu.headline.utils.TimeUtil;

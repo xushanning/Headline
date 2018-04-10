@@ -6,7 +6,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.xu.headline.R;
-import com.xu.headline.bean.authorinfo.OrderedInfoBean4;
+import com.xu.headline.bean.response.authorinfo.OrderedInfoBean4;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.xu.headline.bean.authorinfo;
+package com.xu.headline.bean.response.authorinfo;
 
 /**
  * Created by xusn10 on 2018/2/24.

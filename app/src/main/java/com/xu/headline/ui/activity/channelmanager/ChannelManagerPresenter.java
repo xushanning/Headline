@@ -11,7 +11,7 @@ import com.xu.headline.MyApplication;
 import com.xu.headline.adapter.entity.MultiChannelManagerItem;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.bean.NewsChannelListBean;
+import com.xu.headline.bean.response.NewsChannelListBean;
 import com.xu.headline.db.SubscribeChannelDbBeanDao;
 import com.xu.headline.db.dbbean.SubscribeChannelDbBean;
 import com.xu.headline.net.HttpConstants;

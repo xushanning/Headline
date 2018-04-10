@@ -1,18 +1,21 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.bean.CommentReplyListBean;
-import com.xu.headline.bean.CommentReplyThemeBean;
-import com.xu.headline.bean.VideoChannelBean;
-import com.xu.headline.bean.authorinfo.AuthorInfoBean;
-import com.xu.headline.bean.CommentListBean;
-import com.xu.headline.bean.SuggestSearchBean;
-import com.xu.headline.bean.NewsChannelListBean;
-import com.xu.headline.bean.TouTiaoNewsListBean;
+import com.xu.headline.bean.request.LocalChannelInfoBean;
+import com.xu.headline.bean.response.CommentReplyListBean;
+import com.xu.headline.bean.response.CommentReplyThemeBean;
+import com.xu.headline.bean.response.VideoChannelBean;
+
+import com.xu.headline.bean.response.CommentListBean;
+import com.xu.headline.bean.response.SuggestSearchBean;
+import com.xu.headline.bean.response.NewsChannelListBean;
+import com.xu.headline.bean.response.TouTiaoNewsListBean;
+import com.xu.headline.bean.response.authorinfo.AuthorInfoBean;
 
 import java.util.List;
 
 import io.reactivex.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -73,14 +76,14 @@ public interface TouTiaoApiService {
      */
     @POST("article/category/get_subscribed/v4/")
     Observable<BaseResBean<NewsChannelListBean>> getNewsChannelList(@Query("iid") String iid,
-                                                                   @Query("device_id") String deviceID,
-                                                                   @Query("ac") String ac,
-                                                                   @Query("channel") String channel,
-                                                                   @Query("aid") int aid,
-                                                                   @Query("app_name") String appName,
-                                                                   @Query("version_code") int versionCode,
-                                                                   @Query("version_name") String versionName,
-                                                                   @Query("device_platform") String devicePlatform);
+                                                                    @Query("device_id") String deviceID,
+                                                                    @Query("ac") String ac,
+                                                                    @Query("channel") String channel,
+                                                                    @Query("aid") int aid,
+                                                                    @Query("app_name") String appName,
+                                                                    @Query("version_code") int versionCode,
+                                                                    @Query("version_name") String versionName,
+                                                                    @Query("device_platform") String devicePlatform);
 
     /**
      * 获取新闻列表
@@ -314,15 +317,16 @@ public interface TouTiaoApiService {
     /**
      * 获取新闻推荐列表
      *
-     * @param iid            iid
-     * @param deviceID       设备id
-     * @param ac             ac
-     * @param channel        频道
-     * @param aid            aid
-     * @param appName        appName
-     * @param versionCode    code
-     * @param versionName    版本名
-     * @param devicePlatform 平台
+     * @param iid             iid
+     * @param deviceID        设备id
+     * @param ac              ac
+     * @param channel         频道
+     * @param aid             aid
+     * @param appName         appName
+     * @param versionCode     code
+     * @param versionName     版本名
+     * @param devicePlatform  平台
+     * @param channelInfoBean 频道信息
      * @return observer
      */
     @POST("article/category/get_extra/v1/")
@@ -334,6 +338,7 @@ public interface TouTiaoApiService {
                                                                          @Query("app_name") String appName,
                                                                          @Query("version_code") int versionCode,
                                                                          @Query("version_name") String versionName,
-                                                                         @Query("device_platform") String devicePlatform);
+                                                                         @Query("device_platform") String devicePlatform,
+                                                                         @Body LocalChannelInfoBean channelInfoBean);
 
 }

@@ -2,7 +2,7 @@ package com.xu.headline.db.helper;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.xu.headline.bean.NewsChannelListBean;
+import com.xu.headline.bean.response.NewsChannelListBean;
 
 import org.greenrobot.greendao.converter.PropertyConverter;
 

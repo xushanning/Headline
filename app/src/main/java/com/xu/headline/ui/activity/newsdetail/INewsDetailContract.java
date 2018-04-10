@@ -1,9 +1,9 @@
 package com.xu.headline.ui.activity.newsdetail;
 
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.CommentListBean;
-import com.xu.headline.bean.NewsDetailsBean;
-import com.xu.headline.bean.authorinfo.AuthorInfoBean;
+import com.xu.headline.bean.response.CommentListBean;
+import com.xu.headline.bean.response.NewsDetailsBean;
+import com.xu.headline.bean.response.authorinfo.AuthorInfoBean;
 
 /**
  * Created by xusn10 on 2018/1/19.

@@ -1,21 +1,12 @@
 package com.xu.headline.ui.fragment.video;
 
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.xu.headline.R;
 import com.xu.headline.base.BaseFragment;
-import com.xu.headline.bean.VideoChannelBean;
+import com.xu.headline.bean.response.VideoChannelBean;
 
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by Administrator on 2018/1/16.

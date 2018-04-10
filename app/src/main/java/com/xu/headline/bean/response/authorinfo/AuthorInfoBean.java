@@ -1,4 +1,4 @@
-package com.xu.headline.bean.authorinfo;
+package com.xu.headline.bean.response.authorinfo;
 
 import java.util.List;
 

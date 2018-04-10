@@ -1,7 +1,7 @@
 package com.xu.headline.ui.fragment.home;
 
 import com.xu.headline.base.IBaseContract;
-import com.xu.headline.bean.NewsChannelListBean;
+import com.xu.headline.bean.response.NewsChannelListBean;
 
 import java.util.List;
 

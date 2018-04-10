@@ -44,7 +44,7 @@ public class ChannelManagerQuickAdapter extends BaseMultiItemQuickAdapter<MultiC
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, MultiChannelManagerItem item) {
+    protected void convert(final BaseViewHolder helper, MultiChannelManagerItem item) {
         switch (item.getItemType()) {
             case MultiChannelManagerItem.TYPE_MY_CHANNEL_TITLE:
                 //编辑的点击事件
@@ -65,12 +65,27 @@ public class ChannelManagerQuickAdapter extends BaseMultiItemQuickAdapter<MultiC
                     TextView channelName = helper.getView(R.id.tv_recommend_channel);
                     channelName.setTextSize(12);
                 }
-                helper.setText(R.id.tv_recommend_channel, item.getChannelBean().getName())
-                        .addOnClickListener(R.id.tv_recommend_channel);
+                helper.setText(R.id.tv_recommend_channel, item.getChannelBean().getName());
+
+                helper.getView(R.id.tv_recommend_channel).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        itemMove(helper.getLayoutPosition(), getMyChannelCount() + 1);
+                    }
+                });
                 break;
             default:
                 break;
         }
+    }
+
+    /**
+     * 获取我的频道个数
+     *
+     * @return 我的频道个数
+     */
+    public int getMyChannelCount() {
+        return cancelImgList.size();
     }
 
     /**
@@ -80,6 +95,7 @@ public class ChannelManagerQuickAdapter extends BaseMultiItemQuickAdapter<MultiC
      * @param toPosition   结束位置
      */
     public void itemMove(int fromPosition, int toPosition) {
+//        Collections.swap(data, fromPosition, toPosition);
         if (fromPosition < toPosition) {
             for (int i = fromPosition; i < toPosition; i++) {
                 Collections.swap(data, i, i + 1);
