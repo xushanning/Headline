@@ -8,9 +8,11 @@ import com.xu.headline.bean.response.VideoChannelBean;
 import com.xu.headline.bean.response.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.response.SuggestSearchBean;
 import com.xu.headline.bean.response.NewsChannelListBean;
-import com.xu.headline.bean.response.TouTiaoNewsListBean;
+import com.xu.headline.bean.response.TouTiaoNewsVideoListBean;
 
 import java.util.List;
+
+import javax.security.auth.callback.Callback;
 
 import io.reactivex.Observable;
 
@@ -71,7 +73,7 @@ public class TouTiaoApi {
      * @param lastRefreshTime 上一次刷新的时间
      * @return observable
      */
-    public Observable<TouTiaoNewsListBean> getNewsList(String category, long lastRefreshTime) {
+    public Observable<TouTiaoNewsVideoListBean> getNewsList(String category, long lastRefreshTime) {
         return touTiaoApiService.getNewsList(20, category, "6213176537160616450", 1, 1, 5, 20, lastRefreshTime, System.currentTimeMillis() / 1000, 7, System.currentTimeMillis() / 1000,
                 39.916559445439894, 116.38022377094337, "北京", "pull", 4105, 4794480, 3, "25206805877", "47840702832", "wifi", "huawei", 13, "news_article", 654, "6.5.4", "android");
     }
@@ -142,4 +144,17 @@ public class TouTiaoApi {
                 654, "6.5.4", "android");
     }
 
+    /**
+     * 获取视频列表
+     *
+     * @param channelId       频道id
+     * @param lastRefreshTime 最后一次刷新时间
+     * @param refreshMode     刷新的方式 下拉 上拉
+     * @return 列表
+     */
+    public Observable<TouTiaoNewsVideoListBean> getVideoList(String channelId, long lastRefreshTime, String refreshMode) {
+        return touTiaoApiService.getVideoList(10, channelId, 1, 1, 20, System.currentTimeMillis() / 1000, "main_tab", lastRefreshTime,
+                System.currentTimeMillis() / 1000, 39.91615696118585, 116.37871385739155, "北京", refreshMode, 29858226621L, 37717988923L, "wifi",
+                "huawei", "news_article", 666, "6.66", "android");
+    }
 }

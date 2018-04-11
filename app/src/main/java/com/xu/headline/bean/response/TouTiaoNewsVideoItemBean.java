@@ -4,7 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class TouTiaoListItemBean {
+/**
+ * @author 许
+ */
+public class TouTiaoNewsVideoItemBean {
 
 
     /**

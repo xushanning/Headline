@@ -1,21 +1,18 @@
 package com.xu.headline.net;
 
 import com.xu.headline.base.BaseResBean;
-import com.xu.headline.bean.request.LocalChannelInfoBean;
+import com.xu.headline.bean.response.CommentListBean;
 import com.xu.headline.bean.response.CommentReplyListBean;
 import com.xu.headline.bean.response.CommentReplyThemeBean;
-import com.xu.headline.bean.response.VideoChannelBean;
-
-import com.xu.headline.bean.response.CommentListBean;
-import com.xu.headline.bean.response.SuggestSearchBean;
 import com.xu.headline.bean.response.NewsChannelListBean;
-import com.xu.headline.bean.response.TouTiaoNewsListBean;
+import com.xu.headline.bean.response.SuggestSearchBean;
+import com.xu.headline.bean.response.TouTiaoNewsVideoListBean;
+import com.xu.headline.bean.response.VideoChannelBean;
 import com.xu.headline.bean.response.authorinfo.AuthorInfoBean;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -118,32 +115,32 @@ public interface TouTiaoApiService {
      * @return Observable
      */
     @GET("api/news/feed/v74/")
-    Observable<TouTiaoNewsListBean> getNewsList(@Query("list_count") int listCount,
-                                                @Query("category") String category,
-                                                @Query("concern_id") String concernID,
-                                                @Query("refer") int refer,
-                                                @Query("refresh_reason") int refreshReason,
-                                                @Query("session_refresh_idx") int sessionRefreshIdx,
-                                                @Query("count") int count,
-                                                @Query("min_behot_time") long lastBeHotTime,
-                                                @Query("last_refresh_sub_entrance_interval") long lastRefreshTime,
-                                                @Query("loc_mode") int locMode,
-                                                @Query("loc_time") long currentTime,
-                                                @Query("latitude") double latitude,
-                                                @Query("longitude") double longitude,
-                                                @Query("city") String city,
-                                                @Query("tt_from") String from,
-                                                @Query("lac") int lac,
-                                                @Query("cid") int cid,
-                                                @Query("plugin_enable") int pluginEnable,
-                                                @Query("iid") String iid,
-                                                @Query("device_id") String deviceID,
-                                                @Query("ac") String ac,
-                                                @Query("channel") String channel,
-                                                @Query("aid") int aid, @Query("app_name") String appName,
-                                                @Query("version_code") int versionCode,
-                                                @Query("version_name") String versionName,
-                                                @Query("device_platform") String devicePlatform);
+    Observable<TouTiaoNewsVideoListBean> getNewsList(@Query("list_count") int listCount,
+                                                     @Query("category") String category,
+                                                     @Query("concern_id") String concernID,
+                                                     @Query("refer") int refer,
+                                                     @Query("refresh_reason") int refreshReason,
+                                                     @Query("session_refresh_idx") int sessionRefreshIdx,
+                                                     @Query("count") int count,
+                                                     @Query("min_behot_time") long lastBeHotTime,
+                                                     @Query("last_refresh_sub_entrance_interval") long lastRefreshTime,
+                                                     @Query("loc_mode") int locMode,
+                                                     @Query("loc_time") long currentTime,
+                                                     @Query("latitude") double latitude,
+                                                     @Query("longitude") double longitude,
+                                                     @Query("city") String city,
+                                                     @Query("tt_from") String from,
+                                                     @Query("lac") int lac,
+                                                     @Query("cid") int cid,
+                                                     @Query("plugin_enable") int pluginEnable,
+                                                     @Query("iid") String iid,
+                                                     @Query("device_id") String deviceID,
+                                                     @Query("ac") String ac,
+                                                     @Query("channel") String channel,
+                                                     @Query("aid") int aid, @Query("app_name") String appName,
+                                                     @Query("version_code") int versionCode,
+                                                     @Query("version_name") String versionName,
+                                                     @Query("device_platform") String devicePlatform);
 
 
     /**
@@ -290,7 +287,7 @@ public interface TouTiaoApiService {
                                                          @Query("device_platform") String devicePlatform);
 
     /**
-     * 获取视频列表
+     * 获取视频频道列表
      *
      * @param iid            iid
      * @param deviceID       设备id
@@ -317,16 +314,15 @@ public interface TouTiaoApiService {
     /**
      * 获取新闻推荐列表
      *
-     * @param iid             iid
-     * @param deviceID        设备id
-     * @param ac              ac
-     * @param channel         频道
-     * @param aid             aid
-     * @param appName         appName
-     * @param versionCode     code
-     * @param versionName     版本名
-     * @param devicePlatform  平台
-     * @param channelInfoBean 频道信息
+     * @param iid            iid
+     * @param deviceID       设备id
+     * @param ac             ac
+     * @param channel        频道
+     * @param aid            aid
+     * @param appName        appName
+     * @param versionCode    code
+     * @param versionName    版本名
+     * @param devicePlatform 平台
      * @return observer
      */
     @POST("article/category/get_extra/v1/")
@@ -338,7 +334,55 @@ public interface TouTiaoApiService {
                                                                          @Query("app_name") String appName,
                                                                          @Query("version_code") int versionCode,
                                                                          @Query("version_name") String versionName,
-                                                                         @Query("device_platform") String devicePlatform,
-                                                                         @Body LocalChannelInfoBean channelInfoBean);
+                                                                         @Query("device_platform") String devicePlatform);
+
+    /**
+     * 获取视频列表
+     *
+     * @param listCount       不确定
+     * @param channelID       频道id
+     * @param refer           刷新次数？
+     * @param refreshReason   刷新原因
+     * @param count           数量
+     * @param beHotTime       成为热点时间？
+     * @param entrance        入口
+     * @param lastRefreshTime 最后一次刷新时间
+     * @param localTime       本地时间
+     * @param latitude        纬度
+     * @param longitude       经度
+     * @param city            城市
+     * @param TtFrom          刷新方式 下拉 上拉 还有？
+     * @param iid             iid
+     * @param deviceId        设备id
+     * @param ac              网络类型
+     * @param channel         手机
+     * @param appName         appName
+     * @param versionCode     版本号
+     * @param versionName     版本名
+     * @param platform        系统型号
+     * @return observable
+     */
+    @GET("api/news/feed/v81/")
+    Observable<TouTiaoNewsVideoListBean> getVideoList(@Query("list_count") int listCount,
+                                                      @Query("category") String channelID,
+                                                      @Query("refer") int refer,
+                                                      @Query("refresh_reason") int refreshReason,
+                                                      @Query("count") int count,
+                                                      @Query("min_behot_time") long beHotTime,
+                                                      @Query("list_entrance") String entrance,
+                                                      @Query("last_refresh_sub_entrance_interval") long lastRefreshTime,
+                                                      @Query("loc_time") long localTime,
+                                                      @Query("latitude") double latitude,
+                                                      @Query("longitude") double longitude,
+                                                      @Query("city") String city,
+                                                      @Query("tt_from") String TtFrom,
+                                                      @Query("iid") long iid,
+                                                      @Query("device_id") long deviceId,
+                                                      @Query("ac") String ac,
+                                                      @Query("channel") String channel,
+                                                      @Query("app_name") String appName,
+                                                      @Query("version_code") int versionCode,
+                                                      @Query("version_name") String versionName,
+                                                      @Query("device_platform") String platform);
 
 }

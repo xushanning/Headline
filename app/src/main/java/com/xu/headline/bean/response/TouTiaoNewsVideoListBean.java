@@ -6,11 +6,12 @@ import java.util.List;
 
 /**
  * Created by xusn10 on 2018/2/6.
+ * 新闻或者视频list
  *
  * @author xu
  */
 
-public class TouTiaoNewsListBean {
+public class TouTiaoNewsVideoListBean {
 
     /**
      * message : success

@@ -1,7 +1,7 @@
 package com.xu.headline.adapter.entity;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.xu.headline.bean.response.TouTiaoListItemBean;
+import com.xu.headline.bean.response.TouTiaoNewsVideoItemBean;
 
 /**
  * Created by xusn10 on 2018/2/7.
@@ -31,7 +31,7 @@ public class MultiNewsItem implements MultiItemEntity {
      */
     public static final int AD_NEWS = 5;
     private int itemType;
-    private TouTiaoListItemBean itemBean;
+    private TouTiaoNewsVideoItemBean itemBean;
 
     public MultiNewsItem(int itemType) {
         this.itemType = itemType;
@@ -42,11 +42,11 @@ public class MultiNewsItem implements MultiItemEntity {
         return itemType;
     }
 
-    public TouTiaoListItemBean getItemBean() {
+    public TouTiaoNewsVideoItemBean getItemBean() {
         return itemBean;
     }
 
-    public void setItemBean(TouTiaoListItemBean itemBean) {
+    public void setItemBean(TouTiaoNewsVideoItemBean itemBean) {
         this.itemBean = itemBean;
     }
 }

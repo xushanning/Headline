@@ -8,10 +8,12 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.MyApplication;
 import com.xu.headline.base.BasePresenter;
 import com.xu.headline.base.BaseResBean;
+import com.xu.headline.bean.response.SuggestSearchBean;
 import com.xu.headline.bean.response.VideoChannelBean;
 import com.xu.headline.db.SubscribeChannelDbBeanDao;
 import com.xu.headline.db.VideoChannelDbBeanDao;
 import com.xu.headline.db.dbbean.VideoChannelDbBean;
+import com.xu.headline.net.BaseTouTiaoResObserver;
 import com.xu.headline.net.HttpConstants;
 import com.xu.headline.net.RetrofitFactory;
 import com.xu.headline.utils.TransformUtils;
@@ -50,7 +52,7 @@ public class VideoPresenter extends BasePresenter<IVideoContract.IVideoView> imp
             @Override
             public void subscribe(ObservableEmitter<List<VideoChannelBean>> e) throws Exception {
                 VideoChannelDbBeanDao channelDbBeanDao = MyApplication.getInstance().getDaoSession().getVideoChannelDbBeanDao();
-                VideoChannelDbBean channelDbBean = channelDbBeanDao.queryBuilder().where(SubscribeChannelDbBeanDao.Properties.IMei.eq(iMei)).build().unique();
+                VideoChannelDbBean channelDbBean = channelDbBeanDao.queryBuilder().where(VideoChannelDbBeanDao.Properties.IMei.eq(iMei)).build().unique();
                 if (channelDbBean == null) {
                     Logger.d("数据库中为null");
                     //为null，直接执行下一个observable
@@ -87,7 +89,7 @@ public class VideoPresenter extends BasePresenter<IVideoContract.IVideoView> imp
 
                                     //看是否有，如果有，那么更新
                                     VideoChannelDbBeanDao channelDbBeanDao = MyApplication.getInstance().getDaoSession().getVideoChannelDbBeanDao();
-                                    VideoChannelDbBean dbBeanLocal = channelDbBeanDao.queryBuilder().where(SubscribeChannelDbBeanDao.Properties.IMei.eq(iMei)).build().unique();
+                                    VideoChannelDbBean dbBeanLocal = channelDbBeanDao.queryBuilder().where(VideoChannelDbBeanDao.Properties.IMei.eq(iMei)).build().unique();
                                     if (dbBeanLocal == null) {
                                         //无数据，插入
                                         VideoChannelDbBean dbBean = new VideoChannelDbBean();
@@ -123,4 +125,21 @@ public class VideoPresenter extends BasePresenter<IVideoContract.IVideoView> imp
 
 
     }
+
+    @Override
+    public void getSuggestSearch() {
+
+        RetrofitFactory.getTouTiaoApi()
+                .getSuggestSearch()
+                .compose(mView.<BaseResBean<SuggestSearchBean>>bindToLife())
+                .compose(TransformUtils.<BaseResBean<SuggestSearchBean>>defaultSchedulers())
+                .subscribe(new BaseTouTiaoResObserver<SuggestSearchBean>() {
+                    @Override
+                    protected void onSuccess(SuggestSearchBean suggestSearchBean) {
+                        mView.loadSuggestSearch(suggestSearchBean.getHomepageSearchSuggest());
+                    }
+                });
+
+    }
+
 }

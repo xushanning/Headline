@@ -18,6 +18,13 @@ public interface IVideoContract {
          * @param channelList 频道列表
          */
         void loadVideoChannel(List<VideoChannelBean> channelList);
+
+        /**
+         * 加载推荐搜索的内容
+         *
+         * @param suggestString 推荐搜索的内容
+         */
+        void loadSuggestSearch(String suggestString);
     }
 
     interface IVideoPresenter extends IBaseContract.IBasePresenter<IVideoView> {
@@ -25,5 +32,10 @@ public interface IVideoContract {
          * 获取视频列表
          */
         void initVideoChannel();
+
+        /**
+         * 获取推荐搜索
+         */
+        void getSuggestSearch();
     }
 }

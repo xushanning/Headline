@@ -5,8 +5,8 @@ import com.orhanobut.logger.Logger;
 import com.xu.headline.MyApplication;
 import com.xu.headline.adapter.entity.MultiNewsItem;
 import com.xu.headline.base.BasePresenter;
-import com.xu.headline.bean.response.TouTiaoListItemBean;
-import com.xu.headline.bean.response.TouTiaoNewsListBean;
+import com.xu.headline.bean.response.TouTiaoNewsVideoItemBean;
+import com.xu.headline.bean.response.TouTiaoNewsVideoListBean;
 import com.xu.headline.db.NewsHistoryDbBeanDao;
 import com.xu.headline.db.dbbean.NewsHistoryDbBean;
 import com.xu.headline.net.HttpConstants;
@@ -39,20 +39,20 @@ public class HomeListPresenter extends BasePresenter<IHomeListContract.IHomeList
     @Override
     public void getNewsList(final String channelID) {
         //最后一次刷新时间
-        long lastRefreshTime = SharedPreUtil.getLong("channelID", System.currentTimeMillis() / 1000);
+        long lastRefreshTime = SharedPreUtil.getLong(channelID, System.currentTimeMillis() / 1000);
         Logger.d("上一次刷新时间:" + lastRefreshTime);
         RetrofitFactory.getTouTiaoApi()
                 .getNewsList(channelID, lastRefreshTime)
-                .map(new Function<TouTiaoNewsListBean, List<MultiNewsItem>>() {
+                .map(new Function<TouTiaoNewsVideoListBean, List<MultiNewsItem>>() {
                     @Override
-                    public List<MultiNewsItem> apply(TouTiaoNewsListBean touTiaoNewsListBean) throws Exception {
-                        if (HttpConstants.REQUEST_SUCCESS.equals(touTiaoNewsListBean.getMessage())) {
-                            List<MultiNewsItem> items = new ArrayList<>(touTiaoNewsListBean.getData().size());
-                            for (TouTiaoNewsListBean.DataBean dataBean : touTiaoNewsListBean.getData()) {
+                    public List<MultiNewsItem> apply(TouTiaoNewsVideoListBean touTiaoNewsVideoListBean) throws Exception {
+                        if (HttpConstants.REQUEST_SUCCESS.equals(touTiaoNewsVideoListBean.getMessage())) {
+                            List<MultiNewsItem> items = new ArrayList<>(touTiaoNewsVideoListBean.getData().size());
+                            for (TouTiaoNewsVideoListBean.DataBean dataBean : touTiaoNewsVideoListBean.getData()) {
                                 String itemString = dataBean.getContent();
                                 //返回的字符串不符合标准json，处理一下
                                 String handleString = itemString.replace("\\", "").replace("\"{", "{").replace("}\"", "}");
-                                TouTiaoListItemBean itemBean = new Gson().fromJson(handleString, TouTiaoListItemBean.class);
+                                TouTiaoNewsVideoItemBean itemBean = new Gson().fromJson(handleString, TouTiaoNewsVideoItemBean.class);
                                 int itemType = 1;
                                 //是否有图片
                                 if (itemBean.isHas_image()) {
