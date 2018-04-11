@@ -51,6 +51,7 @@ dependencies {
     implementation rootProject.ext.dependencies["skeleton"]
     implementation rootProject.ext.dependencies["shimmerlayout"]
     implementation rootProject.ext.dependencies["slideBack"]
+    implementation rootProject.ext.dependencies["videoPlayer"]
 
     implementation rootProject.ext.dependencies["glide"]
     implementation rootProject.ext.dependencies["greendao"]

@@ -4,6 +4,7 @@ import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.xu.headline.R;
 import com.xu.headline.bean.response.TouTiaoNewsVideoItemBean;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class VideoListQuickAdapter extends BaseQuickAdapter<List<TouTiaoNewsVideoItemBean>, BaseViewHolder> {
     public VideoListQuickAdapter(@Nullable List<List<TouTiaoNewsVideoItemBean>> data) {
-        super(data);
+        super(R.layout.item_video, data);
     }
 
     @Override
