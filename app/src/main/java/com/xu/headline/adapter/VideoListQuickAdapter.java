@@ -8,12 +8,12 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.R;
 import com.xu.headline.bean.response.TouTiaoNewsVideoItemBean;
-import com.xu.headline.utils.ImageLoaderUtil;
+import com.xu.headline.ui.fragment.videolist.IVideoListContract;
+import com.xu.headline.view.HeadLineVideoPlayer;
 
 import java.util.List;
 
 import cn.jzvd.JZVideoPlayer;
-import cn.jzvd.JZVideoPlayerStandard;
 
 /**
  * @author 言吾許
@@ -21,15 +21,26 @@ import cn.jzvd.JZVideoPlayerStandard;
  */
 
 public class VideoListQuickAdapter extends BaseQuickAdapter<TouTiaoNewsVideoItemBean, BaseViewHolder> {
-    public VideoListQuickAdapter(@Nullable List<TouTiaoNewsVideoItemBean> data) {
+    private IVideoListContract.IVideoListPresenter mPresenter;
+
+    public VideoListQuickAdapter(@Nullable List<TouTiaoNewsVideoItemBean> data, IVideoListContract.IVideoListPresenter mPresenter) {
         super(R.layout.item_video, data);
+        this.mPresenter = mPresenter;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, TouTiaoNewsVideoItemBean item) {
+    protected void convert(BaseViewHolder helper, final TouTiaoNewsVideoItemBean item) {
         helper.addOnClickListener(R.id.video_player);
-        JZVideoPlayerStandard jzVideoPlayer = helper.getView(R.id.video_player);
-        jzVideoPlayer.setUp("http://v1-tt.ixigua.com/b296ed29673544ec168181d1ea8e1b8e/5acecc2c/video/m/220901ffd287220487284ba91e51c34fb191153d1510000aa48bb95851b/", JZVideoPlayer.SCREEN_WINDOW_LIST, item.getTitle());
+        HeadLineVideoPlayer videoPlayer = helper.getView(R.id.video_player);
+        videoPlayer.setAllControlsVisiblity(View.GONE, View.GONE, View.VISIBLE, View.GONE, View.VISIBLE, View.VISIBLE, View.GONE);
+        videoPlayer.setUp(null, JZVideoPlayer.SCREEN_WINDOW_LIST, item.getTitle());
+        videoPlayer.setOnStartClickListener(new HeadLineVideoPlayer.OnStartClickListener() {
+            @Override
+            public void onStartClick() {
+                Logger.d("点击开始");
+                mPresenter.getVideoAddress(item.getShare_url());
+            }
+        });
         // ImageLoaderUtil.loadImage(mContext);
     }
 }

@@ -1,7 +1,6 @@
 package com.xu.headline.ui.fragment.videolist;
 
 import android.os.Bundle;
-import android.service.carrier.CarrierService;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -72,7 +71,7 @@ public class VideoListFragment extends BaseViewPagerFragment<IVideoListContract.
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvVideoDetail.setLayoutManager(layoutManager);
 
-        adapter = new VideoListQuickAdapter(new ArrayList<TouTiaoNewsVideoItemBean>());
+        adapter = new VideoListQuickAdapter(new ArrayList<TouTiaoNewsVideoItemBean>(), mPresenter);
         rvVideoDetail.setAdapter(adapter);
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
@@ -80,21 +79,6 @@ public class VideoListFragment extends BaseViewPagerFragment<IVideoListContract.
                 Logger.d("sdjkflasjflksdjfl");
             }
         });
-        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                switch (view.getId()) {
-                    case R.id.video_player:
-                        Logger.d("视频被点击了");
-                        TouTiaoNewsVideoItemBean itemBean = (TouTiaoNewsVideoItemBean) adapter.getItem(position);
-                        mPresenter.getVideoAddress(itemBean.getShare_url());
-                        break;
-                    default:
-                        break;
-                }
-            }
-        });
-
     }
 
     @Override
