@@ -153,8 +153,20 @@ public class TouTiaoApi {
      * @return 列表
      */
     public Observable<TouTiaoNewsVideoListBean> getVideoList(String channelId, long lastRefreshTime, String refreshMode) {
-        return touTiaoApiService.getVideoList(10, channelId, 1, 1, 20, System.currentTimeMillis() / 1000, "main_tab", lastRefreshTime,
+        return touTiaoApiService.getVideoList(0, channelId, 1, 1, 20, System.currentTimeMillis() / 1000, "main_tab", lastRefreshTime,
                 System.currentTimeMillis() / 1000, 39.91615696118585, 116.37871385739155, "北京", refreshMode, 29858226621L, 37717988923L, "wifi",
                 "huawei", "news_article", 666, "6.66", "android");
     }
+
+    /**
+     * 获取视频播放真实地址的请求接口
+     *
+     * @param url pc端地址
+     * @return 真实地址请求接口
+     */
+    public Observable<String> getVideoHtml(String url) {
+        return touTiaoApiService.getVideoHtml(url);
+    }
+
+
 }

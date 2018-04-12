@@ -15,7 +15,9 @@ import java.util.List;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 /**
  * Created by xusn10 on 2018/2/5.
@@ -385,4 +387,12 @@ public interface TouTiaoApiService {
                                                       @Query("version_name") String versionName,
                                                       @Query("device_platform") String platform);
 
+    /**
+     * 获取视频的地址请求接口
+     *
+     * @param url 真实地址的请求地址
+     * @return html代码
+     */
+    @GET
+    Observable<String> getVideoHtml(@Url String url);
 }

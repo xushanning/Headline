@@ -1,15 +1,18 @@
 package com.xu.headline.ui.fragment.videolist;
 
 import android.os.Bundle;
+import android.service.carrier.CarrierService;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.xu.headline.R;
 import com.xu.headline.adapter.VideoListQuickAdapter;
-import com.xu.headline.base.BaseFragment;
 import com.xu.headline.base.BaseViewPagerFragment;
 import com.xu.headline.bean.response.TouTiaoNewsVideoItemBean;
 import com.xu.headline.view.MultipleStatusView;
@@ -69,8 +72,29 @@ public class VideoListFragment extends BaseViewPagerFragment<IVideoListContract.
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvVideoDetail.setLayoutManager(layoutManager);
 
-        adapter = new VideoListQuickAdapter(new ArrayList<List<TouTiaoNewsVideoItemBean>>());
+        adapter = new VideoListQuickAdapter(new ArrayList<TouTiaoNewsVideoItemBean>());
         rvVideoDetail.setAdapter(adapter);
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Logger.d("sdjkflasjflksdjfl");
+            }
+        });
+        adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                switch (view.getId()) {
+                    case R.id.video_player:
+                        Logger.d("视频被点击了");
+                        TouTiaoNewsVideoItemBean itemBean = (TouTiaoNewsVideoItemBean) adapter.getItem(position);
+                        mPresenter.getVideoAddress(itemBean.getShare_url());
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
+
     }
 
     @Override
@@ -95,6 +119,8 @@ public class VideoListFragment extends BaseViewPagerFragment<IVideoListContract.
 
     @Override
     public void loadVideoList(List<TouTiaoNewsVideoItemBean> itemBeans) {
+        Logger.d(itemBeans.size());
         adapter.addData(itemBeans);
     }
+
 }

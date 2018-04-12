@@ -36,5 +36,13 @@ public interface IVideoListContract {
          * @param channelId 频道名称
          */
         void getVideoFrDB(String channelId);
+
+        /**
+         * 获取视频播放的真实地址
+         *
+         * @param url pc端地址
+         * @return 真实地址
+         */
+        String getVideoAddress(String url);
     }
 }
