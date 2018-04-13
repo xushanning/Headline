@@ -2,6 +2,7 @@ package com.xu.headline.ui.fragment.videolist;
 
 import com.xu.headline.base.IBaseContract;
 import com.xu.headline.bean.response.TouTiaoNewsVideoItemBean;
+import com.xu.headline.bean.response.VideoAddressBean;
 
 import java.util.List;
 
@@ -19,6 +20,14 @@ public interface IVideoListContract {
          * @param itemBeans 列表数据
          */
         void loadVideoList(List<TouTiaoNewsVideoItemBean> itemBeans);
+
+        /**
+         * 加载视频播放地址
+         *
+         * @param videoBean 地址bean
+         * @param position  播放器位置
+         */
+        void loadVideoAddress(VideoAddressBean.DataBean.VideoListBean.VideoBean videoBean, int position);
     }
 
     interface IVideoListPresenter extends IBaseContract.IBasePresenter<IVideoListView> {
@@ -40,9 +49,9 @@ public interface IVideoListContract {
         /**
          * 获取视频播放的真实地址
          *
-         * @param url pc端地址
-         * @return 真实地址
+         * @param url      pc端地址
+         * @param position 播放器位置
          */
-        String getVideoAddress(String url);
+        void getVideoAddress(String url, int position);
     }
 }

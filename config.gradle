@@ -21,6 +21,7 @@ ext {
 
             //net
             "converter-gson"               : "com.squareup.retrofit2:converter-gson:2.3.0",
+            "converter-scalars"            : "com.squareup.retrofit2:converter-scalars:2.3.0",
             "adapter-rxjava"               : "com.squareup.retrofit2:adapter-rxjava2:2.3.0",
             "okhttp-logging"               : "com.squareup.okhttp3:logging-interceptor:3.8.1",
 

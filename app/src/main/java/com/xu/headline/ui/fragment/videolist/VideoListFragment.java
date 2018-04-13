@@ -14,6 +14,7 @@ import com.xu.headline.R;
 import com.xu.headline.adapter.VideoListQuickAdapter;
 import com.xu.headline.base.BaseViewPagerFragment;
 import com.xu.headline.bean.response.TouTiaoNewsVideoItemBean;
+import com.xu.headline.bean.response.VideoAddressBean;
 import com.xu.headline.view.MultipleStatusView;
 
 import java.util.ArrayList;
@@ -105,6 +106,11 @@ public class VideoListFragment extends BaseViewPagerFragment<IVideoListContract.
     public void loadVideoList(List<TouTiaoNewsVideoItemBean> itemBeans) {
         Logger.d(itemBeans.size());
         adapter.addData(itemBeans);
+    }
+
+    @Override
+    public void loadVideoAddress(VideoAddressBean.DataBean.VideoListBean.VideoBean videoBean, int position) {
+        adapter.setVideoAddress(videoBean, position);
     }
 
 }

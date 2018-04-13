@@ -1,12 +1,15 @@
 package com.xu.headline.ui.fragment.videolist;
 
+import android.util.Base64;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 import com.xu.headline.base.BasePresenter;
+import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.response.TouTiaoNewsVideoItemBean;
 import com.xu.headline.bean.response.TouTiaoNewsVideoListBean;
+import com.xu.headline.bean.response.VideoAddressBean;
 import com.xu.headline.net.HttpConstants;
 import com.xu.headline.net.RetrofitFactory;
 import com.xu.headline.utils.SharedPreUtil;
@@ -33,7 +36,9 @@ import io.reactivex.schedulers.Schedulers;
 public class VideoListPresenter extends BasePresenter<IVideoListContract.IVideoListView> implements IVideoListContract.IVideoListPresenter {
     private final String URL_VIDEO = "/video/urls/v/1/toutiao/mp4/%s?r=%s";
     private final String HOST_VIDEO = "http://i.snssdk.com";
-    //正则
+    /**
+     * 获取视频地址的正则表达式
+     */
     private static Pattern pattern = Pattern.compile("videoid:\'(.+)\'");
 
     @Override
@@ -88,16 +93,15 @@ public class VideoListPresenter extends BasePresenter<IVideoListContract.IVideoL
     }
 
     @Override
-    public String getVideoAddress(String url) {
+    public void getVideoAddress(String url, final int position) {
         RetrofitFactory.getTouTiaoApi()
                 .getVideoHtml(url)
-                .flatMap(new Function<String, ObservableSource<?>>() {
+                .flatMap(new Function<String, ObservableSource<VideoAddressBean>>() {
                     @Override
-                    public ObservableSource<?> apply(String response) throws Exception {
+                    public ObservableSource<VideoAddressBean> apply(String response) throws Exception {
                         Matcher matcher = pattern.matcher(response);
                         if (matcher.find()) {
                             String videoId = matcher.group(1);
-                            Logger.d(videoId);
                             //1.将/video/urls/v/1/toutiao/mp4/{videoid}?r={Math.random()}，进行crc32加密。
                             Random random = new Random();
                             StringBuilder result = new StringBuilder();
@@ -108,8 +112,6 @@ public class VideoListPresenter extends BasePresenter<IVideoListContract.IVideoL
                             Logger.d(r);
                             CRC32 crc32 = new CRC32();
                             String s = String.format(URL_VIDEO, videoId, r);
-
-                            Logger.d(s);
                             //进行crc32加密。
                             crc32.update(s.getBytes());
                             String crcString = crc32.getValue() + "";
@@ -117,11 +119,50 @@ public class VideoListPresenter extends BasePresenter<IVideoListContract.IVideoL
                             //2.访问http://i.snssdk.com/video/urls/v/1/toutiao/mp4/{videoid}?r={Math.random()}&s={crc32值}
                             String url = HOST_VIDEO + s + "&s=" + crcString;
                             Logger.d(url);
+                            return RetrofitFactory.getTouTiaoApi().getVideoAddress(url);
                         }
                         return null;
                     }
-                }).compose(TransformUtils.defaultSchedulers())
-                .subscribe();
-        return null;
+                })
+                .map(new Function<VideoAddressBean, VideoAddressBean.DataBean.VideoListBean.VideoBean>() {
+                    @Override
+                    public VideoAddressBean.DataBean.VideoListBean.VideoBean apply(VideoAddressBean videoAddressBean) throws Exception {
+                        Logger.d("1");
+                        if (videoAddressBean != null && HttpConstants.REQUEST_SUCCESS.equals(videoAddressBean.getMessage())) {
+                            VideoAddressBean.DataBean.VideoListBean listBean = videoAddressBean.getData().getVideo_list();
+                            Logger.d("2");
+                            if (listBean.getVideo_3() != null) {
+                                return updateVideoBean(listBean.getVideo_3());
+                            }
+                            if (listBean.getVideo_2() != null) {
+                                return updateVideoBean(listBean.getVideo_2());
+                            }
+                            if (listBean.getVideo_1() != null) {
+                                return updateVideoBean(listBean.getVideo_1());
+                            }
+                        }
+                        Logger.d("null");
+                        return null;
+                    }
+
+                    private VideoAddressBean.DataBean.VideoListBean.VideoBean updateVideoBean(VideoAddressBean.DataBean.VideoListBean.VideoBean videoBean) {
+                        String originalAddress = videoBean.getMain_url();
+                        videoBean.setMain_url(new String(Base64.decode(originalAddress.getBytes(), Base64.DEFAULT)));
+                        return videoBean;
+                    }
+                })
+                .compose(TransformUtils.<VideoAddressBean.DataBean.VideoListBean.VideoBean>defaultSchedulers())
+                .compose(mView.<VideoAddressBean.DataBean.VideoListBean.VideoBean>bindToLife())
+                .subscribe(new Consumer<VideoAddressBean.DataBean.VideoListBean.VideoBean>() {
+                    @Override
+                    public void accept(VideoAddressBean.DataBean.VideoListBean.VideoBean videoBean) throws Exception {
+                        mView.loadVideoAddress(videoBean, position);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Logger.d(throwable.getMessage());
+                    }
+                });
     }
 }

@@ -7,6 +7,7 @@ import com.xu.headline.bean.response.CommentReplyThemeBean;
 import com.xu.headline.bean.response.NewsChannelListBean;
 import com.xu.headline.bean.response.SuggestSearchBean;
 import com.xu.headline.bean.response.TouTiaoNewsVideoListBean;
+import com.xu.headline.bean.response.VideoAddressBean;
 import com.xu.headline.bean.response.VideoChannelBean;
 import com.xu.headline.bean.response.authorinfo.AuthorInfoBean;
 
@@ -395,4 +396,13 @@ public interface TouTiaoApiService {
      */
     @GET
     Observable<String> getVideoHtml(@Url String url);
+
+    /**
+     * 获取视频播放地址
+     *
+     * @param url 接口地址
+     * @return 地址list
+     */
+    @GET
+    Observable<VideoAddressBean> getVideoAddress(@Url String url);
 }

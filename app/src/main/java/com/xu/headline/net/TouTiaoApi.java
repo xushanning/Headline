@@ -4,6 +4,7 @@ import com.xu.headline.base.BaseResBean;
 import com.xu.headline.bean.response.CommentListBean;
 import com.xu.headline.bean.response.CommentReplyListBean;
 import com.xu.headline.bean.response.CommentReplyThemeBean;
+import com.xu.headline.bean.response.VideoAddressBean;
 import com.xu.headline.bean.response.VideoChannelBean;
 import com.xu.headline.bean.response.authorinfo.AuthorInfoBean;
 import com.xu.headline.bean.response.SuggestSearchBean;
@@ -159,13 +160,23 @@ public class TouTiaoApi {
     }
 
     /**
-     * 获取视频播放真实地址的请求接口
+     * 获取视频播放真实地址的请求接口url
      *
      * @param url pc端地址
      * @return 真实地址请求接口
      */
     public Observable<String> getVideoHtml(String url) {
         return touTiaoApiService.getVideoHtml(url);
+    }
+
+    /**
+     * 获取视频播放地址
+     *
+     * @param url 接口地址
+     * @return observable
+     */
+    public Observable< VideoAddressBean > getVideoAddress(String url) {
+        return touTiaoApiService.getVideoAddress(url);
     }
 
 
